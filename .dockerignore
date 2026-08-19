@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+backend
+*.log
+.env
+.env.*
+!.env.example
+__tests__
+e2e
+coverage
+*.tsbuildinfo

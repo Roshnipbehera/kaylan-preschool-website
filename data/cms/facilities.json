@@ -1,0 +1,9 @@
+{
+  "heading": "Our Facilities 🏫",
+  "subtext": "Safe, joyful spaces designed for little explorers.",
+  "facilities": [
+    { "title": "Sensory Play Room", "emoji": "🧸", "text": "A dedicated room for hands-on sensory exploration." },
+    { "title": "Outdoor Play Area", "emoji": "🌳", "text": "Safe, fenced play area with age-appropriate equipment." },
+    { "title": "Art & Craft Studio", "emoji": "🎨", "text": "Bright studio space for creative expression." }
+  ]
+}

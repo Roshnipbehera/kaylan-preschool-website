@@ -1,0 +1,46 @@
+[
+  {
+    "id": "student_1",
+    "parentUserId": "u_parent_1",
+    "teacherUserId": "u_teacher_1",
+    "fullName": "Aarav Rao",
+    "dateOfBirth": "2021-03-14",
+    "program": "Nursery",
+    "className": "Sunshine Room",
+    "bloodGroup": "O+",
+    "allergies": "Peanuts",
+    "photo": "",
+    "guardianName": "Ananya Rao",
+    "guardianPhone": "+91 98765 43210",
+    "guardianEmail": "parent@kaylan.school",
+    "emergencyContact": {
+      "name": "Rohan Rao",
+      "relationship": "Father",
+      "phone": "+91 98765 43211"
+    },
+    "createdAt": "2024-01-15T00:00:00.000Z",
+    "updatedAt": "2024-01-15T00:00:00.000Z"
+  },
+  {
+    "id": "student_2",
+    "parentUserId": "u_parent_1",
+    "teacherUserId": "u_teacher_1",
+    "fullName": "Diya Rao",
+    "dateOfBirth": "2022-08-02",
+    "program": "Toddler",
+    "className": "Rainbow Room",
+    "bloodGroup": "O+",
+    "allergies": "None",
+    "photo": "",
+    "guardianName": "Ananya Rao",
+    "guardianPhone": "+91 98765 43210",
+    "guardianEmail": "parent@kaylan.school",
+    "emergencyContact": {
+      "name": "Rohan Rao",
+      "relationship": "Father",
+      "phone": "+91 98765 43211"
+    },
+    "createdAt": "2024-06-01T00:00:00.000Z",
+    "updatedAt": "2024-06-01T00:00:00.000Z"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "log_1",
+    "actor": "Kaylan Admin",
+    "action": "CMS section 'home' updated",
+    "category": "cms",
+    "createdAt": "2026-07-01T09:12:00.000Z"
+  },
+  {
+    "id": "log_2",
+    "actor": "Kaylan Admin",
+    "action": "Application #app_1 status changed to accepted",
+    "category": "admissions",
+    "createdAt": "2026-07-05T11:30:00.000Z"
+  },
+  {
+    "id": "log_3",
+    "actor": "Meera Iyer",
+    "action": "Attendance marked for Sunshine Room on 2026-07-10",
+    "category": "attendance",
+    "createdAt": "2026-07-10T08:05:00.000Z"
+  }
+]

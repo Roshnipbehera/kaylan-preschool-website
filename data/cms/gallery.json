@@ -1,0 +1,12 @@
+{
+  "heading": "Gallery of Moments 📸",
+  "subtext": "Snapshots of joy, curiosity and friendship.",
+  "frames": [
+    { "shape": "cloud", "color": "#6EC6FF", "emoji": "🎨" },
+    { "shape": "star", "color": "#FFD93D", "emoji": "🎵" },
+    { "shape": "rainbow", "color": "#FF8FB1", "emoji": "🧩" },
+    { "shape": "polaroid", "color": "#7ED957", "emoji": "🌳" },
+    { "shape": "cloud", "color": "#CDB4FF", "emoji": "📖" },
+    { "shape": "star", "color": "#FFA552", "emoji": "🔬" }
+  ]
+}

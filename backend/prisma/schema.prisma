@@ -1,0 +1,665 @@
+// Prisma schema for Kaylan Preschool.
+//
+// LIVE (Auth/Messaging migration pass): User, RefreshToken, Conversation,
+// ConversationParticipant, Message, MessageDeletion, Attachment,
+// MessageReaction, ReadReceipt, Notification.
+//
+// LIVE (Batch 1 -- Students/Parents/Teachers/Attendance/Homework migration
+// pass): Student (now the FULL record -- enrollment, class, DOB, guardian,
+// medical, parent/teacher FKs -- replacing the old minimal messaging-demo
+// stub), Attendance, Homework. Parent and Teacher domain data itself
+// continues to live on the User model (role/isActive/className/subject,
+// already migrated); the only remaining Parent/Teacher-specific data was
+// the parent<->student and teacher<->student linkage, which is exactly
+// what Student.parentId/teacherId (both real FKs to User below) resolve.
+// data/students/students.json, data/attendance/records.json,
+// data/homework/assignments.json and their app/api/** JSON route handlers
+// are left in place as inert dead code but are no longer read by any live
+// frontend code path.
+//
+// LIVE (Batch 2 migration pass): ActivityLog, Announcement, CmsSection,
+// AdmissionApplication. app/api/activities/**, app/api/announcements/**,
+// app/api/cms/**, app/api/admissions/** and their data/**/*.json files are
+// left in place as inert dead code but are no longer read by any live
+// frontend code path.
+//
+// LIVE (Batch 3 migration pass): BlogAuthor, BlogPost, GalleryAlbum,
+// GalleryItem, Event, EventRsvp. app/api/blog/**, app/api/gallery/**,
+// app/api/events/** and their data/**/*.json files, plus the legacy
+// Mongoose scaffold backend/src/models/Event.ts + Rsvp.ts, are left in
+// place as inert dead code but are no longer read by any live frontend
+// code path.
+//
+// LIVE (Batch 4 -- FINAL -- migration pass): FeeInvoice, FeePayment,
+// AuditLog, SystemSetting. app/api/fees/**, app/api/audit/**,
+// app/api/settings/** and their data/**/*.json files, plus the old
+// frontend-only lib/audit/logAction.ts writer, are left in place as inert
+// dead code but are no longer read/written by any live frontend code path
+// -- writes now happen server-side via backend/src/lib/audit.ts's
+// logAudit() and backend/src/lib/notify.ts's notifyUser()/notifyUsers(),
+// called directly from mutating controllers across the app (see
+// feesController, attendanceController, announcementController,
+// homeworkController, eventController, userController, studentController,
+// admissionController, cmsController, settingsController). Programs and
+// Curriculum are NOT separate models -- they were confirmed to already be
+// fully covered by the generic CmsSection model (sectionKey "programs" /
+// "curriculum", rendered by components/Programs.tsx / components/
+// Adventures.tsx via useCmsSection), so no new model was needed for them.
+// Role/Permission remain DESIGNED-ONLY (schema modeled for a possible
+// future fine-grained-permissions pass, not wired to any live route --
+// today's 3-role UserRole enum on User is the live authorization model).
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ---------------------------------------------------------------------
+// Core / Auth (LIVE)
+// ---------------------------------------------------------------------
+
+enum UserRole {
+  PARENT
+  TEACHER
+  ADMIN
+}
+
+model User {
+  id                     String    @id @default(cuid())
+  name                   String
+  email                  String    @unique
+  passwordHash           String
+  role                   UserRole
+  isEmailVerified        Boolean   @default(false)
+  avatarUrl              String?
+  emailVerificationToken String?
+  passwordResetToken     String?
+  passwordResetExpires   DateTime?
+  // Admin CRUD (Part 2 of this pass): soft-delete/deactivate flag, plus
+  // teacher-only profile fields. No separate TeacherProfile/ParentProfile
+  // table was introduced -- these two columns are the only teacher-specific
+  // data the admin UI edits, so denormalizing onto User avoids a 1:1 join
+  // table. Parent "linked children" is NOT a column here; it is derived by
+  // querying Student.parentId (see userController.listUsers), since that
+  // relation already exists and is the source of truth.
+  isActive               Boolean   @default(true)
+  className              String? // teachers only
+  subject                String? // teachers only
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+
+  refreshTokens             RefreshToken[]
+  studentsAsParent          Student[]                  @relation("ParentStudents")
+  studentsAsTeacher         Student[]                  @relation("TeacherStudents")
+  conversationParticipants  ConversationParticipant[]
+  messagesSent               Message[]                 @relation("MessageSender")
+  messageDeletions            MessageDeletion[]
+  messageReactions             MessageReaction[]
+  readReceipts                   ReadReceipt[]
+  notifications                     Notification[]
+  auditLogs                           AuditLog[]
+  homeworkAssigned                    Homework[]
+  admissionApplications                AdmissionApplication[]
+
+  @@index([role])
+}
+
+// Refresh tokens are stored hashed and rotated on every /auth/refresh call.
+model RefreshToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+// Full Student / Child Profile record (Batch 1 pass). Mirrors the shape
+// previously persisted in data/students/students.json 1:1 (see
+// lib/types/students.ts) so the API contract the frontend already expects
+// (fullName, dateOfBirth, program, className, guardian*, emergencyContact,
+// etc.) is preserved -- only the storage engine changed. parentId/teacherId
+// are real FKs to User (replacing the old JSON parentUserId/teacherUserId
+// string references), which is the concrete resolution of the
+// Parents/Teachers linkage question for this pass: Student is the entity
+// that holds those foreign keys, not a separate Parent/Teacher table.
+model Student {
+  id                    String   @id @default(cuid())
+  parentId              String
+  parent                User     @relation("ParentStudents", fields: [parentId], references: [id])
+  teacherId             String?
+  teacher               User?    @relation("TeacherStudents", fields: [teacherId], references: [id])
+  fullName              String
+  dateOfBirth           DateTime
+  program               String
+  className             String
+  bloodGroup            String
+  allergies             String   @default("")
+  photo                 String   @default("")
+  guardianName          String
+  guardianPhone         String
+  guardianEmail         String
+  emergencyContactName         String
+  emergencyContactRelationship String
+  emergencyContactPhone        String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  attendanceRecords Attendance[]
+  activityLogs      ActivityLog[]
+
+  @@index([parentId])
+  @@index([teacherId])
+  @@index([className])
+}
+
+// ---------------------------------------------------------------------
+// Messaging (LIVE)
+// ---------------------------------------------------------------------
+
+model Conversation {
+  id        String   @id @default(cuid())
+  subject   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  participants ConversationParticipant[]
+  messages     Message[]
+}
+
+model ConversationParticipant {
+  id                String       @id @default(cuid())
+  conversationId    String
+  conversation      Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId            String
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  roleAtJoin        UserRole
+  joinedAt          DateTime     @default(now())
+  isArchived        Boolean      @default(false)
+  isPinned          Boolean      @default(false)
+  isMuted           Boolean      @default(false)
+  lastReadMessageId String?
+
+  @@unique([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id                   String       @id @default(cuid())
+  conversationId       String
+  conversation         Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId             String
+  sender               User         @relation("MessageSender", fields: [senderId], references: [id])
+  body                 String
+  replyToMessageId     String?
+  isEdited             Boolean      @default(false)
+  isDeletedForEveryone Boolean      @default(false)
+  isPinned             Boolean      @default(false)
+  editedAt             DateTime?
+  createdAt            DateTime     @default(now())
+
+  deletions    MessageDeletion[]
+  attachments  Attachment[]
+  reactions    MessageReaction[]
+  readReceipts ReadReceipt[]
+
+  @@index([conversationId, createdAt])
+}
+
+// "Delete for me" -- a per-user tombstone; the Message row/body persists.
+model MessageDeletion {
+  id        String   @id @default(cuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deletedAt DateTime @default(now())
+
+  @@unique([messageId, userId])
+}
+
+model Attachment {
+  id        String   @id @default(cuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  url       String
+  type      String
+  filename  String
+  size      Int
+  mimeType  String
+  createdAt DateTime @default(now())
+
+  @@index([messageId])
+}
+
+model MessageReaction {
+  id        String   @id @default(cuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  emoji     String
+  createdAt DateTime @default(now())
+
+  @@unique([messageId, userId, emoji])
+}
+
+model ReadReceipt {
+  id        String   @id @default(cuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  readAt    DateTime @default(now())
+
+  @@unique([messageId, userId])
+}
+
+// TypingStatus is intentionally NOT persisted here -- it is ephemeral,
+// high-frequency, per-socket-connection state handled entirely in-memory by
+// the Socket.io server (see backend/src/socket/index.ts). Persisting it to
+// Postgres would add write load for data that is stale within seconds and
+// never needs to survive a server restart or be queried historically.
+// Documented future scaling path: move this in-memory map to Redis.
+
+enum NotificationType {
+  MESSAGE
+  ANNOUNCEMENT
+  HOMEWORK
+  ATTENDANCE
+  FEE
+  EVENT
+}
+
+model Notification {
+  id                String           @id @default(cuid())
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type              NotificationType
+  title             String
+  body              String
+  relatedEntityType String?
+  relatedEntityId   String?
+  isRead            Boolean          @default(false)
+  createdAt         DateTime         @default(now())
+
+  @@index([userId, isRead])
+}
+
+// ---------------------------------------------------------------------
+// Attendance / Homework (LIVE, Batch 1 pass)
+// ---------------------------------------------------------------------
+
+enum AttendanceStatus {
+  present
+  absent
+  late
+}
+
+// One row per student per day. markedBy stores the teacher's display name
+// (matching the old JSON shape's plain string, which the Parent Attendance
+// UI renders directly) -- the acting teacher's identity/authorization is
+// enforced separately via req.user in the controller, not by this column.
+model Attendance {
+  id        String           @id @default(cuid())
+  studentId String
+  student   Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  date      DateTime         @db.Date
+  status    AttendanceStatus
+  markedBy  String
+  notes     String           @default("")
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@unique([studentId, date])
+  @@index([studentId, date])
+}
+
+enum HomeworkStatus {
+  pending
+  submitted
+  overdue
+}
+
+model Homework {
+  id           String         @id @default(cuid())
+  className    String
+  subject      String
+  title        String
+  description  String
+  assignedDate DateTime       @db.Date
+  dueDate      DateTime       @db.Date
+  status       HomeworkStatus @default(pending)
+  teacherId    String?
+  teacher      User?          @relation(fields: [teacherId], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@index([className])
+  @@index([teacherId])
+}
+
+// ---------------------------------------------------------------------
+// Batch 2/3/4 domains -- ALL LIVE as of the final migration pass (see the
+// per-model "LIVE (Batch N pass)" comments below for the specifics of each).
+// The only genuinely designed-only-and-not-wired models left in this file
+// are Role and Permission at the very end (today's live authorization model
+// is still the 3-value UserRole enum on User). This header previously said
+// "designed-only... NOT read/written by any live route", which became
+// stale once Batches 2-4 shipped; corrected here to avoid misleading future
+// readers -- the JSON files under data/** are still left on disk but are
+// confirmed dead/unread by any live frontend code path for every model
+// below except Role/Permission, which were never JSON-backed to begin with.
+// ---------------------------------------------------------------------
+
+enum ActivityCategory {
+  learning
+  play
+  meal
+  nap
+  art
+  outdoor
+}
+
+// LIVE (Batch 2 pass). Replaces app/api/activities/** (JSON-backed,
+// data/activities/logs.json). Mirrors lib/types/activities.ts's
+// ActivityLog shape 1:1 -- date/time kept as plain strings (yyyy-mm-dd /
+// HH:mm) exactly like the old JSON so the Parent/Teacher Activities UI
+// needs no changes. studentId is a real FK to Student now (the JSON
+// version was a loose string reference to the old student_1/student_2
+// mock ids -- seed data below re-points these at the real
+// seed_student_1/seed_student_2 rows).
+model ActivityLog {
+  id        String           @id @default(cuid())
+  studentId String
+  student   Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  date      String
+  time      String
+  category  ActivityCategory
+  title     String
+  notes     String?
+  loggedBy  String
+  mediaUrl  String?
+  mediaType String?
+  createdAt DateTime         @default(now())
+
+  @@index([studentId])
+  @@index([studentId, date])
+}
+
+enum AnnouncementAudience {
+  all
+  parents
+  teachers
+}
+
+// LIVE (Batch 2 pass). Replaces app/api/announcements/** (JSON-backed,
+// data/announcements/announcements.json). Mirrors
+// lib/types/announcements.ts's Announcement shape 1:1.
+model Announcement {
+  id        String               @id @default(cuid())
+  title     String
+  body      String
+  date      String
+  audience  AnnouncementAudience
+  classId   String?
+  createdBy String?
+  createdAt DateTime             @default(now())
+
+  @@index([audience])
+}
+
+// LIVE (Batch 2 pass). Backs the CMS (app/api/cms/[section]/**,
+// previously JSON-backed under data/cms/*.json). One row per section key;
+// contentJson holds the exact same flexible per-section shape the JSON
+// files held (see lib/types/cms.ts's CmsSectionMap) -- this preserves the
+// existing getCmsSection<T>(section)/updateCmsSection<T>(section, data)
+// contract with zero risk to the 14 differently-shaped sections, while
+// still gaining a real relational row (id, uniqueness, audit fields) per
+// section in Postgres.
+model CmsSection {
+  id            String   @id @default(cuid())
+  sectionKey    String   @unique
+  contentJson   Json
+  updatedAt     DateTime @updatedAt
+  updatedByUserId String?
+}
+
+model FeeInvoice {
+  id          String   @id @default(cuid())
+  studentId   String
+  title       String   @default("Fee Invoice")
+  amount      Int
+  dueDate     DateTime
+  issuedDate  DateTime @default(now())
+  status      String   @default("pending")
+  lineItems   Json     @default("[]")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  payments FeePayment[]
+
+  @@index([studentId])
+}
+
+model FeePayment {
+  id        String     @id @default(cuid())
+  invoiceId String
+  invoice   FeeInvoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  studentId String
+  amount    Int
+  method    String
+  status    String   @default("success")
+  paidAt    DateTime   @default(now())
+
+  @@index([studentId])
+}
+
+// LIVE (Batch 3 pass). Replaces app/api/blog/** (JSON-backed,
+// data/blog/authors.json). Mirrors lib/types/blog.ts's BlogAuthor shape
+// 1:1 -- slug is unique since app/blog/author/[authorSlug]/page.tsx routes
+// by it.
+model BlogAuthor {
+  id        String     @id @default(cuid())
+  slug      String     @unique
+  name      String
+  bio       String     @default("")
+  avatarUrl String?
+  posts     BlogPost[]
+}
+
+// LIVE (Batch 3 pass). Replaces app/api/blog/** (JSON-backed,
+// data/blog/posts.json). Mirrors lib/types/blog.ts's BlogPost shape 1:1
+// -- body remains markdown text (rendered client-side by
+// components/blog/MarkdownRenderer), category/authorId are indexed since
+// the public blog list filters by category/author and the admin list
+// filters similarly.
+model BlogPost {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  title         String
+  excerpt       String
+  body          String
+  coverImageUrl String?
+  category      String
+  tags          String[]   @default([])
+  authorId      String
+  author        BlogAuthor @relation(fields: [authorId], references: [id])
+  published     Boolean    @default(false)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  publishedAt   DateTime?
+
+  @@index([category])
+  @@index([authorId])
+  @@index([published])
+}
+
+// LIVE (Batch 3 pass). Replaces app/api/gallery/** (JSON-backed,
+// data/gallery/albums.json). Mirrors lib/types/gallery.ts's GalleryAlbum
+// shape 1:1.
+model GalleryAlbum {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  coverImage  String
+  description String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  items       GalleryItem[]
+}
+
+enum GalleryItemType {
+  image
+  video
+}
+
+// LIVE (Batch 3 pass). Mirrors lib/types/gallery.ts's GalleryItem shape
+// 1:1 -- ordered by an explicit `order` column so the admin UI's item
+// ordering within an album survives a migration to a relational table
+// (JSON arrays are naturally ordered; Postgres rows are not without an
+// explicit column).
+model GalleryItem {
+  id           String          @id @default(cuid())
+  albumId      String
+  album        GalleryAlbum    @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  type         GalleryItemType @default(image)
+  url          String
+  thumbnailUrl String?
+  caption      String?
+  order        Int             @default(0)
+
+  @@index([albumId])
+  @@index([albumId, order])
+}
+
+// LIVE (Batch 3 pass). Replaces the legacy Mongoose-backed scaffold
+// (../models/Event.ts, ../models/Rsvp.ts -- dead code from the pre-Prisma
+// architecture pass, never wired to a live DB) AND app/api/events/**
+// (JSON-backed, data/events/events.json). Mirrors lib/types/events.ts's
+// SchoolEvent shape 1:1.
+model Event {
+  id          String      @id @default(cuid())
+  title       String
+  description String
+  date        DateTime
+  location    String
+  coverImage  String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  rsvps       EventRsvp[]
+
+  @@index([date])
+}
+
+// LIVE (Batch 3 pass). Replaces data/events/rsvps.json. Public POST (no
+// auth) -- parents/visitors RSVP without being logged in; admin-only GET
+// per event.
+model EventRsvp {
+  id          String   @id @default(cuid())
+  eventId     String
+  event       Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  name        String
+  email       String
+  guests      Int      @default(1)
+  submittedAt DateTime @default(now())
+
+  @@index([eventId])
+}
+
+enum AdmissionStatus {
+  submitted
+  under_review
+  accepted
+  rejected
+  waitlisted
+}
+
+// LIVE (Batch 2 pass). Replaces app/api/admissions/** (JSON-backed, one
+// file per application under data/admissions/*.json). child/guardian/
+// medical/documents are kept as JSON blobs (rather than exploded into ~20
+// individual columns) since they are always read/written as one cohesive
+// object by the multi-step public application form and the receipt PDF
+// generator (lib/pdf/admissionReceipt.ts) -- field NAMES inside each blob
+// match lib/validation/admissions.ts's Zod schemas exactly. status/
+// timestamps/parentUserId are real relational columns since those are
+// individually queried/filtered/updated (see admissionController).
+// parentUserId is nullable + no enforced FK: the public /admissions/apply
+// form can be submitted by a NOT-YET-logged-in visitor, so there may be no
+// User row to link to at submission time.
+model AdmissionApplication {
+  id           String          @id @default(cuid())
+  parentUserId String?
+  parent       User?           @relation(fields: [parentUserId], references: [id], onDelete: SetNull)
+  child        Json
+  guardian     Json
+  medical      Json
+  documents    Json
+  status       AdmissionStatus @default(submitted)
+  submittedAt  DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([parentUserId])
+  @@index([status])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  actorName String   @default("System")
+  action    String
+  category  String   @default("general")
+  entity    String?
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([category])
+  @@index([createdAt])
+}
+
+model SystemSetting {
+  key   String @id
+  value Json
+}
+
+// LIVE (deployment-blocker fix pass). Backs the public marketing site's
+// Contact.tsx enquiry form (previously had no onSubmit handler at all --
+// see FINAL_ACCEPTANCE_REPORT.md section 3). No pre-existing model covered
+// this: AdmissionApplication is a distinct, longer multi-step flow with its
+// own document uploads, and there is no generic "lead" table. Modeled after
+// EventRsvp (the closest existing analog: a public, unauthenticated,
+// simple-fields, rate-limited create) -- same id/@default(cuid()),
+// @default(now()) submittedAt, and index-on-submittedAt-for-admin-listing
+// conventions used across the rest of this schema.
+model ContactInquiry {
+  id          String   @id @default(cuid())
+  parentName  String
+  phone       String
+  message     String
+  submittedAt DateTime @default(now())
+
+  @@index([submittedAt])
+}
+
+model Role {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  permissions Permission[]
+}
+
+model Permission {
+  id     String  @id @default(cuid())
+  key    String  @unique
+  roleId String?
+  role   Role?   @relation(fields: [roleId], references: [id])
+}

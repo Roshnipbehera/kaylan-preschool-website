@@ -1,0 +1,12 @@
+[
+  {
+    "id": "prog_1",
+    "studentId": "student_1",
+    "teacherId": "u_teacher_1",
+    "teacherName": "Meera Iyer",
+    "period": "Term 2, 2026",
+    "remarks": "Aarav has shown great progress in social interaction and enjoys group activities. He is confidently recognising numbers 1-20 and is beginning to write his name independently.",
+    "milestones": ["Counts 1-20 unaided", "Shares toys with peers", "Recognises primary colours", "Follows two-step instructions"],
+    "createdAt": "2026-07-20T10:00:00.000Z"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "heading": "Admissions — Stepping Stones 🪨",
+  "subtext": "Five simple steps to joining the Kaylan family.",
+  "steps": [
+    { "label": "Visit School", "emoji": "🏫" },
+    { "label": "Meet Teachers", "emoji": "👩‍🏫" },
+    { "label": "Campus Tour", "emoji": "🚶" },
+    { "label": "Admission", "emoji": "📝" },
+    { "label": "Welcome Kit", "emoji": "🎁" }
+  ],
+  "ctaLabel": "🎉 Start Your Journey Today",
+  "ctaHref": "/admissions/apply"
+}

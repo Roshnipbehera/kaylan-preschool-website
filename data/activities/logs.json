@@ -1,0 +1,17 @@
+[
+  { "id": "act_1", "studentId": "student_1", "date": "2026-07-25", "time": "09:15", "category": "learning", "title": "Circle Time — Days of the Week", "notes": "Aarav confidently named all seven days.", "loggedBy": "Meera Iyer" },
+  { "id": "act_2", "studentId": "student_1", "date": "2026-07-25", "time": "10:30", "category": "art", "title": "Painted with watercolours", "notes": "Made a rainbow painting to take home.", "loggedBy": "Meera Iyer" },
+  { "id": "act_3", "studentId": "student_1", "date": "2026-07-25", "time": "13:00", "category": "nap", "title": "Nap time — 1:00 to 2:00 PM", "loggedBy": "Meera Iyer" },
+  { "id": "act_4", "studentId": "student_1", "date": "2026-07-27", "time": "09:00", "category": "outdoor", "title": "Outdoor play — 30 min", "notes": "Played on the slide and sandbox with friends.", "loggedBy": "Meera Iyer" },
+  { "id": "act_5", "studentId": "student_1", "date": "2026-07-27", "time": "12:00", "category": "meal", "title": "Lunch — finished full plate", "notes": "Dal, rice and vegetables.", "loggedBy": "Meera Iyer" },
+  { "id": "act_6", "studentId": "student_1", "date": "2026-07-28", "time": "09:30", "category": "learning", "title": "Alphabet Tracing — Letters A to E", "loggedBy": "Meera Iyer" },
+  { "id": "act_7", "studentId": "student_1", "date": "2026-07-28", "time": "11:00", "category": "play", "title": "Building blocks — group tower challenge", "notes": "Worked well with classmates on a joint tower.", "loggedBy": "Meera Iyer" },
+  { "id": "act_8", "studentId": "student_1", "date": "2026-07-29", "time": "09:15", "category": "learning", "title": "Story Time — The Very Hungry Caterpillar", "loggedBy": "Meera Iyer" },
+  { "id": "act_9", "studentId": "student_1", "date": "2026-07-29", "time": "10:45", "category": "outdoor", "title": "Nature walk in the garden", "notes": "Collected leaves for the craft table.", "loggedBy": "Meera Iyer" },
+  { "id": "act_10", "studentId": "student_1", "date": "2026-07-30", "time": "09:00", "category": "art", "title": "Clay modelling — animals theme", "loggedBy": "Meera Iyer" },
+  { "id": "act_11", "studentId": "student_1", "date": "2026-07-30", "time": "13:15", "category": "nap", "title": "Nap time — 1:15 to 2:15 PM", "loggedBy": "Meera Iyer" },
+  { "id": "act_12", "studentId": "student_1", "date": "2026-07-31", "time": "09:20", "category": "learning", "title": "Numbers Recognition — 1 to 20", "notes": "Great improvement counting past 10.", "loggedBy": "Meera Iyer" },
+  { "id": "act_13", "studentId": "student_1", "date": "2026-07-31", "time": "11:30", "category": "play", "title": "Musical chairs and singing circle", "loggedBy": "Meera Iyer" },
+  { "id": "act_14", "studentId": "student_2", "date": "2026-07-30", "time": "09:30", "category": "play", "title": "Sensory bin — rice and beads", "loggedBy": "Meera Iyer" },
+  { "id": "act_15", "studentId": "student_2", "date": "2026-07-31", "time": "10:00", "category": "outdoor", "title": "Bubble play in the courtyard", "loggedBy": "Meera Iyer" }
+]

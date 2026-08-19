@@ -1,0 +1,13 @@
+{
+  "brand": "🌈 Kaylan Preschool",
+  "tagline": "Electronic City, Bangalore. A magical place where little dreams begin, every single day.",
+  "newsletterHeading": "Storybook Newsletter",
+  "newsletterText": "Get magical updates & preschool tips.",
+  "quickLinks": [
+    { "label": "Programs", "href": "#programs" },
+    { "label": "Admissions", "href": "#admissions" },
+    { "label": "Gallery", "href": "#gallery" },
+    { "label": "FAQ", "href": "#faq" },
+    { "label": "Blog", "href": "/blog" }
+  ]
+}

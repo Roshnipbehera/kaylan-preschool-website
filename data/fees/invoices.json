@@ -1,0 +1,43 @@
+[
+  {
+    "id": "inv_2026_q2",
+    "studentId": "student_1",
+    "title": "Term 2 Tuition Fee (Apr - Jun 2026)",
+    "status": "paid",
+    "amount": 25000,
+    "dueDate": "2026-04-10",
+    "issuedDate": "2026-03-25",
+    "lineItems": [
+      { "label": "Tuition Fee", "amount": 20000 },
+      { "label": "Activity Fee", "amount": 3000 },
+      { "label": "Meals", "amount": 2000 }
+    ]
+  },
+  {
+    "id": "inv_2026_q3",
+    "studentId": "student_1",
+    "title": "Term 3 Tuition Fee (Jul - Sep 2026)",
+    "status": "pending",
+    "amount": 26500,
+    "dueDate": "2026-08-10",
+    "issuedDate": "2026-07-15",
+    "lineItems": [
+      { "label": "Tuition Fee", "amount": 21000 },
+      { "label": "Activity Fee", "amount": 3000 },
+      { "label": "Meals", "amount": 2500 }
+    ]
+  },
+  {
+    "id": "inv_2026_field_trip",
+    "studentId": "student_2",
+    "title": "Annual Day Field Trip Fee",
+    "status": "overdue",
+    "amount": 1500,
+    "dueDate": "2026-07-20",
+    "issuedDate": "2026-07-01",
+    "lineItems": [
+      { "label": "Transport", "amount": 800 },
+      { "label": "Entry Tickets", "amount": 700 }
+    ]
+  }
+]

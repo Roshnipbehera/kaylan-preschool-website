@@ -1,0 +1,91 @@
+version: "3.9"
+
+# Production-shaped local orchestration. Postgres is the only live datastore
+# (Auth + Messaging + every other domain migrated off the JSON-file/Mongoose
+# scaffold -- see backend/prisma/schema.prisma). No Redis service is
+# defined: Socket.io presence tracking (backend/src/socket/index.ts) is
+# currently an in-process Map, documented there as a future scaling path to
+# a Redis-backed adapter once running more than one backend replica -- add
+# a `redis:` service here when that migration actually happens, not before.
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kaylan}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kaylan}
+      POSTGRES_DB: ${POSTGRES_DB:-kaylan_preschool}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-kaylan} -d ${POSTGRES_DB:-kaylan_preschool}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - kaylan-net
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    # Production pattern: migrations run against the live DB on container
+    # start, not baked into the image at build time. `prisma db seed` is
+    # idempotent-safe to re-run (see backend/prisma/seed.ts -- upserts), so
+    # running it on every start is safe; drop it once real production data
+    # exists and seeding is no longer desired.
+    command: sh -c "npx prisma migrate deploy && npx prisma db seed && node dist/server.js"
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./backend/.env
+    environment:
+      PORT: 4000
+      NODE_ENV: production
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:3000}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-kaylan}:${POSTGRES_PASSWORD:-kaylan}@postgres:5432/${POSTGRES_DB:-kaylan_preschool}?schema=public
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:4000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - kaylan-net
+
+  frontend:
+    build:
+      context: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:4000/api/v1}
+      NEXT_PUBLIC_SOCKET_URL: ${NEXT_PUBLIC_SOCKET_URL:-http://localhost:4000}
+      NEXT_PUBLIC_USE_MOCK_API: "false"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+    networks:
+      - kaylan-net
+
+networks:
+  kaylan-net:
+    driver: bridge
+
+volumes:
+  postgres-data:

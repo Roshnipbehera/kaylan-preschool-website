@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ann_1",
+    "title": "Monsoon Holiday Notice",
+    "body": "Due to heavy rainfall forecasted this week, the school will remain closed on Friday, Aug 7. Regular classes resume Monday.",
+    "date": "2026-07-29",
+    "audience": "all"
+  },
+  {
+    "id": "ann_2",
+    "title": "Term 3 Fee Due Reminder",
+    "body": "Term 3 tuition fees are due by Aug 10, 2026. Please clear pending dues via the Fees section to avoid late charges.",
+    "date": "2026-07-25",
+    "audience": "parents"
+  },
+  {
+    "id": "ann_3",
+    "title": "Annual Sports Day - Save the Date",
+    "body": "Our Annual Sports Day will be held on Aug 22, 2026 at the school ground. All parents are invited to attend and cheer!",
+    "date": "2026-07-18",
+    "audience": "parents"
+  },
+  {
+    "id": "ann_4",
+    "title": "New Library Corner Opened",
+    "body": "We are excited to announce a new reading corner in the Sunshine Room, stocked with age-appropriate picture books.",
+    "date": "2026-07-10",
+    "audience": "all"
+  }
+]

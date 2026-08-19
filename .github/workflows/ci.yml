@@ -1,0 +1,132 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  frontend:
+    name: Frontend (lint, typecheck, test, build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npx next lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit tests (vitest)
+        run: npm test
+
+      - name: Build
+        env:
+          # Dummy values so `next build` can complete in CI without real
+          # secrets; not used for anything beyond a successful static build.
+          NEXT_PUBLIC_API_URL: http://localhost:4000/api/v1
+          NEXT_PUBLIC_USE_MOCK_API: "true"
+          NEXT_PUBLIC_SOCKET_URL: http://localhost:4000
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          JWT_ACCESS_SECRET: ci-build-placeholder-secret-not-for-prod
+        run: npm run build
+
+  backend:
+    name: Backend (typecheck, test against real Postgres)
+    runs-on: ubuntu-latest
+
+    # A real Postgres service container -- GitHub Actions runners have
+    # internet access and can pull images/run migrations for real, unlike
+    # this project's sandbox dev passes (which had no live DB and no
+    # network to binaries.prisma.sh). This is the first environment in the
+    # project's history where `prisma generate` + `prisma migrate deploy`
+    # actually run against a live database in CI.
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: kaylan
+          POSTGRES_PASSWORD: kaylan
+          POSTGRES_DB: kaylan_preschool_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U kaylan -d kaylan_preschool_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql://kaylan:kaylan@localhost:5432/kaylan_preschool_test?schema=public
+      NODE_ENV: test
+      CLIENT_URL: http://localhost:3000
+      JWT_ACCESS_SECRET: ci-test-access-secret-at-least-16-chars
+      JWT_REFRESH_SECRET: ci-test-refresh-secret-at-least-16-chars-different
+      CLOUDINARY_CLOUD_NAME: ci-placeholder
+      CLOUDINARY_API_KEY: ci-placeholder
+      CLOUDINARY_API_SECRET: ci-placeholder
+      SMTP_HOST: smtp.example.com
+      SMTP_USER: ci-placeholder
+      SMTP_PASS: ci-placeholder
+      SMTP_FROM: "Kaylan Preschool <no-reply@kaylanpreschool.com>"
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npx prisma generate
+
+      - name: Run migrations against the service Postgres
+        run: npx prisma migrate deploy
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit + API tests (jest)
+        run: npm run test:all
+
+  docker-build:
+    name: Docker image build validation
+    runs-on: ubuntu-latest
+    needs: [frontend, backend]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build frontend image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: kaylan-frontend:ci
+
+      - name: Build backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: false
+          tags: kaylan-backend:ci

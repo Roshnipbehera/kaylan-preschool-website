@@ -1,0 +1,37 @@
+[
+  {
+    "id": "msg_1",
+    "conversationId": "conv_1",
+    "senderId": "u_teacher_1",
+    "senderRole": "teacher",
+    "senderName": "Meera Iyer",
+    "body": "Hi Ananya! Just a note that Aarav did wonderfully in circle time today and is settling in well with the new letter tracing worksheets.",
+    "attachments": [],
+    "readBy": ["u_teacher_1", "u_parent_1"],
+    "createdAt": "2026-07-27T08:10:00.000Z"
+  },
+  {
+    "id": "msg_2",
+    "conversationId": "conv_1",
+    "senderId": "u_parent_1",
+    "senderRole": "parent",
+    "senderName": "Ananya Rao",
+    "body": "That's wonderful to hear, thank you! He has been practicing his letters at home too.",
+    "attachments": [],
+    "readBy": ["u_parent_1", "u_teacher_1"],
+    "createdAt": "2026-07-27T09:05:00.000Z"
+  },
+  {
+    "id": "msg_3",
+    "conversationId": "conv_1",
+    "senderId": "u_teacher_1",
+    "senderRole": "teacher",
+    "senderName": "Meera Iyer",
+    "body": "Also, a gentle reminder that the seed-planting homework is due this week — attaching the instructions sheet again in case it was misplaced.",
+    "attachments": [
+      { "name": "seed-planting-instructions.pdf", "url": "https://res.cloudinary.com/kaylan-demo/raw/upload/v1/mock-messages/seed-planting-instructions.pdf" }
+    ],
+    "readBy": ["u_teacher_1"],
+    "createdAt": "2026-07-29T07:30:00.000Z"
+  }
+]

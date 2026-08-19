@@ -1,0 +1,9 @@
+{
+  "heading": "Parent Testimonials 💌",
+  "subtext": "Straight from the hearts of our Kaylan families.",
+  "reviews": [
+    { "name": "Priya R.", "quote": "Kaylan gave our daughter confidence we never expected at this age.", "stars": 5 },
+    { "name": "Rohit S.", "quote": "My son runs to school every morning now — that says it all!", "stars": 5 },
+    { "name": "Meera N.", "quote": "The Kreedo curriculum plus the warmth of the teachers is unbeatable.", "stars": 5 }
+  ]
+}
