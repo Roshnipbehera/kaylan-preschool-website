@@ -62,18 +62,27 @@ function parseDays(spec: string): number {
 export const ACCESS_COOKIE_NAME = "kaylan_access_token";
 export const REFRESH_COOKIE_NAME = "kaylan_refresh_token";
 
+// Frontend (vercel.app) and backend (railway.app) are different registrable
+// domains in production, which makes every browser fetch() call cross-site.
+// sameSite="lax" cookies are only sent on top-level navigations, not on
+// cross-site XHR/fetch -- so in production this must be "none" (which
+// requires secure=true, already satisfied above) for the cookie to be sent
+// back on API calls at all. Locally, frontend/backend share the "localhost"
+// registrable domain regardless of port, so "lax" is fine and safer there.
+const isProd = process.env.NODE_ENV === "production";
+
 export const ACCESS_COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax" as const,
+  secure: isProd,
+  sameSite: (isProd ? "none" : "lax") as "none" | "lax",
   maxAge: 1000 * 60 * 15, // 15m, mirrors JWT_ACCESS_EXPIRES_IN default
   path: "/",
 };
 
 export const REFRESH_COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax" as const,
+  secure: isProd,
+  sameSite: (isProd ? "none" : "lax") as "none" | "lax",
   maxAge: 1000 * 60 * 60 * 24 * 30, // 30d, mirrors JWT_REFRESH_EXPIRES_IN default
   path: "/api/v1/auth",
 };

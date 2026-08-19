@@ -44,10 +44,17 @@ export function generateCsrfToken(): string {
   return crypto.randomBytes(32).toString("hex");
 }
 
+// See token.ts for the full explanation: frontend (vercel.app) and backend
+// (railway.app) are different registrable domains in production, so every
+// browser request is cross-site and sameSite="lax" cookies are never sent
+// back on fetch/XHR. Must be "none" in production (secure=true already
+// satisfies the requirement for sameSite=none); "lax" remains fine locally.
+const isProd = process.env.NODE_ENV === "production";
+
 export const CSRF_COOKIE_OPTIONS = {
   httpOnly: false, // must be readable by frontend JS to echo back in the header
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax" as const,
+  secure: isProd,
+  sameSite: (isProd ? "none" : "lax") as "none" | "lax",
   path: "/",
 };
 
