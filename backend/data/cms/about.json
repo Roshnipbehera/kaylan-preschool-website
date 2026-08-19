@@ -1,0 +1,12 @@
+{
+  "heading": "Welcome to",
+  "highlightWord": "Kaylan Preschool",
+  "headingEmoji": "📖",
+  "subtext": "Turn the page into a world where every child's story begins with wonder — Montessori-inspired, Kreedo-guided, and full of heart.",
+  "blocks": [
+    { "emoji": "🎨", "title": "Little Artists", "text": "Colours, textures and imagination come alive every day.", "bg": "bg-candy/15" },
+    { "emoji": "📚", "title": "Curious Readers", "text": "Story time sparks a lifelong love of books and language.", "bg": "bg-sky/15" },
+    { "emoji": "🔢", "title": "Number Explorers", "text": "Hands-on Maths building through Montessori materials.", "bg": "bg-leaf/15" },
+    { "emoji": "🤝", "title": "Confident Friends", "text": "Warm, guided social play builds real confidence.", "bg": "bg-lavender/20" }
+  ]
+}

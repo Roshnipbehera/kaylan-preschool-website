@@ -1,0 +1,42 @@
+[
+  {
+    "id": "hw_1",
+    "className": "Sunshine Room",
+    "subject": "Numbers",
+    "title": "Count and Colour 1-10",
+    "description": "Colour in the number worksheet and practice counting objects from 1 to 10 with a family member.",
+    "assignedDate": "2026-07-22",
+    "dueDate": "2026-07-25",
+    "status": "submitted"
+  },
+  {
+    "id": "hw_2",
+    "className": "Sunshine Room",
+    "subject": "Language",
+    "title": "My Family Picture Story",
+    "description": "Draw a picture of your family and be ready to talk about each person in class.",
+    "assignedDate": "2026-07-27",
+    "dueDate": "2026-08-02",
+    "status": "pending"
+  },
+  {
+    "id": "hw_3",
+    "className": "Sunshine Room",
+    "subject": "Science",
+    "title": "Plant a Seed",
+    "description": "Plant a bean seed in a small cup with soil and water it daily. Bring it to class in two weeks for our growth journal.",
+    "assignedDate": "2026-07-15",
+    "dueDate": "2026-07-29",
+    "status": "overdue"
+  },
+  {
+    "id": "hw_4",
+    "className": "Rainbow Room",
+    "subject": "Motor Skills",
+    "title": "Practice Buttoning",
+    "description": "Practice buttoning and unbuttoning a shirt at home for 5 minutes each day.",
+    "assignedDate": "2026-07-24",
+    "dueDate": "2026-08-05",
+    "status": "pending"
+  }
+]

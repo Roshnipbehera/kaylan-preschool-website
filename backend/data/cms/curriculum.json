@@ -1,0 +1,12 @@
+{
+  "heading": "Our Learning Philosophy 💫",
+  "subtext": "Six friendly characters guide the Kaylan way of learning.",
+  "pillars": [
+    { "title": "Play-based Learning", "emoji": "🧸", "color": "#FF8FB1" },
+    { "title": "Montessori-inspired", "emoji": "🧩", "color": "#6EC6FF" },
+    { "title": "Kreedo Curriculum", "emoji": "📘", "color": "#FFA552" },
+    { "title": "Creative Thinking", "emoji": "💡", "color": "#CDB4FF" },
+    { "title": "Confidence Building", "emoji": "🌟", "color": "#FFD93D" },
+    { "title": "Hands-on Activities", "emoji": "✋", "color": "#7ED957" }
+  ]
+}

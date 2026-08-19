@@ -1,0 +1,23 @@
+[
+  {
+    "id": "auth-1",
+    "slug": "priya-nair",
+    "name": "Priya Nair",
+    "bio": "Priya is the Lead Early Years Educator at Kaylan Preschool with over 12 years of experience in Montessori-based curriculum design. She loves writing about play-based learning and early childhood development.",
+    "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=256&h=256&fit=crop&crop=faces"
+  },
+  {
+    "id": "auth-2",
+    "slug": "arjun-mehta",
+    "name": "Arjun Mehta",
+    "bio": "Arjun is the Academic Director at Kaylan Preschool, overseeing curriculum quality across all campuses. He is passionate about evidence-based early education frameworks like Kreedo.",
+    "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=256&h=256&fit=crop&crop=faces"
+  },
+  {
+    "id": "auth-3",
+    "slug": "ritu-sharma",
+    "name": "Ritu Sharma",
+    "bio": "Ritu is a child psychologist and parent-engagement consultant who partners with Kaylan Preschool to help families navigate the preschool years with confidence.",
+    "avatarUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=256&h=256&fit=crop&crop=faces"
+  }
+]

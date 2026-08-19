@@ -1,0 +1,10 @@
+{
+  "heading": "Our Little Houses 🏡",
+  "subtext": "Each program is a cosy house on our storybook street — hover or tap to peek inside!",
+  "houses": [
+    { "name": "Playgroup", "age": "1.5 - 2.5 yrs", "color": "#FF8FB1", "roof": "#FFD93D" },
+    { "name": "Nursery", "age": "2.5 - 3.5 yrs", "color": "#6EC6FF", "roof": "#FFA552" },
+    { "name": "Junior KG", "age": "3.5 - 4.5 yrs", "color": "#7ED957", "roof": "#FF8FB1" },
+    { "name": "Senior KG", "age": "4.5 - 5.5 yrs", "color": "#CDB4FF", "roof": "#6EC6FF" }
+  ]
+}

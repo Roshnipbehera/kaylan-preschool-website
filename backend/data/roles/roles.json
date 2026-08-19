@@ -1,0 +1,26 @@
+[
+  {
+    "role": "admin",
+    "permissions": [
+      "manage_students",
+      "manage_fees",
+      "publish_blog",
+      "manage_gallery",
+      "manage_events",
+      "manage_cms",
+      "view_analytics",
+      "manage_users",
+      "manage_roles",
+      "view_audit_logs",
+      "manage_settings"
+    ]
+  },
+  {
+    "role": "teacher",
+    "permissions": ["manage_students", "view_analytics"]
+  },
+  {
+    "role": "parent",
+    "permissions": []
+  }
+]

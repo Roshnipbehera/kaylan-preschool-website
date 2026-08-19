@@ -1,0 +1,10 @@
+{
+  "heading": "Meet Our Teachers 🌷",
+  "subtext": "The loving hands that guide every little story forward.",
+  "teachers": [
+    { "name": "Ms. Anjali", "role": "Lead Montessori Guide", "emoji": "👩‍🏫", "color": "#FF8FB1" },
+    { "name": "Mr. Karthik", "role": "Music & Movement", "emoji": "👨‍🏫", "color": "#6EC6FF" },
+    { "name": "Ms. Divya", "role": "Art & Creativity", "emoji": "👩‍🎨", "color": "#FFD93D" },
+    { "name": "Ms. Fatima", "role": "Kreedo Curriculum Lead", "emoji": "👩‍🏫", "color": "#7ED957" }
+  ]
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "pay_1",
+    "invoiceId": "inv_2026_q2",
+    "studentId": "student_1",
+    "amount": 25000,
+    "method": "upi",
+    "status": "success",
+    "paidAt": "2026-04-08T09:32:00.000Z"
+  },
+  {
+    "id": "pay_2",
+    "invoiceId": "inv_2026_q1",
+    "studentId": "student_1",
+    "amount": 24000,
+    "method": "card",
+    "status": "success",
+    "paidAt": "2026-01-05T11:10:00.000Z"
+  },
+  {
+    "id": "pay_3",
+    "invoiceId": "inv_2026_admission",
+    "studentId": "student_2",
+    "amount": 5000,
+    "method": "bank-transfer",
+    "status": "success",
+    "paidAt": "2026-05-20T14:45:00.000Z"
+  }
+]

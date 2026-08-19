@@ -1,0 +1,23 @@
+[
+  {
+    "id": "doc_1",
+    "title": "Holiday Calendar 2026",
+    "category": "calendar",
+    "url": "/documents/holiday-calendar-2026.pdf",
+    "uploadedAt": "2026-01-05"
+  },
+  {
+    "id": "doc_2",
+    "title": "Uniform Guidelines",
+    "category": "guideline",
+    "url": "/documents/uniform-guidelines.pdf",
+    "uploadedAt": "2026-02-12"
+  },
+  {
+    "id": "doc_3",
+    "title": "Monsoon Safety Circular",
+    "category": "circular",
+    "url": "/documents/monsoon-safety-circular.pdf",
+    "uploadedAt": "2026-07-20"
+  }
+]

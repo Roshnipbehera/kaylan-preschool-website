@@ -33,6 +33,12 @@ RUN addgroup -S nodejs && adduser -S expressjs -G nodejs
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json /app/package-lock.json* ./
 COPY --from=builder /app/prisma ./prisma
+# Seed-time reference data (backend/data, mirrored from the frontend's
+# data/ folder at repo root -- see backend/data/README or prisma/seed.ts).
+# Needed so `npx prisma db seed` works against this container even though
+# Railway's build root is set to backend/, which otherwise wouldn't see the
+# sibling frontend data/ folder.
+COPY --from=builder /app/data ./data
 # Production-only node_modules, including the already-generated Prisma
 # client (generated into node_modules/@prisma/client above, so it ships
 # without needing network access again at runtime).

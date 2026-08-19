@@ -1,0 +1,14 @@
+[
+  {
+    "userId": "u_parent_1",
+    "emailUpdates": true,
+    "smsAlerts": false,
+    "weeklyDigest": true
+  },
+  {
+    "userId": "u_admin_1",
+    "emailUpdates": true,
+    "smsAlerts": false,
+    "weeklyDigest": true
+  }
+]

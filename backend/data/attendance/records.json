@@ -1,0 +1,186 @@
+[
+  {
+    "id": "att_1",
+    "studentId": "student_1",
+    "date": "2026-07-01",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_2",
+    "studentId": "student_1",
+    "date": "2026-07-02",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_3",
+    "studentId": "student_1",
+    "date": "2026-07-03",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_4",
+    "studentId": "student_1",
+    "date": "2026-07-06",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_5",
+    "studentId": "student_1",
+    "date": "2026-07-07",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_6",
+    "studentId": "student_1",
+    "date": "2026-07-08",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_7",
+    "studentId": "student_1",
+    "date": "2026-07-09",
+    "status": "absent",
+    "markedBy": "Meera Iyer",
+    "notes": "Fever, resting at home"
+  },
+  {
+    "id": "att_8",
+    "studentId": "student_1",
+    "date": "2026-07-10",
+    "status": "late",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_9",
+    "studentId": "student_1",
+    "date": "2026-07-13",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_10",
+    "studentId": "student_1",
+    "date": "2026-07-14",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_11",
+    "studentId": "student_1",
+    "date": "2026-07-15",
+    "status": "late",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_12",
+    "studentId": "student_1",
+    "date": "2026-07-16",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_13",
+    "studentId": "student_1",
+    "date": "2026-07-17",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_14",
+    "studentId": "student_1",
+    "date": "2026-07-20",
+    "status": "late",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_15",
+    "studentId": "student_1",
+    "date": "2026-07-21",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_16",
+    "studentId": "student_1",
+    "date": "2026-07-22",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_17",
+    "studentId": "student_1",
+    "date": "2026-07-23",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_18",
+    "studentId": "student_1",
+    "date": "2026-07-24",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_19",
+    "studentId": "student_1",
+    "date": "2026-07-27",
+    "status": "absent",
+    "markedBy": "Meera Iyer",
+    "notes": "Fever, resting at home"
+  },
+  {
+    "id": "att_20",
+    "studentId": "student_1",
+    "date": "2026-07-28",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_21",
+    "studentId": "student_1",
+    "date": "2026-07-29",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_22",
+    "studentId": "student_1",
+    "date": "2026-07-30",
+    "status": "late",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  },
+  {
+    "id": "att_23",
+    "studentId": "student_1",
+    "date": "2026-07-31",
+    "status": "present",
+    "markedBy": "Meera Iyer",
+    "notes": ""
+  }
+]

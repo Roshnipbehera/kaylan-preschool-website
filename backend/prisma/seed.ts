@@ -19,7 +19,7 @@ const prisma = new PrismaClient();
 // Reading the JSON files directly (rather than hand-transcribing them)
 // guarantees byte-for-byte content parity with the pre-migration site.
 async function seedCmsSections() {
-  const cmsDir = path.join(__dirname, "..", "..", "data", "cms");
+  const cmsDir = path.join(__dirname, "..", "data", "cms");
   const files = fs.readdirSync(cmsDir).filter((f) => f.endsWith(".json"));
   for (const file of files) {
     const sectionKey = file.replace(/\.json$/, "");
@@ -266,7 +266,7 @@ async function main() {
 // seeded Student cuids (seed_student_1/seed_student_2) so the demo parent
 // account sees these invoices/payments end-to-end.
 async function seedFees(student1Id: string, student2Id: string) {
-  const dataDir = path.join(__dirname, "..", "..", "data", "fees");
+  const dataDir = path.join(__dirname, "..", "data", "fees");
   const invoices = JSON.parse(fs.readFileSync(path.join(dataDir, "invoices.json"), "utf8")) as Array<{
     id: string;
     studentId: string;
@@ -334,7 +334,7 @@ async function seedFees(student1Id: string, student2Id: string) {
 // Batch 4 pass: migrates data/settings/system.json's real current values
 // into the single SystemSetting row keyed "system".
 async function seedSettings() {
-  const filePath = path.join(__dirname, "..", "..", "data", "settings", "system.json");
+  const filePath = path.join(__dirname, "..", "data", "settings", "system.json");
   const settings = JSON.parse(fs.readFileSync(filePath, "utf8"));
   await prisma.systemSetting.upsert({
     where: { key: "system" },
@@ -352,7 +352,7 @@ async function seedSettings() {
 // doesn't record a user id, only a display name -- best-effort match by
 // name for the two accounts we do control (admin/teacher).
 async function seedAuditLogs() {
-  const filePath = path.join(__dirname, "..", "..", "data", "audit", "logs.json");
+  const filePath = path.join(__dirname, "..", "data", "audit", "logs.json");
   const logs = JSON.parse(fs.readFileSync(filePath, "utf8")) as Array<{
     id: string;
     actor: string;
@@ -384,7 +384,7 @@ async function seedAuditLogs() {
 // byte-for-byte parity) into the new Prisma-backed Blog/Gallery/Events
 // domains.
 async function seedBlog() {
-  const dataDir = path.join(__dirname, "..", "..", "data", "blog");
+  const dataDir = path.join(__dirname, "..", "data", "blog");
   const authors = JSON.parse(fs.readFileSync(path.join(dataDir, "authors.json"), "utf8")) as Array<{
     id: string;
     slug: string;
@@ -441,7 +441,7 @@ async function seedBlog() {
 }
 
 async function seedGallery() {
-  const dataDir = path.join(__dirname, "..", "..", "data", "gallery");
+  const dataDir = path.join(__dirname, "..", "data", "gallery");
   const albums = JSON.parse(fs.readFileSync(path.join(dataDir, "albums.json"), "utf8")) as Array<{
     title: string;
     slug: string;
@@ -480,7 +480,7 @@ async function seedGallery() {
 }
 
 async function seedEvents() {
-  const dataDir = path.join(__dirname, "..", "..", "data", "events");
+  const dataDir = path.join(__dirname, "..", "data", "events");
   const events = JSON.parse(fs.readFileSync(path.join(dataDir, "events.json"), "utf8")) as Array<{
     title: string;
     description: string;

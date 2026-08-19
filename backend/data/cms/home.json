@@ -1,0 +1,11 @@
+{
+  "badge": "🎈 Montessori-inspired · Kreedo Curriculum · Electronic City, Bangalore",
+  "heading": "Where Little Dreams",
+  "headingHighlight": "Begin",
+  "subtext": "Learning through Play, Discovery, Creativity and Love — a storybook world built for your child's earliest, happiest years.",
+  "buttons": [
+    { "emoji": "🏫", "label": "Book a School Tour", "href": "#admissions" },
+    { "emoji": "💬", "label": "Enquire Now", "href": "#contact" },
+    { "emoji": "🎒", "label": "Apply for Admission", "href": "/admissions/apply" }
+  ]
+}

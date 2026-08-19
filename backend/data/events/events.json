@@ -1,0 +1,42 @@
+[
+  {
+    "id": "e1b2c3d4-0001-4000-8000-000000000001",
+    "title": "Admission Open House",
+    "description": "Tour our campus, meet our teachers, and learn about our Montessori-inspired curriculum. Light refreshments will be served for families.",
+    "date": "2026-08-15T10:00:00.000Z",
+    "location": "Kaylan Preschool Main Campus, Electronic City",
+    "coverImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+    "createdAt": "2026-07-01T09:00:00.000Z",
+    "updatedAt": "2026-07-01T09:00:00.000Z"
+  },
+  {
+    "id": "e1b2c3d4-0002-4000-8000-000000000002",
+    "title": "Annual Sports Day",
+    "description": "A morning full of races, relays, and team games for all our little athletes. Parents are welcome to cheer from the sidelines!",
+    "date": "2026-08-22T09:00:00.000Z",
+    "location": "Kaylan Preschool Sports Ground",
+    "coverImage": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80",
+    "createdAt": "2026-07-01T09:00:00.000Z",
+    "updatedAt": "2026-07-01T09:00:00.000Z"
+  },
+  {
+    "id": "e1b2c3d4-0003-4000-8000-000000000003",
+    "title": "Parent-Teacher Meet",
+    "description": "One-on-one conversations with your child's teacher about progress, milestones, and how to support learning at home.",
+    "date": "2026-09-05T13:00:00.000Z",
+    "location": "Kaylan Preschool Classrooms",
+    "coverImage": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=800&q=80",
+    "createdAt": "2026-07-01T09:00:00.000Z",
+    "updatedAt": "2026-07-01T09:00:00.000Z"
+  },
+  {
+    "id": "e1b2c3d4-0004-4000-8000-000000000004",
+    "title": "Diwali Celebration",
+    "description": "Diyas, rangoli, sweets, and a festive performance by our students to celebrate the festival of lights together as one big Kaylan family.",
+    "date": "2026-11-08T11:00:00.000Z",
+    "location": "Kaylan Preschool Main Hall",
+    "coverImage": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80",
+    "createdAt": "2026-07-01T09:00:00.000Z",
+    "updatedAt": "2026-07-01T09:00:00.000Z"
+  }
+]
