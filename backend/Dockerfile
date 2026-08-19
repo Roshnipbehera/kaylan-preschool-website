@@ -1,6 +1,11 @@
 # Multi-stage build for the Express + Prisma + PostgreSQL + Socket.io backend.
 FROM node:20-alpine AS deps
 WORKDIR /app
+# Prisma's query/schema engine binaries need OpenSSL, which the alpine base
+# image doesn't include by default -- without this, Prisma silently falls
+# back to guessing the OpenSSL version and can fail to load its engine at
+# runtime ("[server] Failed to start" with no further detail).
+RUN apk add --no-cache openssl
 COPY package.json package-lock.json* ./
 # Full install (incl. devDependencies) -- needed in this stage for `tsc` and
 # `prisma generate` below. Pruned to production-only in the runner stage.
@@ -8,6 +13,7 @@ RUN npm install
 
 FROM node:20-alpine AS builder
 WORKDIR /app
+RUN apk add --no-cache openssl
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Generates the Prisma client (backend/prisma/schema.prisma) into
@@ -20,6 +26,7 @@ RUN npm run build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
+RUN apk add --no-cache openssl
 ENV NODE_ENV=production
 # Non-root user for the running container.
 RUN addgroup -S nodejs && adduser -S expressjs -G nodejs
