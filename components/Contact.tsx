@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, MessageCircle, Mail } from "lucide-react";
+import Image from "next/image";
+import { MapPin, Phone, MessageCircle, Mail, Clock, ExternalLink } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
@@ -50,45 +51,111 @@ export default function Contact() {
         </p>
 
         <div className="grid lg:grid-cols-2 gap-10 items-start">
-          {/* Illustrated neighbourhood */}
-          <motion.svg
+          {/* Real Campus Visual & Visiting Hours Card */}
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            viewBox="0 0 400 260"
-            className="w-full rounded-3xl bg-white shadow-lg"
+            className="space-y-6"
           >
-            <rect width="400" height="260" fill="#DCF3FF" />
-            <rect y="200" width="400" height="60" fill="#B7E7A6" />
-            <rect y="215" width="400" height="14" fill="#e8e2c8" />
-            <circle cx="60" cy="50" r="20" fill="white" opacity="0.9" />
-            <circle cx="90" cy="45" r="26" fill="white" opacity="0.9" />
-            <rect x="150" y="130" width="110" height="80" rx="10" fill="#FFD93D" />
-            <polygon points="145,130 265,130 205,90" fill="#FF8FB1" />
-            <rect x="190" y="165" width="30" height="45" fill="#6EC6FF" rx="4" />
-            <rect x="30" y="150" width="12" height="55" fill="#c98b4a" />
-            <circle cx="36" cy="140" r="28" fill="#7ED957" />
-            <rect x="340" y="150" width="12" height="55" fill="#c98b4a" />
-            <circle cx="346" cy="140" r="28" fill="#7ED957" />
-            <text x="270" y="215" fontSize="22">🚗</text>
-            <text x="90" y="220" fontSize="22">🧒</text>
-          </motion.svg>
+            <div className="relative rounded-[2rem] overflow-hidden shadow-xl border-4 border-white bg-white group">
+              <div className="relative h-64 sm:h-72 w-full">
+                <Image
+                  src="/images/gallery-outdoor.jpg"
+                  alt="Kaylan Preschool Outdoor Play Garden Electronic City Bangalore"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <span className="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-heading font-semibold mb-1">
+                    🌿 10,000 Sq.Ft Green Campus
+                  </span>
+                  <h3 className="font-display text-xl font-bold">Kaylan Preschool & Daycare</h3>
+                  <p className="text-xs text-white/90">Electronic City Phase 1, Bangalore 560100</p>
+                </div>
+              </div>
 
-          <div className="space-y-6">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <a href={telHref} className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow">
-                <Phone className="text-candy" /> <span className="text-sm font-heading">{data.contactPhone}</span>
-              </a>
-              <a href={waHref} className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow">
-                <MessageCircle className="text-leaf" /> <span className="text-sm font-heading">WhatsApp Us</span>
-              </a>
-              <a href={`mailto:${data.contactEmail}`} className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow">
-                <Mail className="text-sky" /> <span className="text-sm font-heading">{data.contactEmail}</span>
-              </a>
-              <div className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow">
-                <MapPin className="text-orange" /> <span className="text-sm font-heading">{data.address}</span>
+              {/* Visiting Hours & Tour Invitation */}
+              <div className="p-6 bg-white space-y-4">
+                <div className="flex items-center gap-3 text-sm text-[#3a2e4d]">
+                  <Clock className="w-5 h-5 text-candy shrink-0" />
+                  <div>
+                    <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#8a7a9a]">Campus Tour Timings</p>
+                    <p className="font-heading font-semibold text-sm">Mon – Fri: 8:30 AM – 3:30 PM · Sat: 9:00 AM – 1:00 PM</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-sm text-[#3a2e4d]">
+                  <MapPin className="w-5 h-5 text-leaf shrink-0" />
+                  <div>
+                    <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#8a7a9a]">Campus Address</p>
+                    <p className="font-body text-xs text-[#5b4b6b] leading-relaxed">{data.address}</p>
+                  </div>
+                </div>
+
+                {data.googleMapsUrl && (
+                  <a
+                    href={data.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 flex items-center justify-center gap-2 w-full py-3 bg-[#FFF9EE] hover:bg-[#FFF3D6] text-[#4a3b00] rounded-2xl font-heading font-bold text-xs transition-colors border border-sunshine/40"
+                  >
+                    <span>Get Directions on Google Maps</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
             </div>
+
+            {/* Quick Contact Chips */}
+            <div className="grid sm:grid-cols-2 gap-3">
+              <a
+                href={telHref}
+                className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-black/5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-candy/10 flex items-center justify-center text-candy shrink-0">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Call Us</p>
+                  <p className="text-xs font-heading font-bold text-[#3a2e4d]">{data.contactPhone}</p>
+                </div>
+              </a>
+
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-black/5"
+              >
+                <div className="w-10 h-10 rounded-xl bg-leaf/10 flex items-center justify-center text-leaf shrink-0">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">WhatsApp</p>
+                  <p className="text-xs font-heading font-bold text-[#3a2e4d]">Quick Chat</p>
+                </div>
+              </a>
+
+              <a
+                href={`mailto:${data.contactEmail}`}
+                className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-black/5 sm:col-span-2"
+              >
+                <div className="w-10 h-10 rounded-xl bg-sky/10 flex items-center justify-center text-sky shrink-0">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Admissions Email</p>
+                  <p className="text-xs font-heading font-bold text-[#3a2e4d]">{data.contactEmail}</p>
+                </div>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Interactive Parent Enquiry Form */}
+          <div className="space-y-6">
 
             <form className="bg-white rounded-3xl p-6 shadow-lg space-y-3" onSubmit={handleSubmit(onSubmit)} data-testid="contact-enquiry-form">
               <div>
@@ -133,20 +200,18 @@ export default function Contact() {
               </motion.button>
             </form>
 
-            {data.googleMapsUrl ? (
-              <a
-                href={data.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-2xl overflow-hidden shadow h-40 bg-gray-200 flex items-center justify-center text-sm text-gray-500 hover:bg-gray-300 transition-colors"
-              >
-                View on Google Maps — {data.address}
-              </a>
-            ) : (
-              <div className="rounded-2xl overflow-hidden shadow h-40 bg-gray-200 flex items-center justify-center text-sm text-gray-500">
-                {data.address}
+            <div className="rounded-2xl p-5 bg-[#FFFDF8] border border-sunshine/40 shadow-sm flex items-center justify-between gap-4">
+              <div>
+                <p className="font-heading font-bold text-xs uppercase tracking-wider text-[#8a7a9a]">Direct Admissions Helpline</p>
+                <p className="font-heading font-semibold text-sm text-[#3a2e4d]">Have immediate queries? Talk to our principal.</p>
               </div>
-            )}
+              <a
+                href={telHref}
+                className="shrink-0 bg-candy text-white font-heading font-bold text-xs px-4 py-2.5 rounded-full shadow hover:scale-105 transition-transform"
+              >
+                Call Now 📞
+              </a>
+            </div>
           </div>
         </div>
       </div>
