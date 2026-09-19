@@ -43,3 +43,37 @@ export async function deleteInvoice(id: string): Promise<Invoice> {
 export async function recordPayment(input: { invoiceId: string; studentId: string; amount: number; method: PaymentMethod }): Promise<Payment> {
   return apiFetch<Payment>("/fees/payments", { method: "POST", json: input });
 }
+
+export interface RazorpayOrderResponse {
+  orderId: string;
+  amount: number;
+  currency: string;
+  keyId: string;
+  isSandbox?: boolean;
+}
+
+export interface RazorpayVerificationPayload {
+  invoiceId: string;
+  razorpay_order_id: string;
+  razorpay_payment_id: string;
+  razorpay_signature: string;
+}
+
+export async function createRazorpayOrder(invoiceId: string): Promise<RazorpayOrderResponse> {
+  return apiFetch<RazorpayOrderResponse>("/fees/razorpay/create-order", {
+    method: "POST",
+    json: { invoiceId },
+  });
+}
+
+export async function verifyRazorpayPayment(payload: RazorpayVerificationPayload): Promise<{
+  invoice: Invoice;
+  payment: Payment;
+  transactionId: string;
+}> {
+  return apiFetch("/fees/razorpay/verify", {
+    method: "POST",
+    json: payload,
+  });
+}
+

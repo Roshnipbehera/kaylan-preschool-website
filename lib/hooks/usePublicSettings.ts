@@ -8,16 +8,16 @@ import { getPublicSettings } from "@/lib/api/settings";
 import type { PublicSettings } from "@/lib/types/settings";
 
 const SEED: PublicSettings = {
-  contactEmail: "hello@kaylanpreschool.com",
-  contactPhone: "+91 00000 00000",
-  address: "Electronic City, Bangalore",
-  logoUrl: "",
-  schoolTimings: "Mon-Fri, 9:00 AM - 3:00 PM",
+  contactEmail: "admissions@kaylanpreschool.com",
+  contactPhone: "+91 98860 12345",
+  address: "Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100",
+  logoUrl: "/brand/koki-mascot-final.png",
+  schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
   admissionsOpen: true,
-  facebookUrl: "",
-  instagramUrl: "",
-  twitterUrl: "",
-  googleMapsUrl: "",
+  facebookUrl: "https://facebook.com/kaylanpreschool",
+  instagramUrl: "https://instagram.com/kaylanpreschool",
+  twitterUrl: "https://youtube.com/@kaylanpreschool",
+  googleMapsUrl: "https://maps.google.com/?q=Electronic+City+Phase+1+Bangalore",
 };
 
 export function usePublicSettings() {

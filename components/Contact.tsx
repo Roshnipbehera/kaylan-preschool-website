@@ -38,7 +38,9 @@ export default function Contact() {
   };
 
   const telHref = `tel:${data.contactPhone.replace(/[^+\d]/g, "")}`;
-  const waHref = `https://wa.me/${data.contactPhone.replace(/[^\d]/g, "")}`;
+  const waHref = `https://wa.me/${data.contactPhone.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
+    "Hello Kaylan Preschool! I would like to enquire about admission and book a tour."
+  )}`;
   return (
     <section id="contact" className="relative py-24 bg-gradient-to-b from-white to-[#EAF8FF] overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">

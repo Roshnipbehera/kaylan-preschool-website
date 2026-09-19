@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus } from "lucide-react";
+import { Plus, FileDown } from "lucide-react";
 import { listInvoices, listPayments, createInvoice, recordPayment } from "@/lib/api/fees";
 import { listStudents } from "@/lib/api/students";
+import { exportToCsv } from "@/lib/utils/csvExport";
 import { createInvoiceSchema, recordPaymentSchema, type CreateInvoiceFormValues, type RecordPaymentFormValues } from "@/lib/validation/fees";
 import { queryKeys } from "@/lib/query/keys";
 import { useModal } from "@/lib/hooks/useModal";
@@ -164,6 +165,31 @@ export function AdminFeesContent() {
             <option value="pending">Pending</option>
             <option value="overdue">Overdue</option>
           </select>
+          <Button
+            variant="outline"
+            onClick={() => {
+              const exportData = filtered.map((inv) => ({
+                invoiceId: inv.id,
+                title: inv.title,
+                studentName: studentsById.get(inv.studentId)?.fullName ?? inv.studentId,
+                amount: inv.amount,
+                status: inv.status,
+                dueDate: inv.dueDate,
+                issuedDate: inv.issuedDate,
+              }));
+              exportToCsv("kaylan_fees_report", exportData, [
+                { key: "invoiceId", header: "Invoice ID" },
+                { key: "title", header: "Invoice Title" },
+                { key: "studentName", header: "Student Name" },
+                { key: "amount", header: "Amount (Rs)" },
+                { key: "status", header: "Status" },
+                { key: "dueDate", header: "Due Date" },
+                { key: "issuedDate", header: "Issued Date" },
+              ]);
+            }}
+          >
+            <FileDown size={16} className="mr-1" /> Export CSV
+          </Button>
           <Button onClick={() => openModal({ title: "New Invoice", content: <InvoiceForm students={students ?? []} onDone={closeModal} /> })}>
             <Plus size={16} className="mr-1" /> New Invoice
           </Button>

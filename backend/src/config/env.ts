@@ -28,6 +28,9 @@ const envSchema = z.object({
   SMTP_FROM: z.string().min(1, "SMTP_FROM is required"),
 
   MAX_UPLOAD_BYTES: z.string().optional(),
+  RAZORPAY_KEY_ID: z.string().optional(),
+  RAZORPAY_KEY_SECRET: z.string().optional(),
+  RAZORPAY_WEBHOOK_SECRET: z.string().optional(),
 });
 
 export type Env = z.infer<typeof envSchema>;

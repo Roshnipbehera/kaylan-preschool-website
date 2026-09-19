@@ -1,12 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileDown, History, IndianRupee } from "lucide-react";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useToast } from "@/lib/hooks/useToast";
 import { listStudents } from "@/lib/api/students";
-import { listInvoices, listPayments } from "@/lib/api/fees";
+import { listInvoices, listPayments, createRazorpayOrder, verifyRazorpayPayment } from "@/lib/api/fees";
+import { loadRazorpayScript } from "@/lib/utils/razorpay";
 import { queryKeys } from "@/lib/query/keys";
 import { ParentSubNav } from "@/components/parent/ParentSubNav";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
@@ -43,10 +45,77 @@ export function ParentFeesContent() {
     enabled: !!students,
   });
 
+  const [payingInvoiceId, setPayingInvoiceId] = useState<string | null>(null);
+  const qc = useQueryClient();
+
   const familyInvoices = (invoices ?? []).filter((i) => studentIds.includes(i.studentId));
   const studentName = (id: string) => students?.find((s) => s.id === id)?.fullName ?? "";
 
   const paymentFor = (invoice: Invoice) => payments?.find((p) => p.invoiceId === invoice.id);
+
+  const handlePayNow = async (invoice: Invoice) => {
+    setPayingInvoiceId(invoice.id);
+    try {
+      const order = await createRazorpayOrder(invoice.id);
+      const scriptLoaded = await loadRazorpayScript();
+
+      if (!scriptLoaded && !order.orderId.startsWith("order_mock_")) {
+        throw new Error("Unable to load Razorpay payment gateway. Please check your internet connection.");
+      }
+
+      const RazorpayConstructor = (window as unknown as { Razorpay: unknown })?.Razorpay;
+
+      if (RazorpayConstructor && !order.orderId.startsWith("order_mock_")) {
+        const rzp = new (RazorpayConstructor as new (options: unknown) => { open: () => void })({
+          key: order.keyId,
+          amount: order.amount * 100,
+          currency: order.currency || "INR",
+          name: "Kaylan Preschool",
+          description: invoice.title,
+          order_id: order.orderId,
+          prefill: {
+            name: user?.name,
+            email: user?.email,
+          },
+          theme: {
+            color: "#0F6B66",
+          },
+          handler: async (response: { razorpay_order_id: string; razorpay_payment_id: string; razorpay_signature: string }) => {
+            try {
+              await verifyRazorpayPayment({
+                invoiceId: invoice.id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              });
+              await qc.invalidateQueries({ queryKey: queryKeys.invoices(user?.id) });
+              await qc.invalidateQueries({ queryKey: queryKeys.payments(user?.id) });
+              toast.success("Payment successful! Fee receipt is ready for download.");
+            } catch (err) {
+              toast.error(err instanceof Error ? err.message : "Payment verification failed.");
+            }
+          },
+        });
+        rzp.open();
+      } else {
+        // Fallback test/sandbox mode when keys are not configured
+        const mockPaymentId = `pay_mock_${Date.now()}`;
+        await verifyRazorpayPayment({
+          invoiceId: invoice.id,
+          razorpay_order_id: order.orderId,
+          razorpay_payment_id: mockPaymentId,
+          razorpay_signature: "mock_signature_valid",
+        });
+        await qc.invalidateQueries({ queryKey: queryKeys.invoices(user?.id) });
+        await qc.invalidateQueries({ queryKey: queryKeys.payments(user?.id) });
+        toast.success("Payment completed in sandbox mode! Fee receipt is ready for download.");
+      }
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Payment processing failed. Please try again.");
+    } finally {
+      setPayingInvoiceId(null);
+    }
+  };
 
   return (
     <div>
@@ -113,7 +182,8 @@ export function ParentFeesContent() {
                   <Button
                     variant="primary"
                     size="sm"
-                    onClick={() => toast.info("Online payments are launching soon — the Payment Module is a separate upcoming release.")}
+                    isLoading={payingInvoiceId === invoice.id}
+                    onClick={() => handlePayNow(invoice)}
                   >
                     Pay Now
                   </Button>

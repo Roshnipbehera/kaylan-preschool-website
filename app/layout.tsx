@@ -1,26 +1,50 @@
 import type { Metadata } from "next";
-import { Baloo_2, Fredoka, Nunito } from "next/font/google";
+import { Outfit, Fredoka, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CursorSparkle from "@/components/CursorSparkle";
 import FloatingButtons from "@/components/FloatingButtons";
 import { Providers } from "./providers";
 import { preschoolStructuredData } from "@/lib/seo/structuredData";
 
-const baloo = Baloo_2({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-baloo" });
-const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-fredoka" });
-const nunito = Nunito({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--font-nunito" });
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-fredoka",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kaylanpreschool.example";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Kaylan Preschool | Where Little Dreams Begin — Bangalore",
+    default: "Kaylan Preschool | Where Little Dreams Begin — Electronic City, Bangalore",
     template: "%s | Kaylan Preschool",
   },
   description:
-    "Kaylan Preschool in Bangalore blends Montessori-inspired learning with the Kreedo curriculum in a magical, storybook world of play, discovery, creativity and love. Book a tour today.",
-  keywords: ["preschool Bangalore", "Montessori preschool", "Kreedo curriculum", "daycare Bangalore", "Electronic City preschool"],
+    "Kaylan Preschool in Electronic City, Bangalore blends Montessori-inspired learning with the Kreedo curriculum in a magical, storybook world of play, discovery, creativity and love. Admissions open 2026-27.",
+  keywords: [
+    "preschool Bangalore",
+    "Montessori preschool Bangalore",
+    "Kreedo curriculum Bangalore",
+    "daycare Electronic City",
+    "best preschool Electronic City",
+    "playgroup Nursery Kindergarten Bangalore",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     title: "Kaylan Preschool | Where Little Dreams Begin",
@@ -40,7 +64,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${baloo.variable} ${fredoka.variable} ${nunito.variable} font-body bg-white text-[#3a2e4d]`}>
+      <body className={`${outfit.variable} ${fredoka.variable} ${plusJakarta.variable} font-body bg-white text-[#3a2e4d]`}>
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

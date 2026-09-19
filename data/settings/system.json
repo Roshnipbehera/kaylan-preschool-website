@@ -1,10 +1,18 @@
 {
   "schoolName": "Kaylan Preschool",
-  "contactEmail": "info@kaylanpreschool.school",
-  "contactPhone": "+91 98765 00000",
+  "contactEmail": "admissions@kaylanpreschool.com",
+  "contactPhone": "+91 98860 12345",
   "currency": "INR",
   "academicYearStart": "2026-06-01",
   "academicYearEnd": "2027-03-31",
-  "termDates": "Term 1: Jun-Sep - Term 2: Oct-Dec - Term 3: Jan-Mar",
-  "maintenanceMode": false
+  "termDates": "Term 1: Jun - Sep · Term 2: Oct - Dec · Term 3: Jan - Mar",
+  "maintenanceMode": false,
+  "logoUrl": "/brand/koki-mascot-final.png",
+  "address": "Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100",
+  "schoolTimings": "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
+  "admissionsOpen": true,
+  "facebookUrl": "https://facebook.com/kaylanpreschool",
+  "instagramUrl": "https://instagram.com/kaylanpreschool",
+  "twitterUrl": "https://youtube.com/@kaylanpreschool",
+  "googleMapsUrl": "https://maps.google.com/?q=Electronic+City+Phase+1+Bangalore"
 }

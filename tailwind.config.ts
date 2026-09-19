@@ -23,9 +23,9 @@ const config: Config = {
         brandGoldLight: "#FFB733",
       },
       fontFamily: {
-        display: ["var(--font-baloo)", "cursive"],
-        heading: ["var(--font-fredoka)", "sans-serif"],
-        body: ["var(--font-nunito)", "sans-serif"],
+        display: ["var(--font-outfit)", "var(--font-fredoka)", "sans-serif"],
+        heading: ["var(--font-fredoka)", "var(--font-outfit)", "sans-serif"],
+        body: ["var(--font-jakarta)", "sans-serif"],
       },
       keyframes: {
         float: {

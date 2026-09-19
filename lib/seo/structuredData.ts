@@ -12,12 +12,29 @@ export function preschoolStructuredData() {
     description:
       "Kaylan Preschool in Bangalore blends Montessori-inspired learning with the Kreedo curriculum in a magical, storybook world of play, discovery, creativity and love.",
     url: SITE_URL,
+    telephone: "+91-98860-12345",
+    email: "admissions@kaylanpreschool.com",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Plot #14, NeoTown Road, Electronic City Phase 1",
       addressLocality: "Bangalore",
       addressRegion: "Karnataka",
+      postalCode: "560100",
       addressCountry: "IN",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:30",
+        closes: "18:30",
+      },
+    ],
+    sameAs: [
+      "https://facebook.com/kaylanpreschool",
+      "https://instagram.com/kaylanpreschool",
+      "https://youtube.com/@kaylanpreschool",
+    ],
   };
 }
 

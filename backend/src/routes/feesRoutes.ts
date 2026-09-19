@@ -10,5 +10,7 @@ router.post("/invoices", requireAuth, requireRole("admin"), feesController.creat
 router.patch("/invoices/:id", requireAuth, requireRole("admin"), feesController.updateInvoice);
 router.delete("/invoices/:id", requireAuth, requireRole("admin"), feesController.deleteInvoice);
 router.post("/payments", requireAuth, feesController.recordPayment);
+router.post("/razorpay/create-order", requireAuth, feesController.createRazorpayOrder);
+router.post("/razorpay/verify", requireAuth, feesController.verifyRazorpayPayment);
 
 export default router;
