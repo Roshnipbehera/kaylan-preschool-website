@@ -14,6 +14,13 @@ const SEED: TeachersContent = {
   ],
 };
 
+const TEACHER_CREDS: Record<string, { cred: string; exp: string }> = {
+  "Ms. Anjali": { cred: "AMI Montessori Certified", exp: "8+ yrs experience" },
+  "Mr. Karthik": { cred: "Trinity College Music / Orff", exp: "6+ yrs experience" },
+  "Ms. Divya": { cred: "BFA Visual Arts Specialist", exp: "5+ yrs experience" },
+  "Ms. Fatima": { cred: "Kreedo Master Practitioner", exp: "10+ yrs experience" },
+};
+
 export default function Teachers() {
   const { data } = useCmsSection("teachers", SEED);
   return (
@@ -57,8 +64,17 @@ export default function Teachers() {
                   transition={{ duration: 1, repeat: Infinity }}
                 >✨</motion.span>
               </div>
-              <h3 className="font-heading font-bold mt-3">{t.name}</h3>
-              <p className="text-sm text-[#5b4b6b]">{t.role}</p>
+
+              <h3 className="font-heading font-bold mt-3 text-[#3a2e4d]">{t.name}</h3>
+              <p className="text-sm text-candy font-medium">{t.role}</p>
+              <div className="mt-2 inline-flex flex-col items-center gap-1">
+                <span className="bg-[#FFFDF5] border border-sunshine/40 text-[#4a3b00] text-[10px] font-heading font-semibold px-2.5 py-0.5 rounded-full">
+                  {TEACHER_CREDS[t.name]?.cred ?? "Certified Early Educator"}
+                </span>
+                <span className="text-[10px] text-[#8a7a9a]">
+                  {TEACHER_CREDS[t.name]?.exp ?? "5+ yrs exp"}
+                </span>
+              </div>
             </motion.div>
           ))}
         </div>

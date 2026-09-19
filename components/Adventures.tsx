@@ -2,12 +2,48 @@
 import { motion } from "framer-motion";
 
 const ISLANDS = [
-  { name: "Art Island", emoji: "🎨", color: "#FF8FB1" },
-  { name: "Story Forest", emoji: "📖", color: "#7ED957" },
-  { name: "Music Mountain", emoji: "🎵", color: "#6EC6FF" },
-  { name: "Puzzle Valley", emoji: "🧩", color: "#CDB4FF" },
-  { name: "Science Garden", emoji: "🔬", color: "#FFA552" },
-  { name: "Outdoor Adventure Park", emoji: "🌳", color: "#FFD93D" },
+  {
+    name: "Art Island",
+    emoji: "🎨",
+    color: "#FF8FB1",
+    desc: "Finger painting, clay sculpting, and vibrant collage art.",
+    skills: "Fine Motor & Creativity",
+  },
+  {
+    name: "Story Forest",
+    emoji: "📖",
+    color: "#7ED957",
+    desc: "Interactive puppet shows, picture books, and vocabulary quests.",
+    skills: "Phonics & Expression",
+  },
+  {
+    name: "Music Mountain",
+    emoji: "🎵",
+    color: "#6EC6FF",
+    desc: "Orff rhythm instruments, musical scales, and creative dance.",
+    skills: "Auditory & Rhythm",
+  },
+  {
+    name: "Puzzle Valley",
+    emoji: "🧩",
+    color: "#CDB4FF",
+    desc: "Kreedo tactile math materials, spatial mazes, and logic building.",
+    skills: "Math & Problem Solving",
+  },
+  {
+    name: "Science Garden",
+    emoji: "🔬",
+    color: "#FFA552",
+    desc: "Planting seeds, magnifying light tables, and insect discovery.",
+    skills: "Sensory & STEM",
+  },
+  {
+    name: "Outdoor Adventure Park",
+    emoji: "🌳",
+    color: "#FFD93D",
+    desc: "Wooden climbing structures, balancing tracks, and turf sports.",
+    skills: "Gross Motor & Teamwork",
+  },
 ];
 
 export default function Adventures() {
@@ -33,8 +69,16 @@ export default function Adventures() {
               <svg className="absolute -bottom-4 left-0 w-full opacity-30" viewBox="0 0 200 40">
                 <ellipse cx="100" cy="20" rx="100" ry="20" fill="white" />
               </svg>
-              <div className="text-5xl mb-3">{isl.emoji}</div>
-              <h3 className="font-heading text-xl font-bold">{isl.name}</h3>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-5xl">{isl.emoji}</span>
+                <span className="bg-white/25 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-heading font-bold text-white tracking-wide">
+                  {isl.skills}
+                </span>
+              </div>
+              <h3 className="font-heading text-xl font-bold text-left">{isl.name}</h3>
+              <p className="text-xs text-white/90 text-left mt-2 leading-relaxed">
+                {isl.desc}
+              </p>
             </motion.div>
           ))}
         </div>

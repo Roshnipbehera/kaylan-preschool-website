@@ -98,34 +98,65 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Illustrated preschool + children scene */}
+        {/* Visual Showcase: Real Classroom Photography with Floating Stat Badges */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.7 }}
-          className="relative mt-16 mx-auto max-w-3xl"
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="relative mt-16 mx-auto max-w-4xl"
         >
-          <svg viewBox="0 0 600 260" className="w-full h-auto drop-shadow-xl">
-            <ellipse cx="300" cy="250" rx="280" ry="16" fill="#7ED957" opacity="0.5" />
-            <g>
-              <rect x="30" y="150" width="14" height="60" fill="#c98b4a" rx="4" />
-              <circle cx="37" cy="140" r="34" fill="#7ED957" />
-              <rect x="540" y="150" width="14" height="60" fill="#c98b4a" rx="4" />
-              <circle cx="547" cy="140" r="34" fill="#7ED957" />
-            </g>
-            <g>
-              <rect x="190" y="120" width="220" height="100" rx="14" fill="#FFD93D" />
-              <polygon points="185,120 415,120 300,60" fill="#FF8FB1" />
-              <rect x="270" y="160" width="60" height="60" rx="8" fill="#6EC6FF" />
-              <rect x="210" y="150" width="35" height="35" rx="6" fill="white" />
-              <rect x="355" y="150" width="35" height="35" rx="6" fill="white" />
-              <circle cx="300" cy="55" r="10" fill="#FF8FB1" />
-              <rect x="296" y="30" width="8" height="26" fill="#c98b4a" />
-            </g>
-            <text x="140" y="230" fontSize="34">🧒</text>
-            <text x="440" y="230" fontSize="34">👧</text>
-            <text x="300" y="235" fontSize="30">🧸</text>
-          </svg>
+          <div className="relative rounded-[2.5rem] p-3 sm:p-4 bg-white/60 backdrop-blur-md shadow-2xl border-4 border-white/80 overflow-hidden">
+            <div className="relative h-[280px] sm:h-[420px] md:h-[480px] w-full rounded-[2rem] overflow-hidden">
+              <Image
+                src="/images/hero-montessori.jpg"
+                alt="Happy children learning with Montessori materials at Kaylan Preschool Bangalore"
+                fill
+                sizes="(max-width: 768px) 100vw, 896px"
+                className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
+
+            {/* Floating Glassmorphic Trust Badges */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-8 left-8 sm:left-10 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left hidden sm:flex"
+            >
+              <span className="text-xl">⭐</span>
+              <div>
+                <p className="text-xs font-heading font-bold text-[#3a2e4d]">Rated 4.9 / 5</p>
+                <p className="text-[10px] text-[#5b4b6b]">350+ Electronic City Parents</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute bottom-8 left-8 sm:left-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left"
+            >
+              <div className="w-9 h-9 rounded-full bg-candy/15 flex items-center justify-center text-candy font-bold text-sm">
+                1:8
+              </div>
+              <div>
+                <p className="text-xs font-heading font-bold text-[#3a2e4d]">Montessori Guided</p>
+                <p className="text-[10px] text-[#5b4b6b]">Dedicated Individual Attention</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute bottom-8 right-8 sm:right-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left hidden sm:flex"
+            >
+              <span className="text-xl">🛡️</span>
+              <div>
+                <p className="text-xs font-heading font-bold text-[#3a2e4d]">Safe Green Campus</p>
+                <p className="text-[10px] text-[#5b4b6b]">CCTV Monitored · Daycare till 6:30 PM</p>
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

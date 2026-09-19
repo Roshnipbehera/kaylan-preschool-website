@@ -16,44 +16,97 @@ const SEED: ProgramsContent = {
   ],
 };
 
+const PROGRAM_DETAILS: Record<string, { desc: string; focus: string[]; timing: string }> = {
+  Playgroup: {
+    desc: "A gentle, joyful first step into social learning and sensory discovery.",
+    focus: ["Sensory & tactile play", "Motor skill development", "Social circle & songs"],
+    timing: "8:30 AM – 12:00 PM",
+  },
+  Nursery: {
+    desc: "Building confidence, curious vocabulary, and early mathematical concepts.",
+    focus: ["Phonics & language joy", "Kreedo math materials", "Creative art & music"],
+    timing: "8:30 AM – 12:30 PM",
+  },
+  "Junior KG": {
+    desc: "Nurturing independent thinking, early reading, and scientific curiosity.",
+    focus: ["Guided reading & writing", "Logic & number skills", "Nature & STEM wonder"],
+    timing: "8:30 AM – 1:00 PM",
+  },
+  "Senior KG": {
+    desc: "Comprehensive readiness for primary school with strong foundational mastery.",
+    focus: ["Advanced phonics & math", "Creative expression & drama", "Confident presentation"],
+    timing: "8:30 AM – 1:30 PM",
+  },
+};
+
 function House({ h, i }: { h: ProgramHouse; i: number }) {
   const [open, setOpen] = useState(false);
+  const details = PROGRAM_DETAILS[h.name] ?? {
+    desc: "Montessori-inspired holistic early education.",
+    focus: ["Child-centric learning", "Play & discovery"],
+    timing: "8:30 AM – 12:30 PM",
+  };
+
   return (
-    <motion.button
-      onClick={() => setOpen(!open)}
-      onHoverStart={() => setOpen(true)}
-      onHoverEnd={() => setOpen(false)}
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.1 }}
-      className="relative flex flex-col items-center focus:outline-none"
-      aria-expanded={open}
+      onHoverStart={() => setOpen(true)}
+      onHoverEnd={() => setOpen(false)}
+      className="relative flex flex-col items-center bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-6 shadow-xl hover:shadow-2xl border-2 border-white transition-all duration-300 w-full max-w-[280px] text-center"
     >
-      <svg width="150" height="150" viewBox="0 0 150 150">
-        <motion.polygon
-          points="10,70 75,20 140,70"
-          fill={h.roof}
-          animate={{ y: open ? -8 : 0 }}
-          transition={{ type: "spring", stiffness: 200 }}
-        />
-        <rect x="25" y="70" width="100" height="65" rx="10" fill={h.color} />
-        <motion.rect
-          x="62" y={open ? "85" : "100"} width="26" height="35" rx="4" fill="#4a3b1a"
-          animate={{ height: open ? 50 : 35, y: open ? 85 : 100 }}
-        />
-        <circle cx="45" cy="95" r="8" fill="white" opacity="0.9" />
-        <circle cx="105" cy="95" r="8" fill="white" opacity="0.9" />
-      </svg>
-      <h3 className="font-heading text-lg font-bold mt-2">{h.name}</h3>
-      <motion.p
-        initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
-        className="overflow-hidden text-sm text-[#5b4b6b]"
-      >
-        {h.age}
-      </motion.p>
-    </motion.button>
+      <div className="relative mb-3">
+        <svg width="130" height="120" viewBox="0 0 150 140" className="drop-shadow-md">
+          <motion.polygon
+            points="10,65 75,15 140,65"
+            fill={h.roof}
+            animate={{ y: open ? -6 : 0 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          />
+          <rect x="25" y="65" width="100" height="65" rx="10" fill={h.color} />
+          <motion.rect
+            x="62"
+            y={open ? "80" : "95"}
+            width="26"
+            height="35"
+            rx="4"
+            fill="#4a3b1a"
+            animate={{ height: open ? 48 : 35, y: open ? 80 : 95 }}
+          />
+          <circle cx="45" cy="90" r="8" fill="white" opacity="0.9" />
+          <circle cx="105" cy="90" r="8" fill="white" opacity="0.9" />
+        </svg>
+      </div>
+
+      <span className="inline-block px-3 py-1 rounded-full text-xs font-heading font-semibold bg-[#FFFDF5] text-candy border border-candy/20 mb-2">
+        Age: {h.age}
+      </span>
+
+      <h3 className="font-heading text-xl font-bold text-[#3a2e4d]">{h.name}</h3>
+      <p className="text-xs text-[#5b4b6b] mt-2 mb-4 leading-relaxed min-h-[36px]">
+        {details.desc}
+      </p>
+
+      <ul className="text-left w-full space-y-1.5 mb-5 text-[11px] text-[#4a3b1a] bg-[#FAF8F5] p-3 rounded-2xl">
+        {details.focus.map((f) => (
+          <li key={f} className="flex items-center gap-1.5">
+            <span className="text-leaf font-bold">✓</span> {f}
+          </li>
+        ))}
+      </ul>
+
+      <div className="w-full pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+        <span className="text-[#8a7a9a] font-medium">🕒 {details.timing}</span>
+        <a
+          href="#contact"
+          className="text-candy font-heading font-bold hover:underline"
+        >
+          Enquire →
+        </a>
+      </div>
+    </motion.div>
   );
 }
 

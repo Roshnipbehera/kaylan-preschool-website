@@ -34,6 +34,31 @@ export default function Welcome() {
           <p className="mt-4 text-[#5b4b6b] max-w-2xl mx-auto">{data.subtext}</p>
         </motion.div>
 
+        {/* Quick Highlights / School Stat Highlights */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-14"
+        >
+          <div className="bg-[#FFFDF5] p-5 rounded-3xl border border-sunshine/30 text-center shadow-sm hover:shadow-md transition-shadow">
+            <p className="font-display text-3xl sm:text-4xl font-extrabold text-candy">500+</p>
+            <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Happy Graduates</p>
+          </div>
+          <div className="bg-[#F0FDF4] p-5 rounded-3xl border border-leaf/30 text-center shadow-sm hover:shadow-md transition-shadow">
+            <p className="font-display text-3xl sm:text-4xl font-extrabold text-leaf">1:8</p>
+            <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Teacher-Child Ratio</p>
+          </div>
+          <div className="bg-[#EFF6FF] p-5 rounded-3xl border border-sky/30 text-center shadow-sm hover:shadow-md transition-shadow">
+            <p className="font-display text-3xl sm:text-4xl font-extrabold text-sky">10,000</p>
+            <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Sq.Ft Green Campus</p>
+          </div>
+          <div className="bg-[#FAF5FF] p-5 rounded-3xl border border-lavender/40 text-center shadow-sm hover:shadow-md transition-shadow">
+            <p className="font-display text-3xl sm:text-4xl font-extrabold text-[#7C3AED]">100%</p>
+            <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Montessori &amp; Kreedo</p>
+          </div>
+        </motion.div>
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {data.blocks.map((b, i) => (
             <motion.div

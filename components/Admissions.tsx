@@ -18,6 +18,14 @@ const SEED: AdmissionsStepsContent = {
   ctaHref: "/admissions/apply",
 };
 
+const STEP_DETAILS: Record<string, string> = {
+  "Visit School": "Schedule a relaxed morning visit",
+  "Meet Teachers": "One-on-one guide conversation",
+  "Campus Tour": "Explore classrooms & play garden",
+  Admission: "Submit quick form & documents",
+  "Welcome Kit": "Receive school bag & kit",
+};
+
 export default function Admissions() {
   const { data } = useCmsSection("admissions-steps", SEED);
   return (
@@ -42,11 +50,14 @@ export default function Admissions() {
                 >
                   {s.emoji}
                 </motion.div>
-                <p className="font-heading font-bold mt-2 text-sm">Step {i + 1}</p>
-                <p className="text-xs text-[#5b4b6b]">{s.label}</p>
+                <p className="font-heading font-bold mt-3 text-base text-[#3a2e4d]">Step {i + 1}</p>
+                <p className="font-heading font-semibold text-xs text-candy mt-0.5">{s.label}</p>
+                <p className="text-[11px] text-[#5b4b6b] mt-1 max-w-[130px] leading-tight">
+                  {STEP_DETAILS[s.label] ?? "Easy and transparent process"}
+                </p>
               </div>
               {i < data.steps.length - 1 && (
-                <span className="hidden md:block text-2xl text-leaf">→</span>
+                <span className="hidden md:block text-2xl text-leaf/60 font-bold px-1">→</span>
               )}
             </motion.div>
           ))}
