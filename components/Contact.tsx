@@ -233,7 +233,7 @@ export default function Contact() {
               </div>
             </div>
             <a
-              href={data.googleMapsUrl || "https://maps.google.com/?q=Plot+14,+NeoTown+Rd,+Electronic+City+Phase+1,+Bangalore+560100"}
+              href={data.googleMapsUrl || "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-candy text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow hover:scale-105 transition-transform shrink-0"
@@ -245,8 +245,8 @@ export default function Contact() {
 
           <div className="relative w-full h-[360px] sm:h-[420px] bg-[#f0f0f0]">
             <iframe
-              title="Kaylan Preschool Location Map"
-              src="https://maps.google.com/maps?q=Plot%2014%2C%20NeoTown%20Rd%2C%20Electronic%20City%20Phase%201%2C%20Bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="Kaylan Preschool Official Location Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.854652579144!2d77.6398347!3d12.8476538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6b9b672e8d85%3A0xd95610aa3ce6c9e2!2sKaylan%20Preschool!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"

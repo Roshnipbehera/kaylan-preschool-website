@@ -17,7 +17,7 @@ const SEED: PublicSettings = {
   facebookUrl: "https://facebook.com/kaylanpreschool",
   instagramUrl: "https://instagram.com/kaylanpreschool",
   twitterUrl: "https://youtube.com/@kaylanpreschool",
-  googleMapsUrl: "https://maps.google.com/?q=Electronic+City+Phase+1+Bangalore",
+  googleMapsUrl: "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096",
 };
 
 export function usePublicSettings() {
