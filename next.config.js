@@ -13,11 +13,12 @@ const API_ORIGIN = (() => {
 const isDev = process.env.NODE_ENV !== "production";
 const CSP = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' https://checkout.razorpay.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com",
+  "img-src 'self' data: https://res.cloudinary.com https://images.unsplash.com https://*.google.com https://*.gstatic.com",
   "font-src 'self' data:",
-  `connect-src 'self' ${API_ORIGIN} ws: wss:`,
+  `connect-src 'self' ${API_ORIGIN} https://api.razorpay.com ws: wss:`,
+  "frame-src 'self' https://maps.google.com https://www.google.com https://api.razorpay.com https://checkout.razorpay.com",
   "object-src 'none'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

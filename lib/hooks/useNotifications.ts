@@ -214,7 +214,7 @@ export function useNotifications() {
       });
 
     return list.sort((a, b) => (a.date < b.date ? 1 : -1));
-  }, [liveMessageNotifications, announcements, invoices, attendance, backendNotifications, user?.id, isTeacher]);
+  }, [liveMessageNotifications, announcements, invoices, attendance, backendNotifications, isTeacher]);
 
   const unreadCount = notifications.filter((n) => !readIds.has(n.id)).length;
 
