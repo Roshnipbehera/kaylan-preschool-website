@@ -10,6 +10,12 @@ import { createContactInquirySchema, type CreateContactInquiryFormValues } from 
 import { createContactInquiry } from "@/lib/api/contact";
 import { useToast } from "@/lib/hooks/useToast";
 
+const OFFICIAL_MAPS_URL =
+  "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096";
+
+const OFFICIAL_DIRECTIONS_URL =
+  "https://www.google.com/maps/dir/?api=1&destination=12.8476486,77.6424096";
+
 export default function Contact() {
   const { data } = usePublicSettings();
   const toast = useToast();
@@ -95,17 +101,15 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {data.googleMapsUrl && (
-                  <a
-                    href={data.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 flex items-center justify-center gap-2 w-full py-3 bg-[#FFF9EE] hover:bg-[#FFF3D6] text-[#4a3b00] rounded-2xl font-heading font-bold text-xs transition-colors border border-sunshine/40"
-                  >
-                    <span>Get Directions on Google Maps</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                )}
+                <a
+                  href={OFFICIAL_DIRECTIONS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 flex items-center justify-center gap-2 w-full py-3 bg-[#FFF9EE] hover:bg-[#FFF3D6] text-[#4a3b00] rounded-2xl font-heading font-bold text-xs transition-colors border border-sunshine/40"
+                >
+                  <span>Open Directions in Google Maps 🚗</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
             </div>
 
@@ -232,15 +236,26 @@ export default function Contact() {
                 <p className="text-xs text-[#5b4b6b]">Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100</p>
               </div>
             </div>
-            <a
-              href={data.googleMapsUrl || "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-candy text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow hover:scale-105 transition-transform shrink-0"
-            >
-              <span>Get Driving Directions</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+              <a
+                href={OFFICIAL_DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-candy text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow hover:scale-105 transition-transform"
+              >
+                <span>Get Driving Directions 🚗</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={OFFICIAL_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white text-[#3a2e4d] font-heading font-bold text-xs px-4 py-2.5 rounded-full shadow hover:scale-105 transition-transform border border-black/10"
+              >
+                <span>Open in Maps 📍</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
 
           <div className="relative w-full h-[360px] sm:h-[420px] bg-[#f0f0f0]">
