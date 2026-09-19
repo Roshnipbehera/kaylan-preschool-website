@@ -59,7 +59,7 @@ export default function Philosophy() {
         </span>
         <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4 text-[#3a2e4d]">{data.heading}</h2>
         <p className="text-[#5b4b6b] max-w-2xl mx-auto mb-16 text-base sm:text-lg">
-          We combine Dr. Maria Montessori's hands-on philosophy with the accredited Kreedo early learning framework, nurturing curious, confident, and joyful lifelong learners.
+          We combine Dr. Maria Montessori&apos;s hands-on philosophy with the accredited Kreedo early learning framework, nurturing curious, confident, and joyful lifelong learners.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {data.pillars.map((p, i) => {

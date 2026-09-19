@@ -214,6 +214,46 @@ export default function Contact() {
             </div>
           </div>
         </div>
+
+        {/* Interactive Google Maps Embed Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 rounded-[2.5rem] overflow-hidden shadow-xl border-4 border-white bg-white relative"
+        >
+          <div className="p-6 bg-gradient-to-r from-[#FFFDF8] to-[#FFF9EE] border-b border-sunshine/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-2xl bg-leaf/10 flex items-center justify-center text-xl shrink-0">
+                🗺️
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-bold text-[#3a2e4d]">Explore Our Campus Location</h3>
+                <p className="text-xs text-[#5b4b6b]">Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100</p>
+              </div>
+            </div>
+            <a
+              href={data.googleMapsUrl || "https://maps.google.com/?q=Plot+14,+NeoTown+Rd,+Electronic+City+Phase+1,+Bangalore+560100"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-candy text-white font-heading font-bold text-xs px-5 py-2.5 rounded-full shadow hover:scale-105 transition-transform shrink-0"
+            >
+              <span>Get Driving Directions</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
+          <div className="relative w-full h-[360px] sm:h-[420px] bg-[#f0f0f0]">
+            <iframe
+              title="Kaylan Preschool Location Map"
+              src="https://maps.google.com/maps?q=Plot%2014%2C%20NeoTown%20Rd%2C%20Electronic%20City%20Phase%201%2C%20Bangalore&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              className="w-full h-full border-0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
