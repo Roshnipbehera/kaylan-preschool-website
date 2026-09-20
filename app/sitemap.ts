@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { listPosts, listAuthors } from "@/lib/api/blog";
 import { listEvents } from "@/lib/api/events";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kaylanpreschool.example";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaylan-preschool-website.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [

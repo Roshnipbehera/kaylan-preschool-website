@@ -2,7 +2,7 @@
 // (plain objects) so both server components and client components can render
 // them via <script type="application/ld+json" dangerouslySetInnerHTML={...} />.
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kaylanpreschool.example";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaylan-preschool-website.vercel.app";
 
 export function preschoolStructuredData() {
   return {
@@ -12,8 +12,17 @@ export function preschoolStructuredData() {
     description:
       "Kaylan Preschool in Bangalore blends Montessori-inspired learning with the Kreedo curriculum in a magical, storybook world of play, discovery, creativity and love.",
     url: SITE_URL,
+    logo: `${SITE_URL}/brand/koki-mascot-final.png`,
+    image: `${SITE_URL}/brand/koki-mascot-final.png`,
     telephone: "+91-98860-12345",
     email: "admissions@kaylanpreschool.com",
+    hasMap:
+      "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!16s%2Fg%2F11vk7cj610?entry=ttu",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 12.8476486,
+      longitude: 77.6424096,
+    },
     address: {
       "@type": "PostalAddress",
       streetAddress: "Plot #14, NeoTown Road, Electronic City Phase 1",
@@ -34,6 +43,7 @@ export function preschoolStructuredData() {
       "https://facebook.com/kaylanpreschool",
       "https://instagram.com/kaylanpreschool",
       "https://youtube.com/@kaylanpreschool",
+      "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!16s%2Fg%2F11vk7cj610?entry=ttu",
     ],
   };
 }

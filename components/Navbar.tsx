@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import type { NavigationContent } from "@/lib/types/cms";
 
@@ -28,8 +29,17 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-        <a href="#home" className="flex items-center gap-2 font-display text-2xl font-bold text-candy">
-          <span aria-hidden>{data.brand.split(" ")[0]}</span> {data.brand.split(" ").slice(1).join(" ")}
+        <a href="#home" className="flex items-center gap-2.5 font-display text-2xl font-bold text-candy group">
+          <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-candy/30 bg-sunshine/20">
+            <Image
+              src="/brand/koki-mascot-final.png"
+              alt="Kaylan Preschool Logo Mascot"
+              fill
+              sizes="32px"
+              className="object-contain p-0.5 group-hover:scale-110 transition-transform"
+            />
+          </div>
+          <span>{data.brand.replace(/^[^\w\s]+\s*/, "") || data.brand}</span>
         </a>
         <ul className="hidden xl:flex gap-5 text-sm font-heading font-medium text-[#5b4b6b]">
           {data.links.map((l) => (
@@ -57,20 +67,38 @@ export default function Navbar() {
       </nav>
       <AnimatePresence>
         {open && (
-          <motion.ul
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="xl:hidden overflow-hidden bg-white px-5 pb-4 flex flex-col gap-3 font-heading"
+            className="xl:hidden overflow-hidden bg-white px-5 pb-5 font-heading shadow-lg"
           >
-            {data.links.map((l) => (
-              <li key={l}>
-                <a href={hrefFor(l)} onClick={() => setOpen(false)}>
-                  {l}
-                </a>
-              </li>
-            ))}
-          </motion.ul>
+            <ul className="flex flex-col gap-3 pt-2">
+              {data.links.map((l) => (
+                <li key={l}>
+                  <a href={hrefFor(l)} onClick={() => setOpen(false)} className="block py-1 text-[#5b4b6b] hover:text-candy">
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="pt-4 border-t border-black/5 flex flex-col gap-2.5 mt-3">
+              <a
+                href="/login"
+                onClick={() => setOpen(false)}
+                className="text-center py-2.5 text-sm font-heading font-semibold text-[#5b4b6b] hover:text-candy transition-colors bg-gray-50 rounded-full"
+              >
+                Parent / Teacher Login
+              </a>
+              <a
+                href={data.ctaHref}
+                onClick={() => setOpen(false)}
+                className="text-center py-2.5 bg-candy text-white font-heading font-bold text-sm rounded-full shadow"
+              >
+                {data.ctaLabel}
+              </a>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>
