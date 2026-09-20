@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { Eye, EyeOff, Sparkles } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginInput } from "@/lib/validation/schemas";
 import { useAuth } from "@/lib/hooks/useAuth";
@@ -18,10 +19,10 @@ const ROLES: { value: Role; label: string }[] = [
   { value: "admin", label: "Admin" },
 ];
 
-const DEMO_CREDENTIALS: Record<Role, string> = {
-  parent: "parent@kaylan.school / password123",
-  teacher: "teacher@kaylan.school / password123",
-  admin: "admin@kaylan.school / password123",
+const DEMO_CREDENTIALS: Record<Role, { email: string; pass: string }> = {
+  parent: { email: "parent@kaylan.school", pass: "password123" },
+  teacher: { email: "teacher@kaylan.school", pass: "password123" },
+  admin: { email: "admin@kaylan.school", pass: "password123" },
 };
 
 export function LoginForm() {
@@ -30,6 +31,7 @@ export function LoginForm() {
   const { login } = useAuth();
   const toast = useToast();
   const [submitting, setSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -44,13 +46,33 @@ export function LoginForm() {
 
   const role = watch("role");
 
+  const fillCredentialsForRole = (targetRole: Role) => {
+    const creds = DEMO_CREDENTIALS[targetRole];
+    setValue("role", targetRole);
+    setValue("email", creds.email, { shouldValidate: true });
+    setValue("password", creds.pass, { shouldValidate: true });
+  };
+
+  const handleRoleChange = (newRole: Role) => {
+    setValue("role", newRole);
+    const currentEmail = watch("email")?.trim().toLowerCase();
+    const isDemoEmail = Object.values(DEMO_CREDENTIALS).some((c) => c.email.toLowerCase() === currentEmail);
+    // If the input is empty or already using a demo email, seamlessly switch to the corresponding role's demo account
+    if (!currentEmail || isDemoEmail) {
+      fillCredentialsForRole(newRole);
+    }
+  };
+
   const onSubmit = async (values: LoginInput) => {
     setSubmitting(true);
     try {
-      const user = await login(values.email, values.password, values.role);
+      const cleanEmail = values.email.trim();
+      const user = await login(cleanEmail, values.password, values.role);
       toast.success(`Welcome back, ${user.name}!`);
       const redirectTo = searchParams.get("redirectTo");
-      router.push(redirectTo || `/${user.role}`);
+      const target = redirectTo || `/${user.role}`;
+      router.push(target);
+      router.refresh();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Login failed");
     } finally {
@@ -67,7 +89,7 @@ export function LoginForm() {
             type="button"
             role="tab"
             aria-selected={role === r.value}
-            onClick={() => setValue("role", r.value)}
+            onClick={() => handleRoleChange(r.value)}
             data-testid={`login-role-${r.value}`}
             className={`flex-1 rounded-full px-3 py-2 text-sm font-heading font-semibold transition-colors ${
               role === r.value ? "bg-candy text-white" : "bg-lavender/10 text-[#3a2e4d]"
@@ -78,8 +100,21 @@ export function LoginForm() {
         ))}
       </div>
 
-      <div className="mb-4 rounded-xl bg-sky/10 px-3 py-2 text-xs text-[#3a2e4d]/70">
-        Demo credentials: <strong>{DEMO_CREDENTIALS[role]}</strong>
+      <div className="mb-5 rounded-2xl bg-gradient-to-r from-sky/15 via-lavender/15 to-candy/10 p-3.5 border border-sky/20 flex items-center justify-between gap-2 shadow-sm">
+        <div className="text-xs">
+          <p className="text-[#3a2e4d]/70 font-medium">Demo login for {role}:</p>
+          <p className="font-heading font-bold text-candy mt-0.5 tracking-tight">
+            {DEMO_CREDENTIALS[role].email}
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => fillCredentialsForRole(role)}
+          className="inline-flex items-center gap-1.5 bg-white/95 hover:bg-white text-candy hover:text-candy/90 px-3 py-1.5 rounded-xl text-xs font-heading font-bold shadow-sm border border-candy/20 hover:border-candy/40 transition-all shrink-0 active:scale-95"
+        >
+          <Sparkles size={13} className="text-sunshine fill-sunshine" />
+          Auto-fill
+        </button>
       </div>
 
       <div className="mb-4">
@@ -87,6 +122,7 @@ export function LoginForm() {
           label="Email"
           type="email"
           autoComplete="email"
+          placeholder="your.email@kaylan.school"
           error={errors.email?.message}
           data-testid="login-email"
           {...register("email")}
@@ -95,10 +131,21 @@ export function LoginForm() {
       <div className="mb-2">
         <Input
           label="Password"
-          type="password"
+          type={showPassword ? "text" : "password"}
           autoComplete="current-password"
+          placeholder="••••••••"
           error={errors.password?.message}
           data-testid="login-password"
+          rightElement={
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="p-1 text-[#5b4b6b] hover:text-[#3a2e4d] transition-colors"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          }
           {...register("password")}
         />
       </div>

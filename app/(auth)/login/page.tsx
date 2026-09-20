@@ -4,7 +4,7 @@ import { AuthLayout } from "@/components/layout/AuthLayout";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Login | Kaylan Preschool",
+  title: "Login",
   description: "Sign in to the Kaylan Preschool parent, teacher, or admin portal.",
 };
 

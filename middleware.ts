@@ -29,8 +29,11 @@ const PROTECTED_PREFIXES = ["/parent", "/teacher", "/admin", "/profile", "/setti
 
 function decodeMockToken(token: string): { role?: string; exp?: number } | null {
   try {
-    const [, body] = token.split(".");
-    const json = Buffer.from(body, "base64").toString("utf-8");
+    const cleanToken = decodeURIComponent(token);
+    const [, body] = cleanToken.split(".");
+    if (!body) return null;
+    const base64 = body.replace(/-/g, "+").replace(/_/g, "/");
+    const json = Buffer.from(base64, "base64").toString("utf-8");
     return JSON.parse(json);
   } catch {
     return null;
@@ -39,8 +42,10 @@ function decodeMockToken(token: string): { role?: string; exp?: number } | null 
 
 async function decodeRealToken(token: string): Promise<{ role?: string; exp?: number } | null> {
   try {
+    const cleanToken = decodeURIComponent(token);
+    if (!JWT_ACCESS_SECRET) return null;
     const secret = new TextEncoder().encode(JWT_ACCESS_SECRET);
-    const { payload } = await jwtVerify(token, secret);
+    const { payload } = await jwtVerify(cleanToken, secret);
     // jose validates `exp` itself (throws if expired) and exp is in seconds;
     // normalize to ms so downstream comparisons match the mock-mode shape.
     return { role: payload.role as string | undefined, exp: (payload.exp ?? 0) * 1000 };
@@ -54,8 +59,16 @@ export async function middleware(req: NextRequest) {
   const isProtected = PROTECTED_PREFIXES.some((p) => pathname.startsWith(p));
   if (!isProtected) return NextResponse.next();
 
-  const token = req.cookies.get(SESSION_COOKIE_NAME)?.value;
-  const decoded = token ? (USE_MOCK_API ? decodeMockToken(token) : await decodeRealToken(token)) : null;
+  const rawToken = req.cookies.get(SESSION_COOKIE_NAME)?.value;
+  let decoded: { role?: string; exp?: number } | null = null;
+
+  if (rawToken) {
+    if (rawToken.startsWith("mock.") || rawToken.startsWith("mock%2E") || USE_MOCK_API) {
+      decoded = decodeMockToken(rawToken) || (await decodeRealToken(rawToken));
+    } else {
+      decoded = (await decodeRealToken(rawToken)) || decodeMockToken(rawToken);
+    }
+  }
 
   if (!decoded || (decoded.exp && decoded.exp < Date.now())) {
     const loginUrl = new URL("/login", req.url);

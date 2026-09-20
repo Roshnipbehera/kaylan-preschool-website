@@ -9,12 +9,14 @@ const COOKIE_NAME = "kaylan_session";
 
 export function setSessionCookie(token: string, maxAgeSeconds = 60 * 60 * 24) {
   if (typeof document === "undefined") return;
-  document.cookie = `${COOKIE_NAME}=${encodeURIComponent(token)}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;
+  const isHttps = typeof window !== "undefined" && window.location.protocol === "https:";
+  document.cookie = `${COOKIE_NAME}=${encodeURIComponent(token)}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax${isHttps ? "; Secure" : ""}`;
 }
 
 export function clearSessionCookie() {
   if (typeof document === "undefined") return;
-  document.cookie = `${COOKIE_NAME}=; path=/; max-age=0; SameSite=Lax`;
+  const isHttps = typeof window !== "undefined" && window.location.protocol === "https:";
+  document.cookie = `${COOKIE_NAME}=; path=/; max-age=0; SameSite=Lax${isHttps ? "; Secure" : ""}`;
 }
 
 export const SESSION_COOKIE_NAME = COOKIE_NAME;
