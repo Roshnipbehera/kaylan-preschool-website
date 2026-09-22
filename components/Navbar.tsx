@@ -14,22 +14,32 @@ const SEED: NavigationContent = {
 };
 
 const ROUTE_LINKS: Record<string, string> = {
-  Blog: "/blog",
+  Home: "/",
+  "About Us": "/about",
+  Programs: "/programs",
+  Curriculum: "/curriculum",
+  Facilities: "/facilities",
   Gallery: "/gallery",
   Events: "/events",
+  Admissions: "/admissions/apply",
+  Blog: "/blog",
+  Careers: "/careers",
+  Contact: "/contact",
 };
 
 function hrefFor(label: string) {
-  return ROUTE_LINKS[label] ?? `#${label.toLowerCase().replace(/\s+/g, "-")}`;
+  return ROUTE_LINKS[label] ?? `/${label.toLowerCase().replace(/\s+/g, "-")}`;
 }
 
 export default function Navbar() {
   const { data } = useCmsSection("navigation", SEED);
   const [open, setOpen] = useState(false);
+  const ctaLink = data.ctaHref.startsWith("#") ? "/contact" : data.ctaHref;
+
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-        <a href="#home" className="flex items-center gap-2.5 font-display text-2xl font-bold text-candy group">
+        <a href="/" className="flex items-center gap-2.5 font-display text-2xl font-bold text-candy group">
           <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-candy/30 bg-sunshine/20">
             <Image
               src="/brand/koki-mascot-final.png"
@@ -53,7 +63,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <a href="/login" className="text-sm font-heading font-semibold text-[#5b4b6b] hover:text-candy transition-colors">Login</a>
           <motion.a
-            href={data.ctaHref}
+            href={ctaLink}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
             className="inline-block bg-sunshine text-[#4a3b00] font-heading font-semibold px-5 py-2.5 rounded-full shadow-md"
@@ -91,7 +101,7 @@ export default function Navbar() {
                 Parent / Teacher Login
               </a>
               <a
-                href={data.ctaHref}
+                href={ctaLink}
                 onClick={() => setOpen(false)}
                 className="text-center py-2.5 bg-candy text-white font-heading font-bold text-sm rounded-full shadow"
               >
