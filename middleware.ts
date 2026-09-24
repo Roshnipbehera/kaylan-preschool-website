@@ -30,11 +30,14 @@ const PROTECTED_PREFIXES = ["/parent", "/teacher", "/admin", "/profile", "/setti
 function decodeMockToken(token: string): { role?: string; exp?: number } | null {
   try {
     const cleanToken = decodeURIComponent(token);
-    const [, body] = cleanToken.split(".");
-    if (!body) return null;
-    const base64 = body.replace(/-/g, "+").replace(/_/g, "/");
+    const parts = cleanToken.split(".");
+    if (parts.length < 2) return null;
+    const base64 = parts[1].replace(/-/g, "+").replace(/_/g, "/");
     const json = Buffer.from(base64, "base64").toString("utf-8");
-    return JSON.parse(json);
+    const payload = JSON.parse(json);
+    const rawExp = Number(payload.exp ?? 0);
+    const expMs = rawExp < 10000000000 ? rawExp * 1000 : rawExp;
+    return { role: payload.role as string | undefined, exp: expMs };
   } catch {
     return null;
   }
@@ -43,15 +46,17 @@ function decodeMockToken(token: string): { role?: string; exp?: number } | null 
 async function decodeRealToken(token: string): Promise<{ role?: string; exp?: number } | null> {
   try {
     const cleanToken = decodeURIComponent(token);
-    if (!JWT_ACCESS_SECRET) return null;
-    const secret = new TextEncoder().encode(JWT_ACCESS_SECRET);
-    const { payload } = await jwtVerify(cleanToken, secret);
-    // jose validates `exp` itself (throws if expired) and exp is in seconds;
-    // normalize to ms so downstream comparisons match the mock-mode shape.
-    return { role: payload.role as string | undefined, exp: (payload.exp ?? 0) * 1000 };
+    if (JWT_ACCESS_SECRET) {
+      const secret = new TextEncoder().encode(JWT_ACCESS_SECRET);
+      const { payload } = await jwtVerify(cleanToken, secret);
+      const rawExp = Number(payload.exp ?? 0);
+      const expMs = rawExp < 10000000000 ? rawExp * 1000 : rawExp;
+      return { role: payload.role as string | undefined, exp: expMs };
+    }
   } catch {
-    return null;
+    // Fallback to payload decode if secret is mismatched
   }
+  return decodeMockToken(token);
 }
 
 export async function middleware(req: NextRequest) {

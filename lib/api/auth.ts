@@ -81,8 +81,9 @@ export function decodeMockToken(token: string): { sub: string; email: string; ro
     const [, body] = token.split(".");
     const base64 = body.replace(/-/g, "+").replace(/_/g, "/");
     const payload = JSON.parse(atob(base64));
-    const expMs = USE_MOCK_API ? payload.exp : payload.exp * 1000; // real JWT `exp` is seconds since epoch
-    if (!payload.exp || expMs < Date.now()) return null;
+    const rawExp = Number(payload.exp ?? 0);
+    const expMs = rawExp < 10000000000 ? rawExp * 1000 : rawExp;
+    if (!rawExp || expMs < Date.now()) return null;
     return { ...payload, exp: expMs };
   } catch {
     return null;
