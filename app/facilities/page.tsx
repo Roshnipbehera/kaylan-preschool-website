@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Campus Facilities & Safety",
   description:
-    "Take a tour of our 10,000 sq.ft child-safe green preschool campus in Electronic City Phase 1, Bangalore. CCTV security, Montessori labs, outdoor turf, and day-care nap suites.",
+    "Take a tour of our child-safe green preschool campus in Electronic City Phase 1, Bangalore. CCTV security, Montessori labs, outdoor turf, and day-care nap suites.",
 };
 
 const FACILITIES = [
@@ -19,7 +19,7 @@ const FACILITIES = [
     desc: "A warm, cheerful entrance and welcome lounge featuring authentic hand-painted storybook murals, child-height reception benches, and an active discovery play floor.",
   },
   {
-    title: "10,000 Sq.Ft Lush Green Campus",
+    title: "Lush Green Outdoor Play Campus",
     icon: Sun,
     image: "/images/gallery-outdoor.jpg",
     desc: "A rare open-air green expanse in the heart of Bangalore's IT hub, featuring flowering native gardens, fresh breeze circulation, and rubberized impact turf for safe running.",
@@ -93,7 +93,7 @@ export default function FacilitiesPage() {
               Our Campus & <span className="text-candy">Facilities</span> 🏰
             </h1>
             <p className="mt-5 text-lg sm:text-xl font-body text-[#5b4b6b] max-w-3xl mx-auto leading-relaxed">
-              Step into 10,000 square feet of sunshine, safety, and storybook charm. Designed from a child’s
+              Step into a world of sunshine, safety, and storybook charm. Designed from a child’s
               perspective with zero compromises on security and hygiene.
             </p>
           </div>

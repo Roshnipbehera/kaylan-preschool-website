@@ -8,13 +8,12 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Kaylan Preschool in Electronic City, Bangalore — our Montessori & Kreedo philosophy, loving educators, child-first environment, and 10,000 sq.ft safe green campus.",
+    "Learn about Kaylan Preschool in Electronic City, Bangalore — our Montessori & Kreedo philosophy, loving educators, child-first environment, and safe green campus.",
 };
 
 const STATS = [
   { value: "500+", label: "Happy Little Learners", icon: "🌱" },
   { value: "1:8", label: "Teacher to Child Ratio", icon: "👩‍🏫" },
-  { value: "10,000", label: "Sq.Ft Green Campus", icon: "🏡" },
   { value: "100%", label: "Montessori & Kreedo Guided", icon: "⭐" },
 ];
 
@@ -106,7 +105,7 @@ export default function AboutPage() {
 
         {/* Stats Strip */}
         <section className="py-8 bg-[#FFFDF5] border-y border-sunshine/20">
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          <div className="max-w-4xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
             {STATS.map((s) => (
               <div key={s.label} className="p-3">
                 <span className="text-2xl mb-1 block">{s.icon}</span>

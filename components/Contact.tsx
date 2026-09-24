@@ -76,7 +76,7 @@ export default function Contact() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <span className="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-heading font-semibold mb-1">
-                    🌿 10,000 Sq.Ft Green Campus
+                    🌿 Child-Safe Green Campus
                   </span>
                   <h3 className="font-display text-xl font-bold">Kaylan Preschool & Daycare</h3>
                   <p className="text-xs text-white/90">Electronic City Phase 1, Bangalore 560100</p>

@@ -137,7 +137,7 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
                 </div>
 
                 <p className="text-xs text-[#5b4b6b] font-body mb-6">
-                  Visit our 10,000 sq.ft Electronic City campus, meet our certified Montessori mentors, and experience our child-safe classrooms in person.
+                  Visit our child-safe Electronic City campus, meet our certified Montessori mentors, and experience our vibrant learning environments in person.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-4">

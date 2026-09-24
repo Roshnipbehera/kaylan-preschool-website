@@ -39,7 +39,7 @@ export default function Welcome() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-14"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-14"
         >
           <div className="bg-[#FFFDF5] p-5 rounded-3xl border border-sunshine/30 text-center shadow-sm hover:shadow-md transition-shadow">
             <p className="font-display text-3xl sm:text-4xl font-extrabold text-candy">500+</p>
@@ -48,10 +48,6 @@ export default function Welcome() {
           <div className="bg-[#F0FDF4] p-5 rounded-3xl border border-leaf/30 text-center shadow-sm hover:shadow-md transition-shadow">
             <p className="font-display text-3xl sm:text-4xl font-extrabold text-leaf">1:8</p>
             <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Teacher-Child Ratio</p>
-          </div>
-          <div className="bg-[#EFF6FF] p-5 rounded-3xl border border-sky/30 text-center shadow-sm hover:shadow-md transition-shadow">
-            <p className="font-display text-3xl sm:text-4xl font-extrabold text-sky">10,000</p>
-            <p className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] mt-1">Sq.Ft Green Campus</p>
           </div>
           <div className="bg-[#FAF5FF] p-5 rounded-3xl border border-lavender/40 text-center shadow-sm hover:shadow-md transition-shadow">
             <p className="font-display text-3xl sm:text-4xl font-extrabold text-[#7C3AED]">100%</p>
