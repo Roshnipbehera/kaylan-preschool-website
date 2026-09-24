@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
       </div>
       <p className="relative text-center text-xs mt-10 text-[#5b4720]">
-        © {new Date().getFullYear()} Kaylan Preschool · All rights reserved · Made with 💛 by <span className="font-heading font-bold text-[#3a2e4d]">Roshni</span>
+        © {new Date().getFullYear()} Kaylan Preschool · All rights reserved · Made by Roshni
       </p>
     </footer>
   );
