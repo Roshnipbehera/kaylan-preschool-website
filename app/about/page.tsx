@@ -148,10 +148,17 @@ export default function AboutPage() {
                 often subjected toddlers to artificial pressure and premature worksheets. We set out to build something
                 rare: a storybook sanctuary in Bangalore’s IT corridor where play is celebrated as the highest form of research.
               </p>
-              <p className="text-[#5b4b6b] leading-relaxed mb-6">
-                Spread across a sprawling, tree-lined 10,000 sq.ft environment in NeoTown Road, Electronic City Phase 1,
+              <p className="text-[#5b4b6b] leading-relaxed mb-4">
+                Spread across a sprawling, tree-lined environment in Bettadasanapura, Vittasandra, Electronic City Phase 1,
                 we provide toddlers with the freedom to touch, question, build, make mistakes, and rejoice in discovery.
               </p>
+
+              <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-pink-50 to-amber-50 border-l-4 border-candy text-[#3a2e4d]">
+                <p className="font-heading font-bold text-xs uppercase tracking-wider text-candy mb-1">Our Guiding Mission</p>
+                <p className="italic text-sm font-body text-[#4a3b1a] leading-relaxed">
+                  &ldquo;Creating that future generation of human beings that will be enriched with physical, psychological, emotional, and spiritual treasure.&rdquo;
+                </p>
+              </div>
 
               <div className="grid grid-cols-2 gap-4 pt-2 border-t border-black/5">
                 <div className="flex items-start gap-2.5">

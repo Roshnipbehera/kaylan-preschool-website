@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Phone, MessageCircle, Mail, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail, Clock, ExternalLink, Instagram } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
@@ -145,16 +145,33 @@ export default function Contact() {
 
               <a
                 href={`mailto:${data.contactEmail}`}
-                className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-black/5 sm:col-span-2"
+                className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-black/5"
               >
                 <div className="w-10 h-10 rounded-xl bg-sky/10 flex items-center justify-center text-sky shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Admissions Email</p>
-                  <p className="text-xs font-heading font-bold text-[#3a2e4d]">{data.contactEmail}</p>
+                  <p className="text-xs font-heading font-bold text-[#3a2e4d] truncate max-w-[150px]">{data.contactEmail}</p>
                 </div>
               </a>
+
+              {data.instagramUrl && (
+                <a
+                  href={data.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-white rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow border border-pink-100 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Instagram</p>
+                    <p className="text-xs font-heading font-bold text-[#d62976]">@kaylanpreschoolanddaycare</p>
+                  </div>
+                </a>
+              )}
             </div>
           </motion.div>
 
@@ -233,7 +250,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-display text-lg font-bold text-[#3a2e4d]">Explore Our Campus Location</h3>
-                <p className="text-xs text-[#5b4b6b]">Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100</p>
+                <p className="text-xs text-[#5b4b6b]">{data.address}</p>
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-2.5 shrink-0">

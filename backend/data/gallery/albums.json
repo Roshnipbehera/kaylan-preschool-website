@@ -3,84 +3,77 @@
     "id": "a1b2c3d4-0001-4000-8000-000000000001",
     "title": "Classroom Life",
     "slug": "classroom-life",
-    "coverImage": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
-    "description": "Everyday moments of learning, laughter, and curiosity inside our classrooms.",
+    "coverImage": "/images/instagram/insta_thumb_1.jpg",
+    "description": "Authentic snapshots of experiential learning, Montessori discovery, and joyful routines at Kaylan.",
     "createdAt": "2026-01-10T09:00:00.000Z",
     "updatedAt": "2026-01-10T09:00:00.000Z",
     "items": [
       {
         "id": "i1",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80",
-        "caption": "Morning circle time with our Sunshine Room friends."
+        "url": "/images/instagram/insta_thumb_1.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_1.jpg",
+        "caption": "Koki's Little Yogis - Mindful morning stretches, balance & breathing exercises."
       },
       {
         "id": "i2",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&q=80",
-        "caption": "Building tall towers during block-play hour."
+        "url": "/images/instagram/insta_thumb_2.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_2.jpg",
+        "caption": "Little Veggie Scientists - Hands-on vegetable exploration and sensory inquiry."
       },
       {
         "id": "i3",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&q=80",
-        "caption": "Storytime with Ms. Anjali."
+        "url": "/images/instagram/insta_thumb_6.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_6.jpg",
+        "caption": "Fine Motor Skills - Montessori threading and concentration development."
       },
       {
         "id": "i4",
-        "type": "video",
-        "url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=80",
-        "caption": "A day in the life of our Rainbow Room."
+        "type": "image",
+        "url": "/images/instagram/insta_thumb_3.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_3.jpg",
+        "caption": "Morning Campus Gate Arrival - Happy steps walking into Kaylan Preschool."
       },
       {
         "id": "i5",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80",
-        "caption": "Counting and sorting during math corner."
+        "url": "/images/instagram/insta_thumb_5.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_5.jpg",
+        "caption": "Classroom Discovery - Tactile materials and focused engagement."
       }
     ]
   },
   {
     "id": "a1b2c3d4-0002-4000-8000-000000000002",
-    "title": "Sports Day",
+    "title": "Outdoor & Active Play",
     "slug": "sports-day",
-    "coverImage": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80",
-    "description": "Cheers, races, and medals from our annual Sports Day celebration.",
+    "coverImage": "/images/instagram/insta_thumb_3.jpg",
+    "description": "Gross motor development, playground energy, and fresh air on our green campus.",
     "createdAt": "2026-02-14T09:00:00.000Z",
     "updatedAt": "2026-02-14T09:00:00.000Z",
     "items": [
       {
         "id": "i6",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&q=80",
-        "caption": "The starting line at the annual sack race."
+        "url": "/images/instagram/insta_thumb_3.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_3.jpg",
+        "caption": "Arrival at the playground gate ready for morning action."
       },
       {
         "id": "i7",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80",
-        "caption": "Proud winners with their medals."
+        "url": "/images/instagram/insta_thumb_1.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_1.jpg",
+        "caption": "Coordination and balance games on the outdoor turf."
       },
       {
         "id": "i8",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1526676537331-7747bf8278fc?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1526676537331-7747bf8278fc?w=400&q=80",
-        "caption": "Tug of war between the Blue and Green teams."
-      },
-      {
-        "id": "i9",
-        "type": "video",
-        "url": "https://res.cloudinary.com/demo/video/upload/dog.mp4",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80",
-        "caption": "Highlights from the closing ceremony."
+        "url": "/images/instagram/insta_thumb_7.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_7.jpg",
+        "caption": "Playground Fun - Running, sharing and joyful physical play."
       }
     ]
   },
@@ -88,77 +81,98 @@
     "id": "a1b2c3d4-0003-4000-8000-000000000003",
     "title": "Art & Craft",
     "slug": "art-craft",
-    "coverImage": "https://images.unsplash.com/photo-1499892477393-f675706cbe6e?w=800&q=80",
-    "description": "Colorful creations made with tiny hands and big imaginations.",
+    "coverImage": "/images/instagram/insta_thumb_6.jpg",
+    "description": "Tactile creativity, finger dexterity, and colourful expressions from our little artists.",
     "createdAt": "2026-03-05T09:00:00.000Z",
     "updatedAt": "2026-03-05T09:00:00.000Z",
     "items": [
       {
         "id": "i10",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1499892477393-f675706cbe6e?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1499892477393-f675706cbe6e?w=400&q=80",
-        "caption": "Finger painting during our color-mixing lesson."
+        "url": "/images/instagram/insta_thumb_6.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_6.jpg",
+        "caption": "Montessori fine motor threading and tactile coordination."
       },
       {
         "id": "i11",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=400&q=80",
-        "caption": "Handprint trees made for Grandparents' Day."
+        "url": "/images/instagram/insta_thumb_4.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_4.jpg",
+        "caption": "Handmade festive clay crafting and creative molding."
       },
       {
         "id": "i12",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=400&q=80",
-        "caption": "Clay modeling in the art corner."
+        "url": "/images/instagram/insta_thumb_10.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_10.jpg",
+        "caption": "Tricolour craft badges and patriotic creative artworks."
       },
       {
         "id": "i13",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1445633629932-0029acc44e88?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1445633629932-0029acc44e88?w=400&q=80",
-        "caption": "Collage day using recycled paper scraps."
+        "url": "/images/instagram/insta_thumb_8.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_8.jpg",
+        "caption": "Colour exploration and creative expression in the art corner."
       }
     ]
   },
   {
     "id": "a1b2c3d4-0004-4000-8000-000000000004",
-    "title": "Festivals",
+    "title": "Festivals & Celebrations",
     "slug": "festivals",
-    "coverImage": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80",
-    "description": "Celebrating culture and tradition together as one big Kaylan family.",
+    "coverImage": "/images/instagram/insta_post_8.jpg",
+    "description": "Celebrating diversity, Indian traditions, and cultural harmony together as one Kaylan family.",
     "createdAt": "2026-04-01T09:00:00.000Z",
     "updatedAt": "2026-04-01T09:00:00.000Z",
     "items": [
       {
         "id": "i14",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=400&q=80",
-        "caption": "Diyas and rangoli for our Diwali celebration."
+        "url": "/images/instagram/insta_post_8.jpg",
+        "thumbnailUrl": "/images/instagram/insta_post_8.jpg",
+        "caption": "Onam Celebration - Traditional floral Pookalam designed by teachers and children."
       },
       {
         "id": "i15",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1512149177596-f817c7ef5d4c?w=400&q=80",
-        "caption": "Spring color festival on the playground."
+        "url": "/images/instagram/insta_post_5.jpg",
+        "thumbnailUrl": "/images/instagram/insta_post_5.jpg",
+        "caption": "Krishna Janmashtami - Children dressed in vibrant traditional attire."
       },
       {
         "id": "i16",
         "type": "image",
-        "url": "https://images.unsplash.com/photo-1543269865-4438a4993cf0?w=1200&q=80",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1543269865-4438a4993cf0?w=400&q=80",
-        "caption": "Little ones in traditional attire for Independence Day."
+        "url": "/images/instagram/insta_post_7.jpg",
+        "thumbnailUrl": "/images/instagram/insta_post_7.jpg",
+        "caption": "Raksha Bandhan - Celebrating the bonds of care, love and friendship."
       },
       {
         "id": "i17",
-        "type": "video",
-        "url": "https://www.youtube.com/embed/ysz5S6PUM-U",
-        "thumbnailUrl": "https://images.unsplash.com/photo-1478147427282-58a87a120781?w=600&q=80",
-        "caption": "Our annual harvest festival performance."
+        "type": "image",
+        "url": "/images/instagram/insta_post_9.jpg",
+        "thumbnailUrl": "/images/instagram/insta_post_9.jpg",
+        "caption": "Eid-e-Milad - Sharing messages of peace, kindness and unity."
+      },
+      {
+        "id": "i18",
+        "type": "image",
+        "url": "/images/instagram/insta_post_11.jpg",
+        "thumbnailUrl": "/images/instagram/insta_post_11.jpg",
+        "caption": "Varalakshmi Vratam - Cultural tradition and blessings at our campus."
+      },
+      {
+        "id": "i19",
+        "type": "image",
+        "url": "/images/instagram/insta_thumb_4.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_4.jpg",
+        "caption": "Ganesh Chaturthi - Festive rituals and clay Ganesha devotion."
+      },
+      {
+        "id": "i20",
+        "type": "image",
+        "url": "/images/instagram/insta_thumb_10.jpg",
+        "thumbnailUrl": "/images/instagram/insta_thumb_10.jpg",
+        "caption": "Little Tricolour Geniuses - Independence Day celebration and anthems."
       }
     ]
   }

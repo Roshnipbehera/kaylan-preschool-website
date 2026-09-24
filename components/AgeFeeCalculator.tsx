@@ -102,8 +102,8 @@ const CUTOFF_MONTH = 5; // 0-indexed: June = 5
 
 export default function AgeFeeCalculator() {
   const { data } = usePublicSettings();
-  const rawPhone = data?.contactPhone || "+91 98860 12345";
-  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919886012345";
+  const rawPhone = data?.contactPhone || "+91 96636 30221";
+  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
 
   // Default to child born in August 2022 (~3.8 yrs at June 2026 = Junior KG)
   const [birthYear, setBirthYear] = useState<number>(2023);

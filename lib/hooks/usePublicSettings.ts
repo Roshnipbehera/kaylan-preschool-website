@@ -8,14 +8,14 @@ import { getPublicSettings } from "@/lib/api/settings";
 import type { PublicSettings } from "@/lib/types/settings";
 
 const SEED: PublicSettings = {
-  contactEmail: "admissions@kaylanpreschool.com",
-  contactPhone: "+91 98860 12345",
-  address: "Plot #14, NeoTown Rd, Electronic City Phase 1, Bangalore 560100",
+  contactEmail: "kpsdc01@gmail.com",
+  contactPhone: "+91 96636 30221",
+  address: "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100",
   logoUrl: "/brand/koki-mascot-final.png",
   schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
   admissionsOpen: true,
   facebookUrl: "https://facebook.com/kaylanpreschool",
-  instagramUrl: "https://instagram.com/kaylanpreschool",
+  instagramUrl: "https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw==",
   twitterUrl: "https://youtube.com/@kaylanpreschool",
   googleMapsUrl: "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096",
 };

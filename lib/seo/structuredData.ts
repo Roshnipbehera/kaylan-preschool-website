@@ -14,8 +14,8 @@ export function preschoolStructuredData() {
     url: SITE_URL,
     logo: `${SITE_URL}/brand/koki-mascot-final.png`,
     image: `${SITE_URL}/brand/koki-mascot-final.png`,
-    telephone: "+91-98860-12345",
-    email: "admissions@kaylanpreschool.com",
+    telephone: "+91 96636 30221",
+    email: "kpsdc01@gmail.com",
     hasMap:
       "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!16s%2Fg%2F11vk7cj610?entry=ttu",
     geo: {
@@ -25,8 +25,8 @@ export function preschoolStructuredData() {
     },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Plot #14, NeoTown Road, Electronic City Phase 1",
-      addressLocality: "Bangalore",
+      streetAddress: "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra",
+      addressLocality: "Bengaluru",
       addressRegion: "Karnataka",
       postalCode: "560100",
       addressCountry: "IN",
@@ -41,7 +41,7 @@ export function preschoolStructuredData() {
     ],
     sameAs: [
       "https://facebook.com/kaylanpreschool",
-      "https://instagram.com/kaylanpreschool",
+      "https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw==",
       "https://youtube.com/@kaylanpreschool",
       "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!16s%2Fg%2F11vk7cj610?entry=ttu",
     ],

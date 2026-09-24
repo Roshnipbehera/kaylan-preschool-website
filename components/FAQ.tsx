@@ -126,7 +126,7 @@ export default function FAQ() {
           </div>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://wa.me/919886012345?text=Hello%20Kaylan%20Preschool!%20I%20have%20a%20question%20about%20admissions."
+              href="https://wa.me/919663630221?text=Hello%20Kaylan%20Preschool!%20I%20have%20a%20question%20about%20admissions."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#25D366] text-white font-heading font-bold text-sm px-5 py-3 rounded-full shadow hover:scale-105 transition-transform"

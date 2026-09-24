@@ -7,9 +7,9 @@ import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
 export default function FloatingButtons() {
   const { data } = usePublicSettings();
   const [showPill, setShowPill] = useState(true);
-  const rawPhone = data?.contactPhone || "+91 98860 12345";
-  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919886012345";
-  const telHref = `tel:${rawPhone.replace(/[^+\d]/g, "") || "+919886012345"}`;
+  const rawPhone = data?.contactPhone || "+91 96636 30221";
+  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
+  const telHref = `tel:${rawPhone.replace(/[^+\d]/g, "") || "+919663630221"}`;
   const waHref = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(
     "Hello Kaylan Preschool! I would like to enquire about admission and book a tour."
   )}`;

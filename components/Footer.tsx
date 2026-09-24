@@ -65,22 +65,34 @@ export default function Footer() {
         <div>
           <h3 className="font-display text-2xl font-bold mb-2">{data.brand}</h3>
           <p className="text-sm">{data.tagline}</p>
-          <div className="flex gap-3 mt-4">
+          <div className="flex flex-wrap items-center gap-3 mt-4">
             {settings.facebookUrl && (
-              <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Facebook className="w-6 h-6" />
+              <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:opacity-80 transition-opacity">
+                <Facebook className="w-5 h-5" />
               </a>
             )}
             {settings.instagramUrl && (
-              <a href={settings.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram className="w-6 h-6" />
+              <a
+                href={settings.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="inline-flex items-center gap-1.5 text-xs font-heading font-bold bg-white/70 hover:bg-white text-[#d62976] px-3 py-1 rounded-full shadow-sm transition-all"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>@kaylanpreschoolanddaycare</span>
               </a>
             )}
             {settings.twitterUrl && (
-              <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <Youtube className="w-6 h-6" />
+              <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-80 transition-opacity">
+                <Youtube className="w-5 h-5" />
               </a>
             )}
+          </div>
+          <div className="mt-4 text-xs space-y-1 text-[#5b4720]">
+            <p>📞 <a href={`tel:${settings.contactPhone?.replace(/[^+\d]/g, "")}`} className="hover:underline font-semibold">{settings.contactPhone}</a></p>
+            <p>✉️ <a href={`mailto:${settings.contactEmail}`} className="hover:underline font-semibold">{settings.contactEmail}</a></p>
+            <p className="line-clamp-2 leading-relaxed">📍 {settings.address}</p>
           </div>
         </div>
         <div>

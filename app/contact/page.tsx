@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, Mail, Clock, Navigation, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Navigation, MessageCircle, Instagram } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ContactClientForm } from "@/components/contact/ContactClientForm";
@@ -7,7 +7,7 @@ import { ContactClientForm } from "@/components/contact/ContactClientForm";
 export const metadata: Metadata = {
   title: "Contact Us & Campus Location",
   description:
-    "Contact Kaylan Preschool in Electronic City Phase 1, Bangalore. Phone: +91 98860 12345, Email: admissions@kaylanpreschool.com. Get Google Maps driving directions.",
+    "Contact Kaylan Preschool in Electronic City, Bangalore. Phone: +91 96636 30221, Email: kpsdc01@gmail.com. Get Google Maps driving directions and visit our campus.",
 };
 
 const MAP_EMBED_URL =
@@ -15,6 +15,9 @@ const MAP_EMBED_URL =
 
 const DIRECTIONS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=12.8476486,77.6424096";
+
+const INSTAGRAM_URL =
+  "https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw==";
 
 export default function ContactPage() {
   return (
@@ -26,7 +29,7 @@ export default function ContactPage() {
           <div className="max-w-5xl mx-auto px-6 text-center">
             <span className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-candy border border-candy/20 shadow-sm mb-6">
               <MapPin size={14} className="text-candy" />
-              NeoTown Road, Electronic City Phase 1
+              Bettadasanapura, Vittasandra, Electronic City
             </span>
             <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-[#3a2e4d]">
               Visit & Connect With <span className="text-candy">Kaylan</span> 📍
@@ -51,7 +54,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Our Campus Address</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1 leading-relaxed">
-                      Plot #14, NeoTown Road, Electronic City Phase 1, Bangalore, Karnataka — 560100
+                      30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100
                     </p>
                   </div>
                 </div>
@@ -63,8 +66,8 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Direct Phone & WhatsApp</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1">
-                      <a href="tel:+919886012345" className="hover:text-candy font-semibold">
-                        +91 98860 12345
+                      <a href="tel:+919663630221" className="hover:text-candy font-semibold">
+                        +91 96636 30221
                       </a>
                     </p>
                   </div>
@@ -76,8 +79,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Admissions Desk Email</h4>
-                    <p className="text-xs text-[#5b4b6b] mt-1">
-                      <a href="mailto:admissions@kaylanpreschool.com" className="hover:text-candy font-semibold">
+                    <p className="text-xs text-[#5b4b6b] mt-1 space-y-0.5">
+                      <a href="mailto:kpsdc01@gmail.com" className="hover:text-candy font-semibold block">
+                        kpsdc01@gmail.com
+                      </a>
+                      <a href="mailto:admissions@kaylanpreschool.com" className="text-[#8a7a9a] hover:text-candy block text-[11px]">
                         admissions@kaylanpreschool.com
                       </a>
                     </p>
@@ -91,9 +97,9 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Campus Visiting Hours</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1 leading-relaxed">
-                      Monday – Friday: <strong>8:30 AM – 6:30 PM</strong>
+                      Monday – Friday: <strong>8:30 AM – 3:30 PM</strong> (Daycare till 6:30 PM)
                       <br />
-                      Saturday: <strong>9:00 AM – 2:00 PM</strong> (Walkthroughs by appointment)
+                      Saturday: <strong>9:00 AM – 1:00 PM</strong> (Walkthroughs by appointment)
                       <br />
                       Sunday & Public Holidays: <em>Closed</em>
                     </p>
@@ -105,16 +111,33 @@ export default function ContactPage() {
               <div className="bg-[#E8F8EE] border border-leaf/30 p-6 rounded-3xl flex items-center justify-between gap-4">
                 <div>
                   <h4 className="font-heading font-bold text-sm text-[#1B4D3E]">Prefer Instant Chat?</h4>
-                  <p className="text-xs text-[#2D6A4F] mt-0.5">Chat directly with our principal on WhatsApp.</p>
+                  <p className="text-xs text-[#2D6A4F] mt-0.5">Chat directly with our team on WhatsApp.</p>
                 </div>
                 <a
-                  href="https://wa.me/919886012345?text=Hello%20Kaylan%20Preschool!%20I%20would%20like%20to%20enquire%20about%20admissions."
+                  href="https://wa.me/919663630221?text=Hello%20Kaylan%20Preschool!%20I%20would%20like%20to%20enquire%20about%20admissions."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-leaf text-white font-heading font-bold px-4 py-2.5 rounded-full text-xs shadow-md hover:bg-leaf/90 transition-all flex items-center gap-1.5 shrink-0"
                 >
                   <MessageCircle size={15} />
                   Chat Now
+                </a>
+              </div>
+
+              {/* Instagram Handle Action */}
+              <div className="bg-gradient-to-r from-pink-50 to-amber-50 border border-pink-200 p-6 rounded-3xl flex items-center justify-between gap-4">
+                <div>
+                  <h4 className="font-heading font-bold text-sm text-[#3a2e4d]">Follow on Instagram</h4>
+                  <p className="text-xs text-[#d62976] font-semibold mt-0.5">@kaylanpreschoolanddaycare</p>
+                </div>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-[#d62976] to-[#fa7e1e] text-white font-heading font-bold px-4 py-2.5 rounded-full text-xs shadow-md hover:opacity-90 transition-all flex items-center gap-1.5 shrink-0"
+                >
+                  <Instagram size={15} />
+                  Follow
                 </a>
               </div>
             </div>
@@ -135,7 +158,7 @@ export default function ContactPage() {
                   Find Us on Google Maps
                 </h3>
                 <p className="text-xs text-[#5b4b6b] mt-1">
-                  Conveniently situated on NeoTown Road, 5 minutes from Infosys, Wipro, and Electronic City Phase 1 toll.
+                  Located at 30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru 560100 (Google Plus Code: RJXR+3X).
                 </p>
               </div>
               <a

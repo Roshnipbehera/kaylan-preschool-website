@@ -42,8 +42,8 @@ const GOOGLE_MAPS_DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destinati
 
 export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookTourModalProps) {
   const { data } = usePublicSettings();
-  const rawPhone = data?.contactPhone || "+91 98860 12345";
-  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919886012345";
+  const rawPhone = data?.contactPhone || "+91 96636 30221";
+  const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
 
   const [parentName, setParentName] = useState("");
   const [parentPhone, setParentPhone] = useState("");
@@ -137,7 +137,7 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
                     <input
                       type="tel"
                       required
-                      placeholder="+91 98860 12345"
+                      placeholder="+91 96636 30221"
                       value={parentPhone}
                       onChange={(e) => setParentPhone(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-sm font-body text-[#3a2e4d] focus:bg-white focus:outline-none focus:ring-2 focus:ring-candy"
@@ -199,7 +199,7 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
                   <div className="p-3 bg-gray-50 rounded-xl border border-gray-200 text-[11px] text-[#5b4b6b] flex items-center justify-between">
                     <span className="flex items-center gap-1.5 font-heading">
                       <MapPin size={13} className="text-candy" />
-                      Electronic City Phase 1 / Rayasandra
+                      Bettadasanapura, Electronic City Phase 1
                     </span>
                     <a
                       href={GOOGLE_MAPS_DIRECTIONS}

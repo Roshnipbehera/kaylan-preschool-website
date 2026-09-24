@@ -1,7 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Instagram, ExternalLink } from "lucide-react";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
+import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
 import type { GalleryContent } from "@/lib/types/cms";
 
 const SEED: GalleryContent = {
@@ -19,39 +21,46 @@ const SEED: GalleryContent = {
 
 const MOMENTS = [
   {
-    title: "Outdoor Garden Play & Adventure",
-    tag: "Gross Motor & Sports",
+    title: "Morning Campus Gate Arrival",
+    tag: "Campus Life",
+    desc: "Joyful footsteps & warm greetings entering school each morning",
     src: "/images/gallery-outdoor.jpg",
   },
   {
-    title: "Creative Painting & Expression",
-    tag: "Fine Motor & Arts",
-    src: "/images/gallery-art.jpg",
-  },
-  {
-    title: "Music, Rhythm & Circle Time",
-    tag: "Social & Musical",
+    title: "Koki's Little Yogis",
+    tag: "Mindful Movement",
+    desc: "Morning stretches, balance exercises & breathing with Mascot Koki",
     src: "/images/gallery-music.jpg",
   },
   {
-    title: "Sensory STEM & Nature Discovery",
-    tag: "Montessori Science",
+    title: "Little Veggie Scientists",
+    tag: "Experiential Learning",
+    desc: "Tactile discovery, texture exploration & botanical curiosity",
     src: "/images/gallery-stem.jpg",
   },
   {
-    title: "Storybook Reading & Cozy Nook",
-    tag: "Language & Phonics",
+    title: "Fine Motor Skills & Threading",
+    tag: "Montessori Skills",
+    desc: "Precision dexterity, finger grip & concentration development",
     src: "/images/gallery-reading.jpg",
   },
   {
-    title: "Architectural Wooden Block Play",
-    tag: "Spatial Reasoning",
+    title: "Festive Onam Pookalam",
+    tag: "Cultural Harmony",
+    desc: "Traditional floral rangoli handmade with pride by our students",
     src: "/images/gallery-blocks.jpg",
+  },
+  {
+    title: "Little Tricolour Geniuses",
+    tag: "Independence Day",
+    desc: "Joyous celebrations, tricolour crafts & national spirit",
+    src: "/images/gallery-art.jpg",
   },
 ];
 
 export default function Gallery() {
   const { data } = useCmsSection("gallery", SEED);
+  const { data: settings } = usePublicSettings();
   return (
     <section id="gallery" className="relative py-24 bg-[#EAF8FF]">
       <div className="max-w-6xl mx-auto px-6 text-center">
@@ -81,10 +90,32 @@ export default function Gallery() {
                 </span>
               </div>
               <p className="text-sm font-heading font-bold text-[#3a2e4d] mt-3">{m.title}</p>
-              <p className="text-[11px] text-[#8a7a9a] mt-0.5">Kaylan Campus Moment #{i + 1}</p>
+              <p className="text-xs text-[#5b4b6b] mt-1 leading-snug">{m.desc}</p>
+              <p className="text-[10px] text-[#8a7a9a] mt-2 font-mono">Kaylan Verified Moment #{i + 1}</p>
             </motion.div>
           ))}
         </div>
+
+        {/* Official Instagram CTA */}
+        {settings.instagramUrl && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-14 inline-block"
+          >
+            <a
+              href={settings.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#d62976] via-[#fa7e1e] to-[#feda75] hover:opacity-95 text-white font-heading font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all text-sm"
+            >
+              <Instagram className="w-5 h-5" />
+              <span>Follow @kaylanpreschoolanddaycare on Instagram</span>
+              <ExternalLink className="w-4 h-4 ml-1 opacity-90" />
+            </a>
+          </motion.div>
+        )}
       </div>
     </section>
   );
