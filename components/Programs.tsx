@@ -40,7 +40,7 @@ const PROGRAM_DETAILS: Record<string, { desc: string; focus: string[]; timing: s
   },
   "Daycare & After-School": {
     desc: "Loving, secure extended care and engaging after-school hobby clubs for working parents.",
-    focus: ["Nutritious warm meals & snacks", "Sanitized rest & nap pods", "Homework help & sports clubs"],
+    focus: ["Individual rest & nap pods", "Homework guidance & reading", "Sports & creative hobby clubs"],
     timing: "8:30 AM – 6:30 PM",
   },
 };

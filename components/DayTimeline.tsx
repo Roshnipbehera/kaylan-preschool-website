@@ -61,10 +61,10 @@ const DAY: DayScheduleItem[] = [
   },
   {
     time: "12:45 PM",
-    label: "Hot Lunch & Relaxation",
-    emoji: "🍲",
-    desc: "Warm wholesome meal enjoyed family-style, followed by soothing quiet time and gentle wind-down.",
-    tag: "Nourishment & Self-Care",
+    label: "Lunch Box Time & Mindful Table Grace",
+    emoji: "🍱",
+    desc: "Children enjoy their home-packed lunch together family-style, practicing table manners, clean hands, and gentle social conversation.",
+    tag: "Social Table Grace",
     tagColor: "bg-[#F0FDF4] text-[#166534]",
   },
   {
@@ -152,12 +152,12 @@ export default function DayTimeline() {
             Working Parents? Extended Daycare till 6:30 PM 🧸
           </h3>
           <p className="text-sm text-[#5b4b6b] max-w-2xl mx-auto mb-6 leading-relaxed">
-            Our nurturing daycare wing offers evening milk & healthy snack, homework assistance, guided crafts, quiet reading nooks, and fun indoor games under loving adult care.
+            Our nurturing daycare wing offers individual sanitized nap suites, homework assistance, guided crafts, quiet reading nooks, and fun indoor games under loving adult care.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-xs font-heading font-bold text-[#3a2e4d]">
             <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🛡️ Verified Female Staff</span>
             <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">📹 24/7 CCTV Safe Campus</span>
-            <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🍎 Organic Snacks Included</span>
+            <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🧸 Sanitized Nap Pods</span>
           </div>
         </motion.div>
       </div>

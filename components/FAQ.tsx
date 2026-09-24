@@ -28,7 +28,7 @@ const SEED: FaqContent = {
     },
     {
       q: "Do you offer full-day daycare and after-school programs?",
-      a: "Yes! Our daycare and after-school facilities operate from 8:30 AM to 6:30 PM for children aged 1 to 10 years. It includes nutritious warm lunch and evening snacks, quiet nap pods in sanitized individual cots, school homework assistance, guided hobby workshops, and outdoor lawn sports.",
+      a: "Yes! Our daycare and after-school facilities operate from 8:30 AM to 6:30 PM for children aged 1 to 10 years. It includes quiet nap pods in sanitized individual cots, school homework assistance, guided hobby workshops, and outdoor lawn sports (parents send child's home-packed food and snacks according to their dietary preference).",
     },
     {
       q: "How do you handle hygiene, sanitization, and health emergencies?",

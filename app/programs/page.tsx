@@ -94,12 +94,12 @@ const PROGRAMS = [
     badgeColor: "bg-sunshine/30 text-[#6B5300] border-sunshine/40",
     bgGradient: "from-sunshine/10 via-white to-white",
     description:
-      "Designed specifically for working parents in Electronic City. A loving, secure sanctuary with freshly cooked warm meals, quiet sleep zones, and supervised child-centric recreation for ages 1 to 10 years.",
+      "Designed specifically for working parents in Electronic City. A loving, secure sanctuary with quiet rest zones, gentle caregiver assistance, and supervised child-centric recreation for ages 1 to 10 years.",
     highlights: [
-      "Nutritious, hygienic hot lunch and fresh evening snacks",
       "Comfortable nap sanctuary with individual sanitized cots",
       "Gentle toddler care, diapering support & potty assistance",
       "Supervised playtime & screen-free creative activities",
+      "Assistance and care during home-packed snack and lunch times",
       "Live CCTV monitored premises with strict safety logging",
     ],
   },
@@ -118,7 +118,7 @@ const PROGRAMS = [
       "Creative arts, origami, pottery, and craft studio",
       "Cognitive board games: chess, scrabble, and logic puzzles",
       "Lawn sports, badminton, and active physical play",
-      "Fresh evening milk, healthy protein snacks, and safe pickup",
+      "Home-packed snack break, indoor games, and safe parent pickup",
     ],
   },
 ];
@@ -127,11 +127,11 @@ const DAILY_SCHEDULE = [
   { time: "08:30 AM – 09:00 AM", event: "Warm Welcome & Free Choice Exploration", desc: "Children transition calmly, choose a Montessori learning tray, and greet friends." },
   { time: "09:00 AM – 09:30 AM", event: "Morning Circle & Rhymes", desc: "Calendar, weather check, theme song, breathing exercises, and conversational circle." },
   { time: "09:30 AM – 10:30 AM", event: "Kreedo & Montessori Work Cycle", desc: "Uninterrupted hands-on session focusing on literacy, numeracy, and sensorial apparatus." },
-  { time: "10:30 AM – 11:00 AM", event: "Healthy Snack & Social Grace", desc: "Mindful eating habits, table manners, washing hands, and pleasant chatter." },
+  { time: "10:30 AM – 11:00 AM", event: "Snack Break & Social Grace", desc: "Mindful eating of home-packed snack, table manners, washing hands, and pleasant chatter." },
   { time: "11:00 AM – 11:45 AM", event: "Outdoor Adventure & Gross Motor", desc: "Turf playground, wooden obstacle balance beams, tricycle track, and sandpit fun." },
   { time: "11:45 AM – 12:30 PM", event: "Art, Music & Creative Studio", desc: "Finger-painting, clay modeling, percussion rhythm instruments, and dramatic play." },
   { time: "12:30 PM – 01:00 PM", event: "Storybook Nook & Reflection", desc: "Puppet theatre, interactive read-alouds, vocabulary game, and dismissal for morning shifts." },
-  { time: "01:00 PM – 06:30 PM", event: "Daycare Lunch, Rest & Evening Clubs", desc: "Warm lunch, nap time, afternoon snack, outdoor recreation, and creative hobby clubs." },
+  { time: "01:00 PM – 06:30 PM", event: "Daycare Rest, Play & Evening Clubs", desc: "Afternoon nap time in sanitized pods, home-sent refreshment break, outdoor recreation, and creative hobby clubs." },
 ];
 
 export default function ProgramsPage() {

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Sparkles, ShieldCheck, Sun, Wind, Camera, Sparkle, HeartHandshake, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WeeklyMenu from "@/components/WeeklyMenu";
 
 export const metadata: Metadata = {
   title: "Campus Facilities & Safety",
@@ -131,9 +130,6 @@ export default function FacilitiesPage() {
             ))}
           </div>
         </section>
-
-        {/* In-House Certified Kitchen Weekly Meal Plan */}
-        <WeeklyMenu />
 
         {/* Safety First Section */}
         <section className="py-20 bg-[#F0FDF4]/60 border-y border-leaf/20">
