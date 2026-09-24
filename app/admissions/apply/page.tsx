@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { AdmissionApplyForm } from "@/components/admissions/AdmissionApplyForm";
 
@@ -21,7 +22,9 @@ export default function AdmissionApplyPage() {
           <p className="text-center text-[#5b4b6b] mb-10">
             Five quick steps to start your child&apos;s journey with Kaylan Preschool.
           </p>
-          <AdmissionApplyForm />
+          <Suspense fallback={<div className="text-center py-12 text-[#5b4b6b]">Loading application form...</div>}>
+            <AdmissionApplyForm />
+          </Suspense>
         </div>
       </main>
       <Footer />

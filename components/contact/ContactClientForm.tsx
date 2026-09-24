@@ -8,6 +8,7 @@ import { Send, CheckCircle2, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useToast } from "@/lib/hooks/useToast";
+import { createContactInquiry } from "@/lib/api/contact";
 
 const contactFormSchema = z.object({
   parentName: z.string().min(2, "Parent name is required"),
@@ -44,12 +45,27 @@ export function ContactClientForm() {
 
   const onSubmit = async (values: ContactFormValues) => {
     setLoading(true);
-    // Simulate brief network submission
-    await new Promise((res) => setTimeout(res, 800));
-    setLoading(false);
-    setSubmitted(true);
-    toast.success("Thank you! Our Admissions Counsellor will call you within 24 hours.");
-    reset();
+    try {
+      const fullMessage = [
+        values.program ? `Program: ${values.program}` : null,
+        values.childAge ? `Child Age: ${values.childAge}` : null,
+        values.email ? `Email: ${values.email}` : null,
+        values.message ? `Notes: ${values.message}` : null,
+      ].filter(Boolean).join(" | ");
+
+      await createContactInquiry({
+        parentName: values.parentName,
+        phone: values.phone,
+        message: fullMessage || "Enquiry from website contact page",
+      });
+      setSubmitted(true);
+      toast.success("Thank you! Our Admissions Counsellor will call you within 24 hours.");
+      reset();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to submit enquiry. Please try again or WhatsApp us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {

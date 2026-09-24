@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
+import { createContactInquiry } from "@/lib/api/contact";
 
 interface BookTourModalProps {
   isOpen: boolean;
@@ -78,6 +79,13 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+
+    // Save lead to database in background
+    createContactInquiry({
+      parentName: parentName || "Campus Walkthrough Parent",
+      phone: parentPhone || "9663630221",
+      message: `Campus Tour Request: Program: ${selectedProgram} | Day: ${visitDay} | Slot: ${selectedSlot}`,
+    }).catch(() => {});
 
     const text = `Hello Kaylan Preschool! I would like to confirm my Campus Tour.\n\n👤 Parent: ${parentName || "Parent"}\n📱 Phone: ${parentPhone || "Not provided"}\n🗓️ Day: ${visitDay}\n⏰ Time: ${selectedSlot.split(" ")[0]} ${selectedSlot.split(" ")[1]}\n🎒 Program: ${selectedProgram}\n\nPlease confirm our appointment and send entrance gate guidance.`;
     const waUrl = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(text)}`;

@@ -70,7 +70,15 @@ export function LoginForm() {
       const user = await login(cleanEmail, values.password, values.role);
       toast.success(`Welcome back, ${user.name}!`);
       const redirectTo = searchParams.get("redirectTo");
-      const target = redirectTo || `/${user.role}`;
+      let target = `/${user.role}`;
+      if (redirectTo && redirectTo.startsWith("/") && !redirectTo.startsWith("//")) {
+        const isMismatchedRole = ["/admin", "/teacher", "/parent"].some(
+          (p) => p !== `/${user.role}` && redirectTo.startsWith(p)
+        );
+        if (!isMismatchedRole) {
+          target = redirectTo;
+        }
+      }
       router.push(target);
       router.refresh();
     } catch (err) {

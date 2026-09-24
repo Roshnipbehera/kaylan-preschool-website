@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
@@ -48,6 +49,7 @@ const DEFAULT_VALUES: CreateAdmissionFormValues = {
 
 export function AdmissionApplyForm() {
   const { user } = useAuth();
+  const searchParams = useSearchParams();
   const toast = useToast();
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
@@ -66,6 +68,22 @@ export function AdmissionApplyForm() {
     defaultValues: DEFAULT_VALUES,
     mode: "onBlur",
   });
+
+  useEffect(() => {
+    const p = searchParams?.get("program")?.toLowerCase();
+    if (!p) return;
+    const PROGRAM_MAP: Record<string, string> = {
+      playgroup: "Playgroup L0 (2-3y)",
+      nursery: "Nursery L1 (3-4y)",
+      "junior-kg": "Junior KG L3 (4-5y)",
+      "senior-kg": "Senior KG L4 (5-6y)",
+      daycare: "Daycare (1-10y)",
+      "after-school": "After-School Program (4-10y)",
+    };
+    if (PROGRAM_MAP[p]) {
+      setValue("child.programApplyingFor", PROGRAM_MAP[p], { shouldValidate: true });
+    }
+  }, [searchParams, setValue]);
 
   const values = watch();
 
