@@ -50,4 +50,4 @@ EXPOSE 4000
 # probe.
 HEALTHCHECK --interval=10s --timeout=5s --retries=5 --start-period=15s \
   CMD wget -qO- http://localhost:4000/health || exit 1
-CMD ["node", "dist/server.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
