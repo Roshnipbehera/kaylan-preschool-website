@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: kaylan-preschool-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    region: singapore # or oregon / frankfurt
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: CLIENT_URL
+        value: https://kaylan-preschool-website.vercel.app
+      - key: DATABASE_URL
+        sync: false # Set manually in Render Dashboard from Supabase/Neon/Render Postgres
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
