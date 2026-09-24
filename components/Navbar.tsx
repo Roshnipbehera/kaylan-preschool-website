@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import BookTourModal from "./BookTourModal";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import type { NavigationContent } from "@/lib/types/cms";
 
@@ -34,10 +35,12 @@ function hrefFor(label: string) {
 export default function Navbar() {
   const { data } = useCmsSection("navigation", SEED);
   const [open, setOpen] = useState(false);
+  const [tourOpen, setTourOpen] = useState(false);
   const ctaLink = data.ctaHref.startsWith("#") ? "/contact" : data.ctaHref;
 
   return (
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <BookTourModal isOpen={tourOpen} onClose={() => setTourOpen(false)} />
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
         <a href="/" className="flex items-center gap-2.5 font-display text-2xl font-bold text-candy group">
           <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-candy/30 bg-sunshine/20">
@@ -60,13 +63,20 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setTourOpen(true)}
+            className="text-xs font-heading font-bold text-candy bg-candy/10 hover:bg-candy/20 px-4 py-2 rounded-full transition-colors flex items-center gap-1.5"
+          >
+            <span>🏫 Book Tour</span>
+          </button>
           <a href="/login" className="text-sm font-heading font-semibold text-[#5b4b6b] hover:text-candy transition-colors">Login</a>
           <motion.a
             href={ctaLink}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.94 }}
-            className="inline-block bg-sunshine text-[#4a3b00] font-heading font-semibold px-5 py-2.5 rounded-full shadow-md"
+            className="inline-block bg-sunshine text-[#4a3b00] font-heading font-semibold px-5 py-2.5 rounded-full shadow-md text-sm"
           >
             {data.ctaLabel}
           </motion.a>
@@ -93,6 +103,16 @@ export default function Navbar() {
               ))}
             </ul>
             <div className="pt-4 border-t border-black/5 flex flex-col gap-2.5 mt-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  setTourOpen(true);
+                }}
+                className="text-center py-2.5 text-sm font-heading font-bold text-candy bg-candy/10 hover:bg-candy/20 rounded-full transition-colors"
+              >
+                🏫 Book a Campus Tour
+              </button>
               <a
                 href="/login"
                 onClick={() => setOpen(false)}

@@ -1,7 +1,9 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Balloon, Butterfly, Cloud, Rainbow, SunFace, Star } from "./FloatingBackground";
+import BookTourModal from "./BookTourModal";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import type { HomeContent } from "@/lib/types/cms";
 
@@ -26,8 +28,11 @@ const BTN_STYLES = [
 
 export default function Hero() {
   const { data } = useCmsSection("home", SEED);
+  const [tourModalOpen, setTourModalOpen] = useState(false);
+
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#BEE7FF] via-[#DCF3FF] to-white pt-6 pb-32">
+      <BookTourModal isOpen={tourModalOpen} onClose={() => setTourModalOpen(false)} />
       <SunFace className="top-6 right-8 opacity-90" />
       <Rainbow className="-top-10 left-1/2 -translate-x-1/2 hidden sm:block" />
       <Cloud className="top-20 left-0 opacity-90" delay={0} />
@@ -85,17 +90,34 @@ export default function Hero() {
           transition={{ delay: 0.5 }}
           className="mt-10 flex flex-wrap justify-center gap-4"
         >
-          {data.buttons.map((b, i) => (
-            <motion.a
-              key={b.label}
-              whileHover={{ scale: 1.07, rotate: i % 2 ? 1 : -1 }}
-              whileTap={{ scale: 0.94 }}
-              href={b.href}
-              className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base`}
-            >
-              {b.emoji} {b.label}
-            </motion.a>
-          ))}
+          {data.buttons.map((b, i) => {
+            const isTourBtn = b.label.toLowerCase().includes("tour");
+            if (isTourBtn) {
+              return (
+                <motion.button
+                  key={b.label}
+                  type="button"
+                  onClick={() => setTourModalOpen(true)}
+                  whileHover={{ scale: 1.07, rotate: i % 2 ? 1 : -1 }}
+                  whileTap={{ scale: 0.94 }}
+                  className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base cursor-pointer`}
+                >
+                  {b.emoji} {b.label}
+                </motion.button>
+              );
+            }
+            return (
+              <motion.a
+                key={b.label}
+                whileHover={{ scale: 1.07, rotate: i % 2 ? 1 : -1 }}
+                whileTap={{ scale: 0.94 }}
+                href={b.href}
+                className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base`}
+              >
+                {b.emoji} {b.label}
+              </motion.a>
+            );
+          })}
         </motion.div>
 
         {/* Visual Showcase: Real Classroom Photography with Floating Stat Badges */}
