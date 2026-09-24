@@ -54,7 +54,7 @@ export default function FloatingButtons() {
           animate={{ y: [0, -5, 0] }}
           transition={{ y: { duration: 2.2, repeat: Infinity } }}
         >
-          <MessageCircle size={26} className="text-[#3a2e4d]" />
+          <MessageCircle size={26} className="text-white" />
         </motion.a>
         <motion.a
           href={telHref}
