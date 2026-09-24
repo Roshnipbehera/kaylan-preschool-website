@@ -176,7 +176,19 @@ export function AdmissionApplyForm() {
                   </select>
                 </FormField>
                 <FormField>
-                  <Input label="Program Applying For" placeholder="e.g. Toddler, Nursery, Pre-K" {...register("child.programApplyingFor")} error={errors.child?.programApplyingFor?.message} />
+                  <label className="mb-1.5 block font-heading text-sm font-semibold text-[#3a2e4d]">Program Applying For</label>
+                  <select {...register("child.programApplyingFor")} className="w-full rounded-2xl border-2 border-lavender/40 bg-white px-4 py-2.5 text-xs text-[#3a2e4d] focus:outline-none focus:ring-2 focus:ring-candy">
+                    <option value="">Select Program</option>
+                    <option value="Playgroup L0 (2-3y)">Playgroup L0 (2 – 3 Years)</option>
+                    <option value="Nursery L1 (3-4y)">Nursery L1 (3 – 4 Years)</option>
+                    <option value="Junior KG L3 (4-5y)">Junior KG L3 (4 – 5 Years)</option>
+                    <option value="Senior KG L4 (5-6y)">Senior KG L4 (5 – 6 Years)</option>
+                    <option value="Daycare (1-10y)">Extended Daycare (Ages 1 – 10 Years)</option>
+                    <option value="After-School Program (4-10y)">After-School Program (Ages 4 – 10 Years)</option>
+                  </select>
+                  {errors.child?.programApplyingFor?.message && (
+                    <p className="mt-1 text-xs text-red-500">{errors.child.programApplyingFor.message}</p>
+                  )}
                 </FormField>
                 <FormField>
                   <Input label="Nationality" {...register("child.nationality")} error={errors.child?.nationality?.message} />

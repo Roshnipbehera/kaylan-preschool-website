@@ -14,6 +14,12 @@ export const metadata: Metadata = {
 
 const FACILITIES = [
   {
+    title: "Reception & Indoor Activity Lounge",
+    icon: Sparkles,
+    image: "/images/gmaps-campus-reception.jpg",
+    desc: "A warm, cheerful entrance and welcome lounge featuring authentic hand-painted storybook murals, child-height reception benches, and an active discovery play floor.",
+  },
+  {
     title: "10,000 Sq.Ft Lush Green Campus",
     icon: Sun,
     image: "/images/gallery-outdoor.jpg",
@@ -38,16 +44,10 @@ const FACILITIES = [
     desc: "Spacious studio featuring twin painting easels, non-toxic organic clay, child-safe watercolor stations, and Orff percussion instruments for rhythm and movement.",
   },
   {
-    title: "STEM & Nature Discovery Corner",
-    icon: Wind,
-    image: "/images/gallery-stem.jpg",
-    desc: "Magnifying inspection tables, living plant terrariums, light refraction mirrors, and safe water discovery trays to awaken the budding young scientist.",
-  },
-  {
-    title: "Daycare Sleep Sanctuary",
+    title: "Daycare & After-School Sanctuary",
     icon: HeartHandshake,
     image: "/images/gallery-music.jpg",
-    desc: "Quiet, climate-controlled rest suite with individual sanitized wooden cots, white noise soundscapes, and vigilant 1-on-1 caregiver supervision for deep afternoon slumber.",
+    desc: "Quiet, climate-controlled rest suite with individual sanitized wooden cots, homework guidance stations, and loving caregiver supervision for ages 1 to 10 years till 6:30 PM.",
   },
 ];
 

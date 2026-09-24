@@ -142,11 +142,12 @@ export function ContactClientForm() {
               className="w-full rounded-2xl border-2 border-lavender/40 bg-white px-4 py-2.5 font-body text-xs text-[#3a2e4d] focus:outline-none focus:ring-2 focus:ring-candy focus:border-candy"
             >
               <option value="">Select Program</option>
-              <option value="Playgroup">Playgroup (1.5 – 2.5 yrs)</option>
-              <option value="Nursery">Nursery (2.5 – 3.5 yrs)</option>
-              <option value="Junior KG">Junior KG (3.5 – 4.5 yrs)</option>
-              <option value="Senior KG">Senior KG (4.5 – 5.5 yrs)</option>
-              <option value="Daycare">Daycare (until 6:30 PM)</option>
+              <option value="Playgroup L0">Playgroup L0 (2 – 3 yrs)</option>
+              <option value="Nursery L1">Nursery L1 (3 – 4 yrs)</option>
+              <option value="Junior KG L3">Junior KG L3 (4 – 5 yrs)</option>
+              <option value="Senior KG L4">Senior KG L4 (5 – 6 yrs)</option>
+              <option value="Daycare">Daycare (Ages 1 – 10 yrs · till 6:30 PM)</option>
+              <option value="After-School Program">After-School Program (Ages 4 – 10 yrs)</option>
               <option value="Campus Tour">General Campus Tour</option>
             </select>
             {errors.program && <p className="text-[11px] text-red-500 font-semibold mt-1">{errors.program.message}</p>}

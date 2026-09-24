@@ -1,4 +1,4 @@
-﻿node_modules/
+node_modules/
 backend/node_modules/
 .next/
 backend/dist/
@@ -8,3 +8,4 @@ backend/.env
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
+scratch/

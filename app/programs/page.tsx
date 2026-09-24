@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 const PROGRAMS = [
   {
     id: "playgroup",
-    title: "Playgroup (Toddlers)",
-    age: "1.5 – 2.5 Years",
+    title: "Playgroup (L0)",
+    age: "2 – 3 Years",
     timing: "8:30 AM – 12:00 PM",
-    badge: "First Steps",
+    badge: "Level 0 · First Steps",
     badgeColor: "bg-candy/15 text-candy border-candy/30",
     bgGradient: "from-candy/10 via-white to-white",
     description:
@@ -33,10 +33,10 @@ const PROGRAMS = [
   },
   {
     id: "nursery",
-    title: "Nursery",
-    age: "2.5 – 3.5 Years",
+    title: "Nursery (L1)",
+    age: "3 – 4 Years",
     timing: "8:30 AM – 12:30 PM",
-    badge: "Wonder Years",
+    badge: "Level 1 · Wonder Years",
     badgeColor: "bg-sky/20 text-sky border-sky/30",
     bgGradient: "from-sky/10 via-white to-white",
     description:
@@ -51,10 +51,10 @@ const PROGRAMS = [
   },
   {
     id: "junior-kg",
-    title: "Junior KG (LKG)",
-    age: "3.5 – 4.5 Years",
+    title: "Junior KG (L3)",
+    age: "4 – 5 Years",
     timing: "8:30 AM – 1:00 PM",
-    badge: "Little Thinkers",
+    badge: "Level 3 · Little Thinkers",
     badgeColor: "bg-leaf/20 text-leaf border-leaf/30",
     bgGradient: "from-leaf/10 via-white to-white",
     description:
@@ -69,10 +69,10 @@ const PROGRAMS = [
   },
   {
     id: "senior-kg",
-    title: "Senior KG (UKG)",
-    age: "4.5 – 5.5 Years",
+    title: "Senior KG (L4)",
+    age: "5 – 6 Years",
     timing: "8:30 AM – 1:30 PM",
-    badge: "Future Ready",
+    badge: "Level 4 · School Ready",
     badgeColor: "bg-lavender/25 text-[#7C3AED] border-lavender/40",
     bgGradient: "from-lavender/10 via-white to-white",
     description:
@@ -87,20 +87,38 @@ const PROGRAMS = [
   },
   {
     id: "daycare",
-    title: "Extended Daycare & After-School",
-    age: "1.5 – 8 Years",
-    timing: "Until 6:30 PM (Flexible Shifts)",
-    badge: "Home Away From Home",
+    title: "Daycare (Toddlers to Primary)",
+    age: "1 Year – 10 Years",
+    timing: "8:30 AM – 6:30 PM (Flexible Shifts)",
+    badge: "Loving Home Away From Home",
     badgeColor: "bg-sunshine/30 text-[#6B5300] border-sunshine/40",
     bgGradient: "from-sunshine/10 via-white to-white",
     description:
-      "Designed specifically for working parents in Electronic City. A loving, secure home with freshly cooked warm meals, quiet sleep zones, and supervised recreation.",
+      "Designed specifically for working parents in Electronic City. A loving, secure sanctuary with freshly cooked warm meals, quiet sleep zones, and supervised child-centric recreation for ages 1 to 10 years.",
     highlights: [
-      "Nutritious, hygienic hot snacks & milk routines",
+      "Nutritious, hygienic hot lunch and fresh evening snacks",
       "Comfortable nap sanctuary with individual sanitized cots",
-      "Supervised homework assistance for older children",
-      "Evening sports: lawn games, indoor chess, dance & karate",
+      "Gentle toddler care, diapering support & potty assistance",
+      "Supervised playtime & screen-free creative activities",
       "Live CCTV monitored premises with strict safety logging",
+    ],
+  },
+  {
+    id: "after-school",
+    title: "After-School Program",
+    age: "4 – 10 Years",
+    timing: "1:30 PM – 6:30 PM (Mon – Fri)",
+    badge: "Homework & Enrichment",
+    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    bgGradient: "from-emerald-50/40 via-white to-white",
+    description:
+      "A structured, productive, and joyful evening haven for primary schoolers returning from school. We provide personalized homework assistance, creative hobby workshops, and outdoor physical sports.",
+    highlights: [
+      "Dedicated mentor supervision for daily homework, reading & school projects",
+      "Creative arts, origami, pottery, and craft studio",
+      "Cognitive board games: chess, scrabble, and logic puzzles",
+      "Lawn sports, badminton, and active physical play",
+      "Fresh evening milk, healthy protein snacks, and safe pickup",
     ],
   },
 ];

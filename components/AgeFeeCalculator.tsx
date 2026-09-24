@@ -33,10 +33,10 @@ interface GradeEligibility {
 const GRADES: Record<string, GradeEligibility> = {
   playgroup: {
     id: "playgroup",
-    name: "Playgroup (Toddlers)",
+    name: "Playgroup (L0)",
     badge: "First Steps 🐥",
     badgeBg: "bg-candy/15 text-candy border-candy/30",
-    ageRange: "1.5 – 2.5 Years",
+    ageRange: "2 – 3 Years",
     timings: "9:00 AM – 12:00 PM (Mon – Fri)",
     ratio: "1:6 (Dedicated Caretaker & Guide)",
     baseQuarterlyFee: 18500,
@@ -46,10 +46,10 @@ const GRADES: Record<string, GradeEligibility> = {
   },
   nursery: {
     id: "nursery",
-    name: "Nursery",
+    name: "Nursery (L1)",
     badge: "Wonder Years 🌱",
     badgeBg: "bg-sky/20 text-[#0c5460] border-sky/30",
-    ageRange: "2.5 – 3.5 Years",
+    ageRange: "3 – 4 Years",
     timings: "8:30 AM – 12:30 PM (Mon – Fri)",
     ratio: "1:8 (Lead Educator & Care Assistant)",
     baseQuarterlyFee: 21000,
@@ -59,10 +59,10 @@ const GRADES: Record<string, GradeEligibility> = {
   },
   "junior-kg": {
     id: "junior-kg",
-    name: "Junior KG (LKG)",
+    name: "Junior KG (L3)",
     badge: "Little Thinkers 🚀",
     badgeBg: "bg-leaf/20 text-[#2b6118] border-leaf/30",
-    ageRange: "3.5 – 4.5 Years",
+    ageRange: "4 – 5 Years",
     timings: "8:30 AM – 1:00 PM (Mon – Fri)",
     ratio: "1:8 (Montessori Certified Guide)",
     baseQuarterlyFee: 23500,
@@ -72,10 +72,10 @@ const GRADES: Record<string, GradeEligibility> = {
   },
   "senior-kg": {
     id: "senior-kg",
-    name: "Senior KG (UKG)",
+    name: "Senior KG (L4)",
     badge: "School Ready 🎓",
     badgeBg: "bg-sunshine/20 text-[#7a4e00] border-sunshine/40",
-    ageRange: "4.5 – 5.5+ Years",
+    ageRange: "5 – 6 Years",
     timings: "8:30 AM – 1:30 PM (Mon – Fri)",
     ratio: "1:10 (Grade 1 Bridge Mentors)",
     baseQuarterlyFee: 25000,
@@ -87,8 +87,9 @@ const GRADES: Record<string, GradeEligibility> = {
 
 const DAYCARE_OPTIONS = [
   { id: "none", label: "No Daycare (Preschool Only)", feeQuarterly: 0, feeAnnual: 0, hours: "Preschool Hours Only" },
-  { id: "half", label: "Half-Day Daycare (Till 3:30 PM)", feeQuarterly: 9500, feeAnnual: 34000, hours: "Till 3:30 PM · Includes Nap & Hot Lunch" },
-  { id: "full", label: "Extended Full-Day Daycare (Till 6:30 PM)", feeQuarterly: 16500, feeAnnual: 60000, hours: "Till 6:30 PM · Includes Lunch, Nap & Evening Snack" },
+  { id: "half", label: "Half-Day Daycare (Ages 1–10 Yrs · Till 3:30 PM)", feeQuarterly: 9500, feeAnnual: 34000, hours: "Till 3:30 PM · Warm lunch, nap pod & care" },
+  { id: "full", label: "Full-Day Extended Daycare (Ages 1–10 Yrs · Till 6:30 PM)", feeQuarterly: 16500, feeAnnual: 60000, hours: "Till 6:30 PM · Lunch, nap, evening snack & recreation" },
+  { id: "after-school", label: "After-School Program (Ages 4–10 Yrs · Till 6:30 PM)", feeQuarterly: 12500, feeAnnual: 45000, hours: "1:30 PM – 6:30 PM · Homework help, sports & hobby clubs" },
 ];
 
 const MONTHS = [
@@ -105,8 +106,8 @@ export default function AgeFeeCalculator() {
   const rawPhone = data?.contactPhone || "+91 96636 30221";
   const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
 
-  // Default to child born in August 2022 (~3.8 yrs at June 2026 = Junior KG)
-  const [birthYear, setBirthYear] = useState<number>(2023);
+  // Default to child born in 2022 (~3.8 yrs at June 2026 = Junior KG)
+  const [birthYear, setBirthYear] = useState<number>(2022);
   const [birthMonth, setBirthMonth] = useState<number>(3); // April
   const [daycareOption, setDaycareOption] = useState<string>("none");
   const [billingCycle, setBillingCycle] = useState<"quarterly" | "annual">("quarterly");
@@ -124,20 +125,20 @@ export default function AgeFeeCalculator() {
     let gradeKey = "nursery";
     let statusMsg = "";
 
-    if (totalDecimal < 1.5) {
+    if (totalDecimal < 2.0) {
       gradeKey = "playgroup";
-      statusMsg = "Your toddler is below 1.5 years on June 1, 2026. Pre-registration or infant daycare is available!";
-    } else if (totalDecimal >= 1.5 && totalDecimal < 2.5) {
+      statusMsg = "Toddler is under 2 years on June 1, 2026. Toddler Daycare (from 1 year) and advance reservations are available!";
+    } else if (totalDecimal >= 2.0 && totalDecimal < 3.0) {
       gradeKey = "playgroup";
-    } else if (totalDecimal >= 2.5 && totalDecimal < 3.5) {
+    } else if (totalDecimal >= 3.0 && totalDecimal < 4.0) {
       gradeKey = "nursery";
-    } else if (totalDecimal >= 3.5 && totalDecimal < 4.5) {
+    } else if (totalDecimal >= 4.0 && totalDecimal < 5.0) {
       gradeKey = "junior-kg";
-    } else if (totalDecimal >= 4.5 && totalDecimal <= 5.8) {
+    } else if (totalDecimal >= 5.0 && totalDecimal <= 6.0) {
       gradeKey = "senior-kg";
     } else {
       gradeKey = "senior-kg";
-      statusMsg = "Child is over 5.8 years! Eligible for Senior KG or direct primary school Grade 1 entrance.";
+      statusMsg = "Child is over 6 years! Eligible for primary school Grade 1 entrance + our After-School Program (up to 10 years).";
     }
 
     return {
@@ -195,8 +196,8 @@ export default function AgeFeeCalculator() {
               <label htmlFor="birth-year-select" className="block text-xs font-heading font-semibold uppercase tracking-wider text-[#5b4b6b] mb-2">
                 Birth Year
               </label>
-              <div className="grid grid-cols-4 gap-2">
-                {[2024, 2023, 2022, 2021, 2020].map((yr) => (
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                {[2025, 2024, 2023, 2022, 2021, 2020].map((yr) => (
                   <button
                     key={yr}
                     type="button"

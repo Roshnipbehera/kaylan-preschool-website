@@ -12,7 +12,7 @@ const SEED: FaqContent = {
   faqs: [
     {
       q: "What age groups does Kaylan Preschool accept?",
-      a: "We welcome children aged 1.5 to 6 years across our four foundational programs: Playgroup (1.5 – 2.5 yrs), Nursery (2.5 – 3.5 yrs), Junior KG (3.5 – 4.5 yrs), and Senior KG (4.5 – 6 yrs).",
+      a: "We welcome children from 1 to 10 years across our core academic and extended programs: Playgroup L0 (2 – 3 yrs), Nursery L1 (3 – 4 yrs), Junior KG L3 (4 – 5 yrs), Senior KG L4 (5 – 6 yrs), Extended Daycare (1 – 10 yrs), and After-School Program (4 – 10 yrs).",
     },
     {
       q: "What curriculum and teaching methodology do you follow?",
@@ -27,8 +27,8 @@ const SEED: FaqContent = {
       a: "Yes. Our campus is fully monitored 24/7 by high-definition CCTV cameras covering all indoor classrooms, corridors, dining halls, and outdoor play areas. Safety protocols include strict visitor logs and security verification at entry gates.",
     },
     {
-      q: "Do you offer full-day daycare and extended care hours?",
-      a: "Yes! Our daycare operates from 8:30 AM to 6:30 PM. It includes nutritious organic evening snacks, supervised nap time in sanitized individual cots, homework help, guided art/craft activities, and free play.",
+      q: "Do you offer full-day daycare and after-school programs?",
+      a: "Yes! Our daycare and after-school facilities operate from 8:30 AM to 6:30 PM for children aged 1 to 10 years. It includes nutritious warm lunch and evening snacks, quiet nap pods in sanitized individual cots, school homework assistance, guided hobby workshops, and outdoor lawn sports.",
     },
     {
       q: "How do you handle hygiene, sanitization, and health emergencies?",

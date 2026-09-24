@@ -9,39 +9,48 @@ const SEED: ProgramsContent = {
   heading: "Our Little Houses 🏡",
   subtext: "Each program is a cosy house on our storybook street — hover or tap to peek inside!",
   houses: [
-    { name: "Playgroup", age: "1.5 - 2.5 yrs", color: "#FF8FB1", roof: "#FFD93D" },
-    { name: "Nursery", age: "2.5 - 3.5 yrs", color: "#6EC6FF", roof: "#FFA552" },
-    { name: "Junior KG", age: "3.5 - 4.5 yrs", color: "#7ED957", roof: "#FF8FB1" },
-    { name: "Senior KG", age: "4.5 - 5.5 yrs", color: "#CDB4FF", roof: "#6EC6FF" },
+    { name: "Playgroup (L0)", age: "2 – 3 yrs", color: "#FF8FB1", roof: "#FFD93D" },
+    { name: "Nursery (L1)", age: "3 – 4 yrs", color: "#6EC6FF", roof: "#FFA552" },
+    { name: "Junior KG (L3)", age: "4 – 5 yrs", color: "#7ED957", roof: "#FF8FB1" },
+    { name: "Senior KG (L4)", age: "5 – 6 yrs", color: "#CDB4FF", roof: "#6EC6FF" },
+    { name: "Daycare & After-School", age: "1 – 10 yrs", color: "#FFA552", roof: "#7ED957" },
   ],
 };
 
 const PROGRAM_DETAILS: Record<string, { desc: string; focus: string[]; timing: string }> = {
-  Playgroup: {
-    desc: "A gentle, joyful first step into social learning and sensory discovery.",
-    focus: ["Sensory & tactile play", "Motor skill development", "Social circle & songs"],
+  "Playgroup (L0)": {
+    desc: "A gentle, joyful first step into social learning, sensory discovery, and motor coordination.",
+    focus: ["Sensory & tactile play", "Fine & gross motor skills", "Circle time & rhymes"],
     timing: "8:30 AM – 12:00 PM",
   },
-  Nursery: {
-    desc: "Building confidence, curious vocabulary, and early mathematical concepts.",
-    focus: ["Phonics & language joy", "Kreedo math materials", "Creative art & music"],
+  "Nursery (L1)": {
+    desc: "Building confidence, curious vocabulary, early phonics, and foundational math concepts.",
+    focus: ["Jolly Phonics sounds", "Kreedo math materials", "Storytelling & puppet joy"],
     timing: "8:30 AM – 12:30 PM",
   },
-  "Junior KG": {
-    desc: "Nurturing independent thinking, early reading, and scientific curiosity.",
-    focus: ["Guided reading & writing", "Logic & number skills", "Nature & STEM wonder"],
+  "Junior KG (L3)": {
+    desc: "Nurturing independent thinking, structured writing grip, early reading, and scientific curiosity.",
+    focus: ["Guided phonetic reading", "Math beads & logic", "Nature & mini-STEM experiments"],
     timing: "8:30 AM – 1:00 PM",
   },
-  "Senior KG": {
-    desc: "Comprehensive readiness for primary school with strong foundational mastery.",
-    focus: ["Advanced phonics & math", "Creative expression & drama", "Confident presentation"],
+  "Senior KG (L4)": {
+    desc: "Comprehensive Grade 1 primary school readiness with advanced phonics and mental math.",
+    focus: ["Reading & comprehension", "Mental math & place value", "Public speaking & presentation"],
     timing: "8:30 AM – 1:30 PM",
+  },
+  "Daycare & After-School": {
+    desc: "Loving, secure extended care and engaging after-school hobby clubs for working parents.",
+    focus: ["Nutritious warm meals & snacks", "Sanitized rest & nap pods", "Homework help & sports clubs"],
+    timing: "8:30 AM – 6:30 PM",
   },
 };
 
 function House({ h, i }: { h: ProgramHouse; i: number }) {
   const [open, setOpen] = useState(false);
-  const details = PROGRAM_DETAILS[h.name] ?? {
+  const matchedKey = Object.keys(PROGRAM_DETAILS).find((k) =>
+    h.name.toLowerCase().includes(k.split(" ")[0].toLowerCase())
+  );
+  const details = (matchedKey ? PROGRAM_DETAILS[matchedKey] : PROGRAM_DETAILS[h.name]) ?? {
     desc: "Montessori-inspired holistic early education.",
     focus: ["Child-centric learning", "Play & discovery"],
     timing: "8:30 AM – 12:30 PM",
@@ -84,7 +93,7 @@ function House({ h, i }: { h: ProgramHouse; i: number }) {
         Age: {h.age}
       </span>
 
-      <h3 className="font-heading text-xl font-bold text-[#3a2e4d]">{h.name}</h3>
+      <h3 className="font-heading text-lg font-bold text-[#3a2e4d]">{h.name}</h3>
       <p className="text-xs text-[#5b4b6b] mt-2 mb-4 leading-relaxed min-h-[36px]">
         {details.desc}
       </p>
@@ -117,10 +126,10 @@ export default function Programs() {
       <div aria-hidden className="absolute top-6 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 animate-floatSlow pointer-events-none">
         <Image src="/brand/koki-mascot-final.png" alt="" fill sizes="80px" className="object-contain drop-shadow-md" />
       </div>
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <h2 className="font-display text-4xl sm:text-5xl font-bold mb-3">{data.heading}</h2>
         <p className="text-[#5b4b6b] max-w-xl mx-auto mb-14">{data.subtext}</p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6 place-items-center">
           {data.houses.map((h, i) => <House key={h.name} h={h} i={i} />)}
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Calendar,
@@ -30,11 +31,12 @@ const TIME_SLOTS = [
 ];
 
 const PROGRAMS = [
-  "Playgroup (1.5 – 2.5 Yrs)",
-  "Nursery (2.5 – 3.5 Yrs)",
-  "Junior KG / LKG (3.5 – 4.5 Yrs)",
-  "Senior KG / UKG (4.5 – 5.5+ Yrs)",
-  "Extended Daycare (Till 6:30 PM)",
+  "Playgroup L0 (2 – 3 Yrs)",
+  "Nursery L1 (3 – 4 Yrs)",
+  "Junior KG L3 (4 – 5 Yrs)",
+  "Senior KG L4 (5 – 6 Yrs)",
+  "Daycare (Ages 1 – 10 Yrs · Till 6:30 PM)",
+  "After-School Program (Ages 4 – 10 Yrs)",
 ];
 
 const GOOGLE_MAPS_URL = "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!16s%2Fg%2F11vk7cj610";
@@ -45,12 +47,33 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
   const rawPhone = data?.contactPhone || "+91 96636 30221";
   const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
 
+  const [mounted, setMounted] = useState(false);
   const [parentName, setParentName] = useState("");
   const [parentPhone, setParentPhone] = useState("");
   const [selectedSlot, setSelectedSlot] = useState(TIME_SLOTS[0]);
   const [selectedProgram, setSelectedProgram] = useState(defaultProgram || PROGRAMS[1]);
   const [visitDay, setVisitDay] = useState("Upcoming Saturday Open House");
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose();
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [isOpen, onClose]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,17 +88,19 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-0"
           />
 
           {/* Modal Card */}
@@ -260,6 +285,7 @@ export default function BookTourModal({ isOpen, onClose, defaultProgram }: BookT
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
