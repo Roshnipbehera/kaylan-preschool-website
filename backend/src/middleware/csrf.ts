@@ -38,7 +38,16 @@ const CSRF_EXEMPT_PATHS = new Set([
   // visitor has no prior response from this API to have received the CSRF
   // cookie from. Already covered by admissionRoutes.ts's rate limiter.
   "/api/v1/admissions",
+  // Public marketing-site enquiry / tour booking form
+  "/api/v1/contact",
 ]);
+
+function isCsrfExempt(path: string): boolean {
+  if (CSRF_EXEMPT_PATHS.has(path)) return true;
+  // Public event RSVP: /api/v1/events/:id/rsvp
+  if (/^\/api\/v1\/events\/[^/]+\/rsvp$/.test(path)) return true;
+  return false;
+}
 
 export function generateCsrfToken(): string {
   return crypto.randomBytes(32).toString("hex");
@@ -72,7 +81,7 @@ export function csrfProtection(req: Request, res: Response, next: NextFunction) 
     res.cookie(CSRF_COOKIE_NAME, cookieToken, CSRF_COOKIE_OPTIONS);
   }
 
-  if (SAFE_METHODS.has(req.method) || CSRF_EXEMPT_PATHS.has(req.path)) {
+  if (SAFE_METHODS.has(req.method) || isCsrfExempt(req.path)) {
     return next();
   }
 

@@ -58,4 +58,16 @@ describe("middleware/csrf", () => {
     csrfProtection(req, res, next);
     expect(next).toHaveBeenCalledTimes(1);
   });
+
+  it("exempts /api/v1/contact from the header check for public visitors", () => {
+    const { req, res, next } = mockReqRes("POST", { cookieToken: generateCsrfToken(), path: "/api/v1/contact" });
+    csrfProtection(req, res, next);
+    expect(next).toHaveBeenCalledTimes(1);
+  });
+
+  it("exempts /api/v1/events/:id/rsvp from the header check for public visitors", () => {
+    const { req, res, next } = mockReqRes("POST", { cookieToken: generateCsrfToken(), path: "/api/v1/events/evt_123/rsvp" });
+    csrfProtection(req, res, next);
+    expect(next).toHaveBeenCalledTimes(1);
+  });
 });
