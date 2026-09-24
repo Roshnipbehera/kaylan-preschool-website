@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, Trash2, Pencil } from "lucide-react";
+import { Plus, Trash2, Pencil, Download } from "lucide-react";
 import { listStudents, createStudent, adminUpdateStudent, deleteStudent } from "@/lib/api/students";
 import { listUsers } from "@/lib/api/users";
 import { createStudentSchema, type CreateStudentFormValues } from "@/lib/validation/students";
@@ -15,6 +15,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { FormField } from "@/components/ui/FormField";
+import { exportToCsv } from "@/lib/utils/csvExport";
 import type { Student } from "@/lib/types/students";
 
 function StudentForm({ existing, onDone }: { existing?: Student; onDone: () => void }) {
@@ -149,13 +150,46 @@ export function AdminStudentsContent() {
     onError: (err) => toast.error(err instanceof Error ? err.message : "Failed to delete student"),
   });
 
+  const handleExportCsv = () => {
+    if (!data || data.length === 0) return;
+    const flatRows = data.map((s) => ({
+      id: s.id,
+      fullName: s.fullName,
+      dob: s.dateOfBirth,
+      program: s.program,
+      className: s.className,
+      guardianName: s.guardianName,
+      guardianPhone: s.guardianPhone,
+      guardianEmail: s.guardianEmail,
+      bloodGroup: s.bloodGroup,
+      allergies: s.allergies || "None",
+    }));
+    exportToCsv("kaylan_students_roster", flatRows, [
+      { key: "id", header: "Student ID" },
+      { key: "fullName", header: "Full Name" },
+      { key: "dob", header: "Date of Birth" },
+      { key: "program", header: "Program" },
+      { key: "className", header: "Class" },
+      { key: "guardianName", header: "Guardian Name" },
+      { key: "guardianPhone", header: "Guardian Phone" },
+      { key: "guardianEmail", header: "Guardian Email" },
+      { key: "bloodGroup", header: "Blood Group" },
+      { key: "allergies", header: "Allergies" },
+    ]);
+  };
+
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-2xl font-bold text-[#3a2e4d]">Students</h1>
-        <Button onClick={() => openModal({ title: "Add Student", content: <StudentForm onDone={closeModal} /> })}>
-          <Plus size={16} className="mr-1" /> Add Student
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={handleExportCsv} disabled={!data || data.length === 0}>
+            <Download size={14} className="mr-1.5" /> Export CSV
+          </Button>
+          <Button onClick={() => openModal({ title: "Add Student", content: <StudentForm onDone={closeModal} /> })}>
+            <Plus size={16} className="mr-1" /> Add Student
+          </Button>
+        </div>
       </div>
 
       {isLoading ? (

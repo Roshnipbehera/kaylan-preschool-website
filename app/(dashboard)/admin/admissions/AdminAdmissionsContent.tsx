@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Eye } from "lucide-react";
+import { Eye, Download } from "lucide-react";
 import { listApplications, updateApplicationStatus } from "@/lib/api/admissions";
 import { queryKeys } from "@/lib/query/keys";
 import { useModal } from "@/lib/hooks/useModal";
@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/Card";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { exportToCsv } from "@/lib/utils/csvExport";
 import type { AdmissionApplication, AdmissionStatus } from "@/lib/types/admissions";
 
 const STATUS_TONE: Record<AdmissionStatus, "sunshine" | "sky" | "leaf" | "candy" | "orange"> = {
@@ -107,22 +108,61 @@ export function AdminAdmissionsContent() {
     queryFn: () => listApplications(filter === "all" ? undefined : { status: filter }),
   });
 
+  const handleExportCsv = () => {
+    if (!data || data.length === 0) return;
+    const flatRows = data.map((app) => ({
+      id: app.id,
+      childName: app.child.fullName,
+      dob: app.child.dateOfBirth,
+      gender: app.child.gender,
+      program: app.child.programApplyingFor,
+      guardianName: app.guardian.fullName,
+      relation: app.guardian.relation,
+      phone: app.guardian.phone,
+      email: app.guardian.email,
+      status: app.status,
+      bloodGroup: app.medical.bloodGroup,
+      allergies: app.medical.allergies || "None",
+      submittedAt: new Date(app.submittedAt).toLocaleDateString(),
+    }));
+    exportToCsv("kaylan_admissions_applications", flatRows, [
+      { key: "id", header: "Application ID" },
+      { key: "childName", header: "Child Name" },
+      { key: "dob", header: "Date of Birth" },
+      { key: "gender", header: "Gender" },
+      { key: "program", header: "Program" },
+      { key: "guardianName", header: "Guardian Name" },
+      { key: "relation", header: "Relation" },
+      { key: "phone", header: "Phone" },
+      { key: "email", header: "Email" },
+      { key: "status", header: "Status" },
+      { key: "bloodGroup", header: "Blood Group" },
+      { key: "allergies", header: "Allergies" },
+      { key: "submittedAt", header: "Submitted Date" },
+    ]);
+  };
+
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h1 className="font-display text-2xl font-bold text-[#3a2e4d]">Admission Applications</h1>
-        <select
-          value={filter}
-          onChange={(e) => setFilter(e.target.value as AdmissionStatus | "all")}
-          className="rounded-2xl border-2 border-lavender/40 bg-white px-4 py-2 text-sm"
-        >
-          <option value="all">All Statuses</option>
-          {STATUS_OPTIONS.map((s) => (
-            <option key={s} value={s}>
-              {s.replace("-", " ")}
-            </option>
-          ))}
-        </select>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={handleExportCsv} disabled={!data || data.length === 0}>
+            <Download size={14} className="mr-1.5" /> Export CSV
+          </Button>
+          <select
+            value={filter}
+            onChange={(e) => setFilter(e.target.value as AdmissionStatus | "all")}
+            className="rounded-2xl border-2 border-lavender/40 bg-white px-4 py-2 text-sm"
+          >
+            <option value="all">All Statuses</option>
+            {STATUS_OPTIONS.map((s) => (
+              <option key={s} value={s}>
+                {s.replace("-", " ")}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {isLoading ? (
