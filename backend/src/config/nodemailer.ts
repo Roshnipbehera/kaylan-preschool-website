@@ -11,6 +11,11 @@ export const transporter = nodemailer.createTransport({
 });
 
 export async function sendMail(to: string, subject: string, html: string): Promise<void> {
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER) {
+    // eslint-disable-next-line no-console
+    console.log(`[nodemailer mock] Simulated email to ${to}: ${subject}`);
+    return;
+  }
   await transporter.sendMail({
     from: process.env.SMTP_FROM ?? "Kaylan Preschool <no-reply@kaylanpreschool.com>",
     to,

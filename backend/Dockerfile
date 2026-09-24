@@ -45,9 +45,4 @@ COPY --from=builder /app/data ./data
 RUN npm install --omit=dev && npx prisma generate
 USER expressjs
 EXPOSE 4000
-# Unauthenticated GET /health (see src/app.ts) used by the docker-compose
-# healthcheck directive and any container-orchestrator liveness/readiness
-# probe.
-HEALTHCHECK --interval=10s --timeout=5s --retries=5 --start-period=15s \
-  CMD wget -qO- http://localhost:4000/health || exit 1
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/server.js"]
+CMD ["node", "dist/server.js"]
