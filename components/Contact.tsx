@@ -11,7 +11,7 @@ import { createContactInquiry } from "@/lib/api/contact";
 import { useToast } from "@/lib/hooks/useToast";
 
 const OFFICIAL_MAPS_URL =
-  "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476538,77.6398347,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096";
+  "https://www.google.com/maps/place/Kaylan+Preschool/@12.8476486,77.6424096,17z/data=!4m8!3m7!1s0x3bae6b9b672e8d85:0xd95610aa3ce6c9e2!8m2!3d12.8476486!4d77.6424096!9m1!1b1!16s%2Fg%2F11vk7cj610!18m1!1e1?entry=ttu";
 
 const OFFICIAL_DIRECTIONS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=12.8476486,77.6424096";

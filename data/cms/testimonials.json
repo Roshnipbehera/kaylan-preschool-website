@@ -1,9 +1,56 @@
 {
-  "heading": "Parent Testimonials 💌",
-  "subtext": "Straight from the hearts of our Kaylan families.",
+  "heading": "Parent Stories & Google Reviews 💌",
+  "subtext": "Authentic, unfiltered reviews from verified parents on Google Maps and Justdial.",
   "reviews": [
-    { "name": "Priya R.", "quote": "Kaylan gave our daughter confidence we never expected at this age.", "stars": 5 },
-    { "name": "Rohit S.", "quote": "My son runs to school every morning now — that says it all!", "stars": 5 },
-    { "name": "Meera N.", "quote": "The Kreedo curriculum plus the warmth of the teachers is unbeatable.", "stars": 5 }
+    {
+      "name": "Eswararao Agasti",
+      "role": "Parent of Kaylan Student",
+      "stars": 5,
+      "date": "3 months ago",
+      "source": "Google Reviews",
+      "verified": true,
+      "quote": "Excellent \"Kaylan preschool\" with caring teachers and a safe, friendly environment. My child loves going to school and has learned so much in a short time. The staff are supportive, and the activities are fun and educational. Highly recommended for every parent!",
+      "response": "Thank you so much for your kind words! We’re thrilled to hear your child loves going to school and is learning well. It’s a joy having your family as part of our community!"
+    },
+    {
+      "name": "Padmapriya",
+      "role": "Mother of Nursery Student",
+      "stars": 5,
+      "date": "3 months ago",
+      "source": "Google Reviews",
+      "verified": true,
+      "quote": "I am so happy with this school. The teachers took great care of my child. They teach children in a very practical and engaging way that makes it easy for them to understand and grasp concepts. My son is in nursery, and he has already started to identify pictures and learn well. I’m truly grateful to the school and staff.",
+      "response": "This made our whole team smile! Thank you for noticing the care and effort of our teachers. We’re so glad your son is enjoying nursery and growing every day!"
+    },
+    {
+      "name": "Ranjitha Suchith",
+      "role": "Parent of Kaylan Student",
+      "stars": 5,
+      "date": "3 months ago",
+      "source": "Google Reviews",
+      "verified": true,
+      "quote": "A good preschool with a caring and positive environment. My son loves going to school every day and has learned so much. Thank you to all the staff for your dedication and support. Highly recommended!",
+      "response": "We’re so grateful for your feedback! Seeing children excited to come to school is our greatest reward. Thank you for trusting us with your son’s early years!"
+    },
+    {
+      "name": "Archita Sharma",
+      "role": "Parent (Enrolled from 1.5 yrs)",
+      "stars": 5,
+      "date": "9 months ago",
+      "source": "Google Reviews",
+      "verified": true,
+      "quote": "My kid has been going to this school since she was 1.5 years old. I must say the attention and care teachers provide there to kids have been applauding. My kid has learnt so much there and I love how the atmosphere there is so positive. They celebrate every small festival and kids learn to explore, celebrate, and share the joy together.",
+      "response": "Thank you so much for sharing your wonderful experience with us ❤️! We're absolutely delighted to have had your little one with us since she was 1.5 years old."
+    },
+    {
+      "name": "Chindum Vasantha",
+      "role": "Parent in Prakruthi Layout",
+      "stars": 5,
+      "date": "10 months ago",
+      "source": "Google Reviews",
+      "verified": true,
+      "quote": "Kaylan Preschool in Prakruthi Layout has been an amazing experience for our child! The teachers are caring, attentive, and truly passionate about early childhood development. The learning environment is nurturing, safe, and full of fun activities that spark curiosity. Our child has grown socially, emotionally, and academically since joining. Highly recommend!",
+      "response": "Thank you so much for your wonderful feedback! We’re delighted to hear that your child has grown socially, emotionally, and academically."
+    }
   ]
 }

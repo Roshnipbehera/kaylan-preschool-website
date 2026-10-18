@@ -58,6 +58,11 @@ export const reviewSchema = z.object({
   name: z.string().min(1),
   quote: z.string().min(1),
   stars: z.coerce.number().min(1).max(5),
+  date: z.string().optional(),
+  source: z.string().optional(),
+  role: z.string().optional(),
+  response: z.string().optional(),
+  verified: z.boolean().optional(),
 });
 export const testimonialsSchema = z.object({
   heading: z.string().min(1),

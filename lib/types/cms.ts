@@ -57,6 +57,11 @@ export interface Review {
   name: string;
   quote: string;
   stars: number;
+  date?: string;
+  source?: string;
+  role?: string;
+  response?: string;
+  verified?: boolean;
 }
 export interface TestimonialsContent {
   heading: string;
