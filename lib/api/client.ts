@@ -60,9 +60,16 @@ export async function apiFetch<T>(path: string, options: RequestOptions = {}): P
     if (csrfToken) csrfHeaders[CSRF_HEADER_NAME] = csrfToken;
   }
 
+  const timeoutSignal =
+    options.signal ??
+    (typeof AbortSignal !== "undefined" && typeof AbortSignal.timeout === "function"
+      ? AbortSignal.timeout(3500)
+      : undefined);
+
   try {
     const res = await fetch(`${API_BASE_URL}${path}`, {
       ...rest,
+      signal: timeoutSignal,
       credentials: "include", // real backend sets an httpOnly cookie
       headers: {
         "Content-Type": "application/json",

@@ -1,19 +1,37 @@
 // Live Events + RSVP client -- talks to the real Express backend
 // (backend/src/controllers/eventController.ts) via lib/api/client.ts's
-// apiFetch. Replaces the previous JSON-mock client that called
-// app/api/events/**; those route handlers and data/events/*.json are left
-// in place untouched but no longer imported by any live UI code. Function
-// names/signatures unchanged. submitRsvp intentionally does NOT require
-// auth (matches the backend's public POST /events/:id/rsvp).
-import { apiFetch } from "@/lib/api/client";
+// apiFetch. If the backend is unreachable or in mock mode, it gracefully
+// falls back to the curated events in data/events/events.json.
+import { apiFetch, USE_MOCK_API } from "@/lib/api/client";
 import type { CreateEventInput, CreateRsvpInput, EventRsvp, SchoolEvent, UpdateEventInput } from "@/lib/types/events";
+import defaultEvents from "@/data/events/events.json";
 
 export async function listEvents(): Promise<SchoolEvent[]> {
-  return apiFetch<SchoolEvent[]>("/events", { cache: "no-store" });
+  if (USE_MOCK_API) {
+    return defaultEvents as unknown as SchoolEvent[];
+  }
+  try {
+    const data = await apiFetch<SchoolEvent[]>("/events", { cache: "no-store" });
+    return data && data.length > 0 ? data : (defaultEvents as unknown as SchoolEvent[]);
+  } catch (err) {
+    console.warn("Events API unavailable, falling back to local events:", err);
+    return defaultEvents as unknown as SchoolEvent[];
+  }
 }
 
 export async function getEvent(id: string): Promise<SchoolEvent> {
-  return apiFetch<SchoolEvent>(`/events/${id}`, { cache: "no-store" });
+  if (USE_MOCK_API) {
+    const ev = (defaultEvents as unknown as SchoolEvent[]).find((e) => e.id === id);
+    if (!ev) throw new Error("Event not found");
+    return ev;
+  }
+  try {
+    return await apiFetch<SchoolEvent>(`/events/${id}`, { cache: "no-store" });
+  } catch (err) {
+    const ev = (defaultEvents as unknown as SchoolEvent[]).find((e) => e.id === id);
+    if (ev) return ev;
+    throw err;
+  }
 }
 
 export async function createEvent(input: CreateEventInput): Promise<SchoolEvent> {
