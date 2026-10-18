@@ -42,17 +42,20 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
       <BookTourModal isOpen={tourOpen} onClose={() => setTourOpen(false)} />
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-        <a href="/" className="flex items-center gap-2.5 font-display text-2xl font-bold text-candy group">
-          <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 border border-candy/30 bg-sunshine/20">
+        <a href="/" className="flex items-center gap-3 group">
+          <div className="relative h-11 sm:h-12 w-auto shrink-0 flex items-center">
             <Image
-              src="/brand/koki-mascot-final.png"
-              alt="Kaylan Preschool Logo Mascot"
-              fill
-              sizes="32px"
-              className="object-contain p-0.5 group-hover:scale-110 transition-transform"
+              src="/brand/kaylan-logo.png"
+              alt="Kaylan Preschool & Daycare Logo"
+              width={140}
+              height={55}
+              className="h-10 sm:h-12 w-auto object-contain group-hover:scale-105 transition-transform"
+              priority
             />
           </div>
-          <span>{data.brand.replace(/^[^\w\s]+\s*/, "") || data.brand}</span>
+          <span className="font-display text-xl sm:text-2xl font-bold text-candy hidden md:inline-block">
+            {data.brand.replace(/^[^\w\s]+\s*/, "") || data.brand}
+          </span>
         </a>
         <ul className="hidden xl:flex gap-5 text-sm font-heading font-medium text-[#5b4b6b]">
           {data.links.map((l) => (

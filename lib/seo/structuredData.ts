@@ -12,7 +12,7 @@ export function preschoolStructuredData() {
     description:
       "Kaylan Preschool in Bangalore blends Montessori-inspired learning with the Kreedo curriculum in a magical, storybook world of play, discovery, creativity and love.",
     url: SITE_URL,
-    logo: `${SITE_URL}/brand/koki-mascot-final.png`,
+    logo: `${SITE_URL}/brand/kaylan-logo.png`,
     image: `${SITE_URL}/brand/koki-mascot-final.png`,
     telephone: "+91 96636 30221",
     email: "kpsdc01@gmail.com",

@@ -6,14 +6,21 @@ export function AuthLayout({ title, subtitle, children }: { title: string; subti
     <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-sunshine/10 via-sky/10 to-candy/10 px-4 py-12">
       <div className="w-full max-w-md rounded-3xl border border-black/5 bg-white p-8 shadow-xl">
         <div className="mb-6 flex items-center justify-between">
-          <Link href="/" className="inline-block font-display text-2xl font-bold text-[#3a2e4d]">
-            Kaylan Preschool
+          <Link href="/" className="inline-block">
+            <Image
+              src="/brand/kaylan-logo.png"
+              alt="Kaylan Preschool & Daycare"
+              width={130}
+              height={50}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
           <Image
-            src="/brand/koki-mascot-final.png"
-            alt="Koki the Kaylan Preschool mascot"
-            width={48}
-            height={56}
+            src="/brand/kaylan-caterpillar-mascot.png"
+            alt="Kaylan Preschool mascot"
+            width={52}
+            height={36}
             className="object-contain animate-bob"
           />
         </div>

@@ -63,6 +63,15 @@ export default function Footer() {
 
       <div className="relative max-w-6xl mx-auto px-6 mt-40 grid sm:grid-cols-3 gap-10 text-[#4a3b1a]">
         <div>
+          <div className="mb-3">
+            <Image
+              src="/brand/kaylan-logo.png"
+              alt="Kaylan Preschool & Daycare Logo"
+              width={180}
+              height={70}
+              className="h-14 w-auto object-contain"
+            />
+          </div>
           <h3 className="font-display text-2xl font-bold mb-2">{data.brand}</h3>
           <p className="text-sm">{data.tagline}</p>
           <div className="flex flex-wrap items-center gap-3 mt-4">

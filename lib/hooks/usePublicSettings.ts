@@ -11,7 +11,7 @@ const SEED: PublicSettings = {
   contactEmail: "kpsdc01@gmail.com",
   contactPhone: "+91 96636 30221",
   address: "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100",
-  logoUrl: "/brand/koki-mascot-final.png",
+  logoUrl: "/brand/kaylan-logo.png",
   schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
   admissionsOpen: true,
   facebookUrl: "https://facebook.com/kaylanpreschool",
