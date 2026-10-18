@@ -77,9 +77,6 @@ const SAFETY_FEATURES = [
   },
 ];
 
-const GOOGLE_DRIVE_FOLDER_URL =
-  "https://drive.google.com/drive/folders/1sB7SKD7pVeWD5IqeaZDpE19opsT9-aqw?usp=sharing";
-
 export default function FacilitiesPage() {
   return (
     <>
@@ -93,15 +90,13 @@ export default function FacilitiesPage() {
                 <ShieldCheck size={14} className="text-leaf" />
                 100% Child-Safe Green Campus
               </span>
-              <a
-                href={GOOGLE_DRIVE_FOLDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-blue-200 text-[#1a73e8] px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm transition-all hover:scale-105"
+              <Link
+                href="/gallery"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-candy/30 text-candy px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm transition-all hover:scale-105"
               >
-                <span>📂 View All 50+ Photos on Google Drive</span>
-                <span className="text-[10px]">↗</span>
-              </a>
+                <span>📸 View Campus Photo Gallery</span>
+                <span className="text-[10px]">→</span>
+              </Link>
             </div>
             <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-[#3a2e4d]">
               Our Campus & <span className="text-candy">Facilities</span> 🏰

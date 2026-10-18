@@ -20,9 +20,6 @@ const SEED: GalleryContent = {
   ],
 };
 
-const GOOGLE_DRIVE_FOLDER_URL =
-  "https://drive.google.com/drive/folders/1sB7SKD7pVeWD5IqeaZDpE19opsT9-aqw?usp=sharing";
-
 const MOMENTS = [
   {
     title: "Morning Circle Time & Rhymes",
@@ -119,50 +116,29 @@ export default function Gallery() {
                 {m.title}
               </p>
               <p className="text-xs text-[#5b4b6b] mt-1 leading-snug">{m.desc}</p>
-              <div className="flex items-center justify-between mt-3 pt-2 border-t border-gray-100 text-[10px] text-[#8a7a9a]">
-                <span className="font-mono">Kaylan Verified #{i + 1}</span>
+              <div className="flex items-center justify-between mt-3 pt-2 border-t border-gray-100 text-[11px] text-[#8a7a9a]">
+                <span className="font-heading font-semibold text-[#5b4b6b]">✨ Campus Activity</span>
                 <span className="font-heading font-semibold text-candy">Electronic City Campus</span>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Action CTAs: Drive Link & Full Albums & Instagram */}
+        {/* Action CTAs: Full Albums & Instagram */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-14 flex flex-wrap items-center justify-center gap-4"
         >
-          {/* Direct Google Drive Photo Folder Link */}
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href={GOOGLE_DRIVE_FOLDER_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 bg-white hover:bg-slate-50 text-[#1a73e8] font-heading font-bold px-6 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm border border-blue-200"
-          >
-            <svg className="w-5 h-5 shrink-0" viewBox="0 0 87.3 78" fill="none">
-              <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
-              <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44c-.8 1.4-1.2 2.95-1.2 4.5h27.5z" fill="#00ac47"/>
-              <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
-              <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
-              <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
-              <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
-            </svg>
-            <span>View Full 50+ Photos on Google Drive</span>
-            <ExternalLink className="w-4 h-4 ml-0.5 opacity-80" />
-          </motion.a>
-
           {/* Dedicated Gallery Page Link */}
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
               href="/gallery"
-              className="inline-flex items-center gap-2 bg-candy hover:bg-candy/90 text-white font-heading font-bold px-6 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm"
+              className="inline-flex items-center gap-2.5 bg-candy hover:bg-candy/90 text-white font-heading font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-candy/30 transition-all text-sm"
             >
               <FolderHeart className="w-4 h-4" />
-              <span>Browse All Photo Albums</span>
+              <span>Explore All 50+ Campus Photos</span>
             </Link>
           </motion.div>
 

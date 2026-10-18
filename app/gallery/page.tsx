@@ -14,9 +14,6 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-const GOOGLE_DRIVE_FOLDER_URL =
-  "https://drive.google.com/drive/folders/1sB7SKD7pVeWD5IqeaZDpE19opsT9-aqw?usp=sharing";
-
 export default async function GalleryPage() {
   const albums = await listAlbums();
 
@@ -27,23 +24,10 @@ export default async function GalleryPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <a
-                href={GOOGLE_DRIVE_FOLDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-blue-200 text-[#1a73e8] px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm transition-all hover:scale-105"
-              >
-                <svg className="w-4 h-4 shrink-0" viewBox="0 0 87.3 78" fill="none">
-                  <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
-                  <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44c-.8 1.4-1.2 2.95-1.2 4.5h27.5z" fill="#00ac47"/>
-                  <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
-                  <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
-                  <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
-                  <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
-                </svg>
-                <span>Client Photo Album on Google Drive (50+ Photos)</span>
-                <ExternalLink size={12} className="opacity-80" />
-              </a>
+              <span className="inline-flex items-center gap-1.5 bg-candy/10 text-candy border border-candy/20 px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm">
+                <Sparkles size={14} />
+                <span>Electronic City Campus · 50+ Photos</span>
+              </span>
 
               <a
                 href="https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw=="
