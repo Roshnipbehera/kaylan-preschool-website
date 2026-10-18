@@ -1,118 +1,181 @@
 [
   {
     "id": "a1b2c3d4-0001-4000-8000-000000000001",
-    "title": "Classroom Life",
+    "title": "Classroom Life & Montessori",
     "slug": "classroom-life",
-    "coverImage": "/images/instagram/insta_thumb_1.jpg",
-    "description": "Authentic snapshots of experiential learning, Montessori discovery, and joyful routines at Kaylan.",
+    "coverImage": "/images/client/L00-K-31.jpg",
+    "description": "Authentic snapshots of experiential learning, Montessori sensorial discovery, and joyful circle time routines at Kaylan.",
     "createdAt": "2026-01-10T09:00:00.000Z",
     "updatedAt": "2026-01-10T09:00:00.000Z",
     "items": [
       {
         "id": "i1",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_1.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_1.jpg",
-        "caption": "Koki's Little Yogis - Mindful morning stretches, balance & breathing exercises."
+        "url": "/images/client/L00-K-31.jpg",
+        "thumbnailUrl": "/images/client/L00-K-31.jpg",
+        "caption": "Morning Circle Time - Interactive storytelling, rhymes and joyful group learning under the rainbow mural."
       },
       {
         "id": "i2",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_2.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_2.jpg",
-        "caption": "Little Veggie Scientists - Hands-on vegetable exploration and sensory inquiry."
+        "url": "/images/client/L00-K-35.jpg",
+        "thumbnailUrl": "/images/client/L00-K-35.jpg",
+        "caption": "Montessori Sensorial Discovery - Exploring the human anatomy puzzle, geometric solids and color sorting cylinders."
       },
       {
         "id": "i3",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_6.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_6.jpg",
-        "caption": "Fine Motor Skills - Montessori threading and concentration development."
+        "url": "/images/client/L00-K-37.jpg",
+        "thumbnailUrl": "/images/client/L00-K-37.jpg",
+        "caption": "Concentrated Hands-on Learning - Working with tactile sensory blocks, sandpaper materials and transport cards."
       },
       {
         "id": "i4",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_3.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_3.jpg",
-        "caption": "Morning Campus Gate Arrival - Happy steps walking into Kaylan Preschool."
+        "url": "/images/client/L00-K-39.jpg",
+        "thumbnailUrl": "/images/client/L00-K-39.jpg",
+        "caption": "Early Sensory Exploration - Developing fine tactile discrimination and color recognition with wooden apparatus."
       },
       {
         "id": "i5",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_5.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_5.jpg",
-        "caption": "Classroom Discovery - Tactile materials and focused engagement."
+        "url": "/images/client/L00-K-40.jpg",
+        "thumbnailUrl": "/images/client/L00-K-40.jpg",
+        "caption": "Phonics & Vocabulary Building - Word cards, picture matching and interactive language activities."
+      },
+      {
+        "id": "i6",
+        "type": "image",
+        "url": "/images/client/L00-K-17.jpg",
+        "thumbnailUrl": "/images/client/L00-K-17.jpg",
+        "caption": "Montessori Sensorial Lab - Low accessible wooden shelving lined with authentic didactic materials."
+      },
+      {
+        "id": "i7",
+        "type": "image",
+        "url": "/images/client/L00-K-18.jpg",
+        "thumbnailUrl": "/images/client/L00-K-18.jpg",
+        "caption": "Montessori Didactic Apparatus - Cylinder blocks, binomial cube cabinets and botanical leaf trays."
+      },
+      {
+        "id": "i8",
+        "type": "image",
+        "url": "/images/client/L00-K-10.jpg",
+        "thumbnailUrl": "/images/client/L00-K-10.jpg",
+        "caption": "Bright Nursery Classroom - Ergonomic peacock chairs, collaborative study tables and star recognition board."
+      },
+      {
+        "id": "i9",
+        "type": "image",
+        "url": "/images/client/L00-K-30.jpg",
+        "thumbnailUrl": "/images/client/L00-K-30.jpg",
+        "caption": "Action Rhyme Time - Teacher-led movement, song gestures and joyful toddler expression."
       }
     ]
   },
   {
     "id": "a1b2c3d4-0002-4000-8000-000000000002",
-    "title": "Outdoor & Active Play",
-    "slug": "sports-day",
-    "coverImage": "/images/instagram/insta_thumb_3.jpg",
-    "description": "Gross motor development, playground energy, and fresh air on our green campus.",
+    "title": "Campus & Play Spaces",
+    "slug": "campus-spaces",
+    "coverImage": "/images/client/L00-K-1.jpg",
+    "description": "Safe, child-friendly 2-story campus with outdoor entrance ramp, bright learning rooms and indoor activity turf.",
     "createdAt": "2026-02-14T09:00:00.000Z",
     "updatedAt": "2026-02-14T09:00:00.000Z",
     "items": [
       {
-        "id": "i6",
+        "id": "i10",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_3.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_3.jpg",
-        "caption": "Arrival at the playground gate ready for morning action."
+        "url": "/images/client/L00-K-1.jpg",
+        "thumbnailUrl": "/images/client/L00-K-1.jpg",
+        "caption": "Campus Front Elevation - Vibrant rainbow stripes, Buddha mosaic mural and child-safe gated entrance."
       },
       {
-        "id": "i7",
+        "id": "i11",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_1.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_1.jpg",
-        "caption": "Coordination and balance games on the outdoor turf."
+        "url": "/images/client/L00-K-2.jpg",
+        "thumbnailUrl": "/images/client/L00-K-2.jpg",
+        "caption": "Welcoming Entrance Ramp - Barrier-free accessibility, marigold garlands and colorful balloons."
       },
       {
-        "id": "i8",
+        "id": "i12",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_7.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_7.jpg",
-        "caption": "Playground Fun - Running, sharing and joyful physical play."
+        "url": "/images/client/L00-K-3.jpg",
+        "thumbnailUrl": "/images/client/L00-K-3.jpg",
+        "caption": "Full Campus Perspective - Independent preschool building nestled in Electronic City Phase 1."
+      },
+      {
+        "id": "i13",
+        "type": "image",
+        "url": "/images/client/L00-K-14.jpg",
+        "thumbnailUrl": "/images/client/L00-K-14.jpg",
+        "caption": "Indoor Activity Turf - Soft green lawn area for morning assemblies, yoga and safe indoor play."
+      },
+      {
+        "id": "i14",
+        "type": "image",
+        "url": "/images/client/L00-K-16.jpg",
+        "thumbnailUrl": "/images/client/L00-K-16.jpg",
+        "caption": "Interactive Learning Hall - Smart screen audiovisual setup surrounded by Montessori sensorial units."
+      },
+      {
+        "id": "i15",
+        "type": "image",
+        "url": "/images/client/L00-K-19.jpg",
+        "thumbnailUrl": "/images/client/L00-K-19.jpg",
+        "caption": "Reading & Toy Loft - Curated storybooks, wooden transport toys and planetary solar system models."
+      },
+      {
+        "id": "i16",
+        "type": "image",
+        "url": "/images/client/L00-K-20.jpg",
+        "thumbnailUrl": "/images/client/L00-K-20.jpg",
+        "caption": "Audiovisual & Math Zone - Dedicated screen corner and tactile abacus calculation apparatus."
       }
     ]
   },
   {
     "id": "a1b2c3d4-0003-4000-8000-000000000003",
-    "title": "Art & Craft",
+    "title": "Art, Craft & Discovery",
     "slug": "art-craft",
-    "coverImage": "/images/instagram/insta_thumb_6.jpg",
-    "description": "Tactile creativity, finger dexterity, and colourful expressions from our little artists.",
+    "coverImage": "/images/client/L00-K-43.jpg",
+    "description": "Tactile creativity, pastel coloring, fine motor development, and artistic expression at child-height tables.",
     "createdAt": "2026-03-05T09:00:00.000Z",
     "updatedAt": "2026-03-05T09:00:00.000Z",
     "items": [
       {
-        "id": "i10",
+        "id": "i17",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_6.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_6.jpg",
-        "caption": "Montessori fine motor threading and tactile coordination."
+        "url": "/images/client/L00-K-44.jpg",
+        "thumbnailUrl": "/images/client/L00-K-44.jpg",
+        "caption": "Focused Crayon Art - Developing fine-motor tripod grasp and mindful color concentration."
       },
       {
-        "id": "i11",
+        "id": "i18",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_4.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_4.jpg",
-        "caption": "Handmade festive clay crafting and creative molding."
+        "url": "/images/client/L00-K-43.jpg",
+        "thumbnailUrl": "/images/client/L00-K-43.jpg",
+        "caption": "Creative Coloring Studio - Vibrant workbook activities and shape recognition exercises."
       },
       {
-        "id": "i12",
+        "id": "i19",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_10.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_10.jpg",
-        "caption": "Tricolour craft badges and patriotic creative artworks."
+        "url": "/images/client/L00-K-41.jpg",
+        "thumbnailUrl": "/images/client/L00-K-41.jpg",
+        "caption": "Teacher-Guided Art Class - Warm, individualized teacher guidance nurturing toddler self-confidence."
       },
       {
-        "id": "i13",
+        "id": "i20",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_8.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_8.jpg",
-        "caption": "Colour exploration and creative expression in the art corner."
+        "url": "/images/client/L00-K-45.jpg",
+        "thumbnailUrl": "/images/client/L00-K-45.jpg",
+        "caption": "Collaborative Drawing Tables - Sharing pastel crayons and creating artwork alongside friends."
+      },
+      {
+        "id": "i21",
+        "type": "image",
+        "url": "/images/client/L00-K-21.jpg",
+        "thumbnailUrl": "/images/client/L00-K-21.jpg",
+        "caption": "Shape Sorting & Time Dial - Exploring geometry, counting frames and tactile spatial puzzles."
       }
     ]
   },
@@ -120,59 +183,66 @@
     "id": "a1b2c3d4-0004-4000-8000-000000000004",
     "title": "Festivals & Celebrations",
     "slug": "festivals",
-    "coverImage": "/images/instagram/insta_post_8.jpg",
-    "description": "Celebrating diversity, Indian traditions, and cultural harmony together as one Kaylan family.",
+    "coverImage": "/images/client/L00-K-24.jpg",
+    "description": "Celebrating diversity, Indian cultural traditions, music, dance and friendship together as one Kaylan family.",
     "createdAt": "2026-04-01T09:00:00.000Z",
     "updatedAt": "2026-04-01T09:00:00.000Z",
     "items": [
       {
-        "id": "i14",
+        "id": "i22",
         "type": "image",
-        "url": "/images/instagram/insta_post_8.jpg",
-        "thumbnailUrl": "/images/instagram/insta_post_8.jpg",
-        "caption": "Onam Celebration - Traditional floral Pookalam designed by teachers and children."
+        "url": "/images/client/L00-K-24.jpg",
+        "thumbnailUrl": "/images/client/L00-K-24.jpg",
+        "caption": "Festive Celebration Gathering - Children and teachers posing happily in colorful traditional dress."
       },
       {
-        "id": "i15",
+        "id": "i23",
         "type": "image",
-        "url": "/images/instagram/insta_post_5.jpg",
-        "thumbnailUrl": "/images/instagram/insta_post_5.jpg",
-        "caption": "Krishna Janmashtami - Children dressed in vibrant traditional attire."
+        "url": "/images/client/L00-K-22.jpg",
+        "thumbnailUrl": "/images/client/L00-K-22.jpg",
+        "caption": "Dussehra Festive Art - Handcrafted 10-headed Ravana creative installation adorned with marigold flowers."
       },
       {
-        "id": "i16",
+        "id": "i24",
         "type": "image",
-        "url": "/images/instagram/insta_post_7.jpg",
-        "thumbnailUrl": "/images/instagram/insta_post_7.jpg",
-        "caption": "Raksha Bandhan - Celebrating the bonds of care, love and friendship."
+        "url": "/images/client/L00-K-46.jpg",
+        "thumbnailUrl": "/images/client/L00-K-46.jpg",
+        "caption": "Rhythmic Celebration Dance - Joyful music and festive movement on the green indoor court."
       },
       {
-        "id": "i17",
+        "id": "i25",
         "type": "image",
-        "url": "/images/instagram/insta_post_9.jpg",
-        "thumbnailUrl": "/images/instagram/insta_post_9.jpg",
-        "caption": "Eid-e-Milad - Sharing messages of peace, kindness and unity."
+        "url": "/images/client/L00-K-47.jpg",
+        "thumbnailUrl": "/images/client/L00-K-47.jpg",
+        "caption": "Expressive Dance Poses - Children performing cultural folk dance steps with radiant smiles."
       },
       {
-        "id": "i18",
+        "id": "i26",
         "type": "image",
-        "url": "/images/instagram/insta_post_11.jpg",
-        "thumbnailUrl": "/images/instagram/insta_post_11.jpg",
-        "caption": "Varalakshmi Vratam - Cultural tradition and blessings at our campus."
+        "url": "/images/client/L00-K-48.jpg",
+        "thumbnailUrl": "/images/client/L00-K-48.jpg",
+        "caption": "Joyful Toddler Laughter - Cheerful moments and festive friendships during campus celebrations."
       },
       {
-        "id": "i19",
+        "id": "i27",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_4.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_4.jpg",
-        "caption": "Ganesh Chaturthi - Festive rituals and clay Ganesha devotion."
+        "url": "/images/client/L00-K-49.jpg",
+        "thumbnailUrl": "/images/client/L00-K-49.jpg",
+        "caption": "High Energy & Celebratory Poses - Toddlers dancing with excitement in beautiful attire."
       },
       {
-        "id": "i20",
+        "id": "i28",
         "type": "image",
-        "url": "/images/instagram/insta_thumb_10.jpg",
-        "thumbnailUrl": "/images/instagram/insta_thumb_10.jpg",
-        "caption": "Little Tricolour Geniuses - Independence Day celebration and anthems."
+        "url": "/images/client/L00-K-23.jpg",
+        "thumbnailUrl": "/images/client/L00-K-23.jpg",
+        "caption": "Traditional Attire Parade - Posing in lehengas, pavadas and traditional Indian outfits."
+      },
+      {
+        "id": "i29",
+        "type": "image",
+        "url": "/images/client/L00-K-50.jpg",
+        "thumbnailUrl": "/images/client/L00-K-50.jpg",
+        "caption": "Fun Group Dice Games - Interactive turn-taking and playful social interaction on the turf."
       }
     ]
   }

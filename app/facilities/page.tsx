@@ -77,6 +77,9 @@ const SAFETY_FEATURES = [
   },
 ];
 
+const GOOGLE_DRIVE_FOLDER_URL =
+  "https://drive.google.com/drive/folders/1sB7SKD7pVeWD5IqeaZDpE19opsT9-aqw?usp=sharing";
+
 export default function FacilitiesPage() {
   return (
     <>
@@ -85,10 +88,21 @@ export default function FacilitiesPage() {
         {/* Hero */}
         <section className="relative overflow-hidden bg-gradient-to-b from-[#BEE7FF]/60 via-[#E4F5FF]/40 to-white pt-14 pb-16">
           <div className="max-w-5xl mx-auto px-6 text-center">
-            <span className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-candy border border-candy/20 shadow-sm mb-6">
-              <ShieldCheck size={14} className="text-leaf" />
-              100% Child-Safe Green Campus
-            </span>
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              <span className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full text-xs font-heading font-semibold text-candy border border-candy/20 shadow-sm">
+                <ShieldCheck size={14} className="text-leaf" />
+                100% Child-Safe Green Campus
+              </span>
+              <a
+                href={GOOGLE_DRIVE_FOLDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-blue-200 text-[#1a73e8] px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm transition-all hover:scale-105"
+              >
+                <span>📂 View All 50+ Photos on Google Drive</span>
+                <span className="text-[10px]">↗</span>
+              </a>
+            </div>
             <h1 className="font-display text-4xl sm:text-6xl font-extrabold text-[#3a2e4d]">
               Our Campus & <span className="text-candy">Facilities</span> 🏰
             </h1>

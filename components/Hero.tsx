@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight, ExternalLink, Sparkles } from "lucide-react";
 import { Balloon, Butterfly, Cloud, Rainbow, SunFace, Star } from "./FloatingBackground";
 import BookTourModal from "./BookTourModal";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
@@ -21,14 +22,69 @@ const SEED: HomeContent = {
 };
 
 const BTN_STYLES = [
-  "bg-candy text-white shadow-lg shadow-teal-200",
-  "bg-sky text-[#3a2e4d] shadow-lg shadow-blue-200",
-  "bg-sunshine text-[#4a3b00] shadow-lg shadow-yellow-200",
+  "bg-candy text-white shadow-lg shadow-teal-200 hover:shadow-teal-300",
+  "bg-sky text-[#3a2e4d] shadow-lg shadow-blue-200 hover:shadow-blue-300",
+  "bg-sunshine text-[#4a3b00] shadow-lg shadow-yellow-200 hover:shadow-yellow-300",
+];
+
+const GOOGLE_DRIVE_FOLDER_URL =
+  "https://drive.google.com/drive/folders/1sB7SKD7pVeWD5IqeaZDpE19opsT9-aqw?usp=sharing";
+
+const HERO_SLIDES = [
+  {
+    src: "/images/client/L00-K-31.jpg",
+    title: "Morning Circle Time & Rhymes",
+    subtitle: "Joyful group storytelling, rhymes & phonics under our rainbow mural",
+    tag: "Circle Time",
+  },
+  {
+    src: "/images/client/L00-K-17.jpg",
+    title: "Montessori Sensorial Lab",
+    subtitle: "Accessible wooden low-shelving equipped with didactic sensory apparatus",
+    tag: "Montessori Lab",
+  },
+  {
+    src: "/images/client/L00-K-35.jpg",
+    title: "Hands-on Anatomy & Puzzles",
+    subtitle: "Tactile exploration, cylinder blocks & cognitive fine motor discovery",
+    tag: "Discovery Lab",
+  },
+  {
+    src: "/images/client/L00-K-43.jpg",
+    title: "Creative Arts & Expressive Studio",
+    subtitle: "Developing tripod pencil grasp, vibrant pastels & creative confidence",
+    tag: "Art Studio",
+  },
+  {
+    src: "/images/client/L00-K-1.jpg",
+    title: "Independent 2-Story Green Campus",
+    subtitle: "Vibrant rainbow elevation, accessible ramp & CCTV-monitored entrance gate",
+    tag: "Safe Campus",
+  },
 ];
 
 export default function Hero() {
   const { data } = useCmsSection("home", SEED);
   const [tourModalOpen, setTourModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-advance slideshow every 5 seconds unless hovered
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
 
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-[#BEE7FF] via-[#DCF3FF] to-white pt-6 pb-32">
@@ -100,7 +156,7 @@ export default function Hero() {
                   onClick={() => setTourModalOpen(true)}
                   whileHover={{ scale: 1.07, rotate: i % 2 ? 1 : -1 }}
                   whileTap={{ scale: 0.94 }}
-                  className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base cursor-pointer`}
+                  className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base cursor-pointer transition-all`}
                 >
                   {b.emoji} {b.label}
                 </motion.button>
@@ -112,7 +168,7 @@ export default function Hero() {
                 whileHover={{ scale: 1.07, rotate: i % 2 ? 1 : -1 }}
                 whileTap={{ scale: 0.94 }}
                 href={b.href}
-                className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base`}
+                className={`${BTN_STYLES[i % BTN_STYLES.length]} font-heading font-bold px-7 py-4 rounded-full text-base transition-all`}
               >
                 {b.emoji} {b.label}
               </motion.a>
@@ -120,31 +176,117 @@ export default function Hero() {
           })}
         </motion.div>
 
-        {/* Visual Showcase: Real Classroom Photography with Floating Stat Badges */}
+        {/* Visual Showcase: Real Classroom Photography Carousel with Direct Drive Link */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
           className="relative mt-16 mx-auto max-w-4xl"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
-          <div className="relative rounded-[2.5rem] p-3 sm:p-4 bg-white/60 backdrop-blur-md shadow-2xl border-4 border-white/80 overflow-hidden">
-            <div className="relative h-[280px] sm:h-[420px] md:h-[480px] w-full rounded-[2rem] overflow-hidden">
-              <Image
-                src="/images/hero-montessori.jpg"
-                alt="Happy children learning with Montessori materials at Kaylan Preschool Bangalore"
-                fill
-                sizes="(max-width: 768px) 100vw, 896px"
-                className="object-cover object-center transform hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+          <div className="relative rounded-[2.5rem] p-3 sm:p-4 bg-white/70 backdrop-blur-md shadow-2xl border-4 border-white/90 overflow-hidden group">
+            {/* Image Stage */}
+            <div className="relative h-[300px] sm:h-[430px] md:h-[490px] w-full rounded-[2rem] overflow-hidden bg-slate-900">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={HERO_SLIDES[currentSlide].src}
+                    alt={HERO_SLIDES[currentSlide].title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 896px"
+                    className="object-cover object-center"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10 pointer-events-none" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Prev / Next Chevrons on Hover */}
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous photo"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-black/60 text-white backdrop-blur flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20 focus:opacity-100"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next photo"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/35 hover:bg-black/60 text-white backdrop-blur flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 z-20 focus:opacity-100"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              {/* Top Drive Pill */}
+              <a
+                href={GOOGLE_DRIVE_FOLDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 right-4 z-20 inline-flex items-center gap-2 bg-black/50 hover:bg-black/70 text-white text-xs font-heading font-semibold px-3.5 py-1.5 rounded-full backdrop-blur-md border border-white/30 transition-all hover:scale-105"
+              >
+                <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 87.3 78" fill="none">
+                  <path d="m6.6 66.85 3.85 6.65c.8 1.4 1.95 2.5 3.3 3.3l13.75-23.8h-27.5c0 1.55.4 3.1 1.2 4.5z" fill="#0066da"/>
+                  <path d="m43.65 25-13.75-23.8c-1.35.8-2.5 1.9-3.3 3.3l-25.4 44c-.8 1.4-1.2 2.95-1.2 4.5h27.5z" fill="#00ac47"/>
+                  <path d="m73.55 76.8c1.35-.8 2.5-1.9 3.3-3.3l1.6-2.75 7.65-13.25c.8-1.4 1.2-2.95 1.2-4.5h-27.502l5.852 11.5z" fill="#ea4335"/>
+                  <path d="m43.65 25 13.75-23.8c-1.35-.8-2.9-1.2-4.5-1.2h-18.5c-1.6 0-3.15.45-4.5 1.2z" fill="#00832d"/>
+                  <path d="m59.8 53h-32.3l-13.75 23.8c1.35.8 2.9 1.2 4.5 1.2h50.8c1.6 0 3.15-.45 4.5-1.2z" fill="#2684fc"/>
+                  <path d="m73.4 26.5-12.7-22c-.8-1.4-1.95-2.5-3.3-3.3l-13.75 23.8 16.15 28h27.45c0-1.55-.4-3.1-1.2-4.5z" fill="#ffba00"/>
+                </svg>
+                <span>50+ Photos on Drive</span>
+                <ExternalLink size={12} className="opacity-80" />
+              </a>
+
+              {/* Bottom Caption Overlay */}
+              <div className="absolute bottom-4 left-4 right-4 z-20 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 text-left">
+                <div className="bg-black/45 backdrop-blur-md p-3.5 sm:p-4 rounded-2xl border border-white/20 max-w-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="bg-candy text-white text-[10px] font-heading font-bold px-2 py-0.5 rounded-full">
+                      {HERO_SLIDES[currentSlide].tag}
+                    </span>
+                    <span className="text-[11px] text-white/80 font-mono">
+                      {currentSlide + 1} / {HERO_SLIDES.length}
+                    </span>
+                  </div>
+                  <h4 className="text-white font-heading font-bold text-sm sm:text-base leading-tight">
+                    {HERO_SLIDES[currentSlide].title}
+                  </h4>
+                  <p className="text-white/80 text-xs mt-1 leading-snug line-clamp-1 sm:line-clamp-none">
+                    {HERO_SLIDES[currentSlide].subtitle}
+                  </p>
+                </div>
+
+                {/* Slideshow Indicator Dots */}
+                <div className="flex items-center gap-1.5 bg-black/45 backdrop-blur-md px-3 py-2 rounded-full border border-white/20 shrink-0 self-center sm:self-end">
+                  {HERO_SLIDES.map((slide, idx) => (
+                    <button
+                      key={slide.src}
+                      type="button"
+                      onClick={() => setCurrentSlide(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        idx === currentSlide ? "w-6 bg-sunshine" : "w-2 bg-white/50 hover:bg-white"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Floating Glassmorphic Trust Badges */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-8 left-8 sm:left-10 bg-white/90 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left hidden sm:flex"
+              className="absolute top-8 left-8 sm:left-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/80 flex items-center gap-2.5 text-left hidden sm:flex z-30"
             >
               <span className="text-xl">⭐</span>
               <div>
@@ -156,7 +298,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute bottom-8 left-8 sm:left-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left"
+              className="absolute -bottom-3 left-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/80 flex items-center gap-2.5 text-left z-30 hidden md:flex"
             >
               <div className="w-9 h-9 rounded-full bg-candy/15 flex items-center justify-center text-candy font-bold text-sm">
                 1:8
@@ -170,7 +312,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-8 right-8 sm:right-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/60 flex items-center gap-2.5 text-left hidden sm:flex"
+              className="absolute -bottom-3 right-10 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-xl border border-white/80 flex items-center gap-2.5 text-left z-30 hidden md:flex"
             >
               <span className="text-xl">🛡️</span>
               <div>

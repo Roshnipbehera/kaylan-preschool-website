@@ -17,31 +17,36 @@ const SEED: ProgramsContent = {
   ],
 };
 
-const PROGRAM_DETAILS: Record<string, { desc: string; focus: string[]; timing: string }> = {
+const PROGRAM_DETAILS: Record<string, { desc: string; focus: string[]; timing: string; peekEmoji: string }> = {
   "Playgroup (L0)": {
     desc: "A gentle, joyful first step into social learning, sensory discovery, and motor coordination.",
     focus: ["Sensory & tactile play", "Fine & gross motor skills", "Circle time & rhymes"],
     timing: "8:30 AM – 12:00 PM",
+    peekEmoji: "🐥",
   },
   "Nursery (L1)": {
     desc: "Building confidence, curious vocabulary, early phonics, and foundational math concepts.",
     focus: ["Jolly Phonics sounds", "Kreedo math materials", "Storytelling & puppet joy"],
     timing: "8:30 AM – 12:30 PM",
+    peekEmoji: "🌱",
   },
   "Junior KG (L3)": {
     desc: "Nurturing independent thinking, structured writing grip, early reading, and scientific curiosity.",
     focus: ["Guided phonetic reading", "Math beads & logic", "Nature & mini-STEM experiments"],
     timing: "8:30 AM – 1:00 PM",
+    peekEmoji: "🚀",
   },
   "Senior KG (L4)": {
     desc: "Comprehensive Grade 1 primary school readiness with advanced phonics and mental math.",
     focus: ["Reading & comprehension", "Mental math & place value", "Public speaking & presentation"],
     timing: "8:30 AM – 1:30 PM",
+    peekEmoji: "🎓",
   },
   "Daycare & After-School": {
     desc: "Loving, secure extended care and engaging after-school hobby clubs for working parents.",
     focus: ["Individual rest & nap pods", "Homework guidance & reading", "Sports & creative hobby clubs"],
     timing: "8:30 AM – 6:30 PM",
+    peekEmoji: "🧸",
   },
 };
 
@@ -54,6 +59,7 @@ function House({ h, i }: { h: ProgramHouse; i: number }) {
     desc: "Montessori-inspired holistic early education.",
     focus: ["Child-centric learning", "Play & discovery"],
     timing: "8:30 AM – 12:30 PM",
+    peekEmoji: "⭐",
   };
 
   return (
@@ -61,31 +67,88 @@ function House({ h, i }: { h: ProgramHouse; i: number }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: i * 0.1 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ delay: i * 0.1, type: "spring", stiffness: 150 }}
       onHoverStart={() => setOpen(true)}
       onHoverEnd={() => setOpen(false)}
-      className="relative flex flex-col items-center bg-white/90 backdrop-blur-sm rounded-[2.5rem] p-6 shadow-xl hover:shadow-2xl border-2 border-white transition-all duration-300 w-full max-w-[280px] text-center"
+      className="relative flex flex-col items-center bg-white/95 backdrop-blur-sm rounded-[2.5rem] p-6 shadow-xl hover:shadow-2xl border-2 border-white transition-all duration-300 w-full max-w-[280px] text-center"
     >
       <div className="relative mb-3">
+        {/* Floating Chimney Smoke Puff on hover */}
+        <motion.span
+          animate={{
+            opacity: open ? [0, 0.8, 0] : 0,
+            y: open ? [-2, -18] : 0,
+            scale: open ? [0.6, 1.2] : 0.6,
+          }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
+          className="absolute -top-3 right-6 text-xs pointer-events-none"
+        >
+          💨
+        </motion.span>
+
         <svg width="130" height="120" viewBox="0 0 150 140" className="drop-shadow-md">
+          {/* Chimney */}
+          <rect x="105" y="25" width="16" height="25" rx="3" fill="#8D6E63" />
+
+          {/* House Roof with Spring Bounce */}
           <motion.polygon
             points="10,65 75,15 140,65"
             fill={h.roof}
-            animate={{ y: open ? -6 : 0 }}
-            transition={{ type: "spring", stiffness: 200 }}
+            animate={{ y: open ? -8 : 0, scale: open ? 1.02 : 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
           />
+
+          {/* House Base Body */}
           <rect x="25" y="65" width="100" height="65" rx="10" fill={h.color} />
+
+          {/* Doorway Background */}
+          <rect x="62" y="80" width="26" height="50" rx="4" fill="#3D2B1F" />
+
+          {/* Door Sliding / Opening Animation */}
           <motion.rect
             x="62"
             y={open ? "80" : "95"}
             width="26"
             height="35"
             rx="4"
-            fill="#4a3b1a"
-            animate={{ height: open ? 48 : 35, y: open ? 80 : 95 }}
+            fill="#5D4037"
+            animate={{
+              height: open ? 48 : 35,
+              y: open ? 80 : 95,
+              opacity: open ? 0.3 : 1,
+            }}
+            transition={{ duration: 0.3 }}
           />
-          <circle cx="45" cy="90" r="8" fill="white" opacity="0.9" />
-          <circle cx="105" cy="90" r="8" fill="white" opacity="0.9" />
+
+          {/* Peek-in Character when Door opens */}
+          {open && (
+            <text x="75" y="112" textAnchor="middle" fontSize="16">
+              {details.peekEmoji}
+            </text>
+          )}
+
+          {/* Windows with Warm Glow on hover */}
+          <motion.circle
+            cx="45"
+            cy="90"
+            r="9"
+            fill={open ? "#FFF9C4" : "white"}
+            stroke={open ? "#FFD54F" : "#ECEFF1"}
+            strokeWidth="1.5"
+            animate={{ scale: open ? [1, 1.1, 1] : 1 }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+          <motion.circle
+            cx="105"
+            cy="90"
+            r="9"
+            fill={open ? "#FFF9C4" : "white"}
+            stroke={open ? "#FFD54F" : "#ECEFF1"}
+            strokeWidth="1.5"
+            animate={{ scale: open ? [1, 1.1, 1] : 1 }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
         </svg>
       </div>
 

@@ -88,7 +88,7 @@ export default function FAQ() {
                     <span>{f.q}</span>
                     <motion.span
                       animate={{ rotate: isOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       aria-hidden="true"
                       className="text-candy shrink-0 ml-4"
                     >
@@ -96,7 +96,7 @@ export default function FAQ() {
                     </motion.span>
                   </button>
                 </h3>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       id={panelId}
@@ -105,6 +105,7 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
                       className="overflow-hidden bg-white"
                     >
                       <p className="px-6 pb-6 pt-2 text-sm sm:text-base text-[#5b4b6b] leading-relaxed border-t border-black/5">
