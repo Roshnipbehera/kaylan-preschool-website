@@ -5,25 +5,23 @@ import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import type { AdmissionsStepsContent } from "@/lib/types/cms";
 
 const SEED: AdmissionsStepsContent = {
-  heading: "Admissions — Stepping Stones 🪨",
-  subtext: "Five simple steps to joining the Kaylan family.",
+  heading: "Step-by-Step Admission Process 🎒",
+  subtext: "Four simple, stress-free steps to enrolling your child at Kaylan Preschool.",
   steps: [
-    { label: "Visit School", emoji: "🏫" },
-    { label: "Meet Teachers", emoji: "👩‍🏫" },
-    { label: "Campus Tour", emoji: "🚶" },
-    { label: "Admission", emoji: "📝" },
-    { label: "Welcome Kit", emoji: "🎁" },
+    { label: "Visit & Enquire", emoji: "🏫" },
+    { label: "Fill Application Form", emoji: "📝" },
+    { label: "Attend Interaction", emoji: "🤝" },
+    { label: "Confirm Admission", emoji: "🎒" },
   ],
-  ctaLabel: "🎉 Start Your Journey Today",
+  ctaLabel: "🎉 Enroll Your Child Today",
   ctaHref: "/admissions/apply",
 };
 
 const STEP_DETAILS: Record<string, string> = {
-  "Visit School": "Schedule a relaxed morning visit",
-  "Meet Teachers": "One-on-one guide conversation",
-  "Campus Tour": "Explore classrooms & play garden",
-  Admission: "Submit quick form & documents",
-  "Welcome Kit": "Receive school bag & kit",
+  "Visit & Enquire": "Schedule a guided campus walkthrough & meet our loving educators",
+  "Fill Application Form": "Complete quick student registration online or at campus",
+  "Attend Interaction": "Gentle, stress-free parent & child dialogue focused on observation",
+  "Confirm Admission": "Secure admission seat, receive welcome kit & begin joyful learning",
 };
 
 export default function Admissions() {

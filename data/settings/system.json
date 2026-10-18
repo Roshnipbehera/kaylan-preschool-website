@@ -1,6 +1,7 @@
 {
   "schoolName": "Kaylan Preschool & Daycare",
-  "contactEmail": "kpsdc01@gmail.com",
+  "contactEmail": "info@kaylanpreschool.com",
+  "secondaryEmail": "kpsdc01@gmail.com",
   "contactPhone": "+91 96636 30221",
   "currency": "INR",
   "academicYearStart": "2026-06-01",
@@ -8,7 +9,7 @@
   "termDates": "Term 1: Jun - Sep · Term 2: Oct - Dec · Term 3: Jan - Mar",
   "maintenanceMode": false,
   "logoUrl": "/brand/kaylan-logo.png",
-  "address": "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100",
+  "address": "#30 Prakruthi Residential Layout, Bettadasanpura, Electronic City Ph 1, Bangalore – 560100 (Near Neo Hospital, Doddathoguru)",
   "schoolTimings": "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
   "admissionsOpen": true,
   "facebookUrl": "https://facebook.com/kaylanpreschool",

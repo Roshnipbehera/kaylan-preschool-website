@@ -10,7 +10,7 @@ import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import type { HomeContent } from "@/lib/types/cms";
 
 const SEED: HomeContent = {
-  badge: "🎈 Montessori-inspired · Kreedo Curriculum · Electronic City, Bangalore",
+  badge: "🌱 Seeding Successful Stories · Montessori & Kreedo · Electronic City Ph 1",
   heading: "Where Little Dreams",
   headingHighlight: "Begin",
   subtext:

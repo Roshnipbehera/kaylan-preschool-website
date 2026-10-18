@@ -151,8 +151,8 @@ export default function Contact() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Admissions Email</p>
-                  <p className="text-xs font-heading font-bold text-[#3a2e4d] truncate max-w-[150px]">{data.contactEmail}</p>
+                  <p className="text-[10px] uppercase font-bold text-[#8a7a9a]">Official Email</p>
+                  <p className="text-xs font-heading font-bold text-[#3a2e4d] truncate max-w-[180px]">{data.contactEmail}</p>
                 </div>
               </a>
 

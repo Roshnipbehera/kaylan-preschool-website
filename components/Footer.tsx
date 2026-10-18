@@ -100,7 +100,12 @@ export default function Footer() {
           </div>
           <div className="mt-4 text-xs space-y-1 text-[#5b4720]">
             <p>📞 <a href={`tel:${settings.contactPhone?.replace(/[^+\d]/g, "")}`} className="hover:underline font-semibold">{settings.contactPhone}</a></p>
-            <p>✉️ <a href={`mailto:${settings.contactEmail}`} className="hover:underline font-semibold">{settings.contactEmail}</a></p>
+            <p>
+              ✉️ <a href={`mailto:${settings.contactEmail}`} className="hover:underline font-semibold">{settings.contactEmail}</a>
+              {settings.secondaryEmail && (
+                <> · <a href={`mailto:${settings.secondaryEmail}`} className="hover:underline">{settings.secondaryEmail}</a></>
+              )}
+            </p>
             <p className="line-clamp-2 leading-relaxed">📍 {settings.address}</p>
           </div>
         </div>

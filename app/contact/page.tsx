@@ -54,7 +54,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Our Campus Address</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1 leading-relaxed">
-                      30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100
+                      #30 Prakruthi Residential Layout, Bettadasanpura, Electronic City Ph 1, Bangalore – 560100 (Near Neo Hospital, Doddathoguru)
                     </p>
                   </div>
                 </div>
@@ -67,7 +67,7 @@ export default function ContactPage() {
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Direct Phone & WhatsApp</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1">
                       <a href="tel:+919663630221" className="hover:text-candy font-semibold">
-                        +91 96636 30221
+                        +91 96636 30221 / 96636 30221
                       </a>
                     </p>
                   </div>
@@ -78,13 +78,13 @@ export default function ContactPage() {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <h4 className="font-heading font-bold text-[#3a2e4d]">Admissions Desk Email</h4>
+                    <h4 className="font-heading font-bold text-[#3a2e4d]">Admissions & Info Emails</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1 space-y-0.5">
-                      <a href="mailto:kpsdc01@gmail.com" className="hover:text-candy font-semibold block">
-                        kpsdc01@gmail.com
+                      <a href="mailto:info@kaylanpreschool.com" className="hover:text-candy font-semibold block">
+                        info@kaylanpreschool.com
                       </a>
-                      <a href="mailto:admissions@kaylanpreschool.com" className="text-[#8a7a9a] hover:text-candy block text-[11px]">
-                        admissions@kaylanpreschool.com
+                      <a href="mailto:kpsdc01@gmail.com" className="text-[#5b4b6b] hover:text-candy block text-xs">
+                        kpsdc01@gmail.com
                       </a>
                     </p>
                   </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   Find Us on Google Maps
                 </h3>
                 <p className="text-xs text-[#5b4b6b] mt-1">
-                  Located at 30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru 560100 (Google Plus Code: RJXR+3X).
+                  Located at #30 Prakruthi Residential Layout, Bettadasanpura, Electronic City Ph 1, Bangalore 560100 (Near Neo Hospital, Doddathoguru · Google Plus Code: RJXR+3X).
                 </p>
               </div>
               <a

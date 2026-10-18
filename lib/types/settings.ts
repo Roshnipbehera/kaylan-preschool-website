@@ -1,6 +1,7 @@
 export interface SystemSettings {
   schoolName: string;
   contactEmail: string;
+  secondaryEmail?: string;
   contactPhone: string;
   currency: string;
   academicYearStart: string;
@@ -26,6 +27,7 @@ export interface SystemSettings {
 export type PublicSettings = Pick<
   SystemSettings,
   | "contactEmail"
+  | "secondaryEmail"
   | "contactPhone"
   | "address"
   | "logoUrl"

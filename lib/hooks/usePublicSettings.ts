@@ -8,9 +8,10 @@ import { getPublicSettings } from "@/lib/api/settings";
 import type { PublicSettings } from "@/lib/types/settings";
 
 const SEED: PublicSettings = {
-  contactEmail: "kpsdc01@gmail.com",
+  contactEmail: "info@kaylanpreschool.com",
+  secondaryEmail: "kpsdc01@gmail.com",
   contactPhone: "+91 96636 30221",
-  address: "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100",
+  address: "#30 Prakruthi Residential Layout, Bettadasanpura, Electronic City Ph 1, Bangalore – 560100 (Near Neo Hospital, Doddathoguru)",
   logoUrl: "/brand/kaylan-logo.png",
   schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
   admissionsOpen: true,
