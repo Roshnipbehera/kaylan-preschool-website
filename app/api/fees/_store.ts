@@ -21,8 +21,14 @@ export async function readInvoices(): Promise<Invoice[]> {
 }
 
 export async function writeInvoices(invoices: Invoice[]): Promise<void> {
-  await ensureDir();
-  await fs.writeFile(INVOICES_FILE, JSON.stringify(invoices, null, 2), "utf-8");
+  try {
+    await ensureDir();
+    await fs.writeFile(INVOICES_FILE, JSON.stringify(invoices, null, 2), "utf-8");
+  } catch (err) {
+    // In serverless environments (e.g. Vercel / AWS Lambda), the deployment filesystem is read-only.
+    // Catch EROFS so in-memory responses and client workflows succeed gracefully.
+    console.warn("Could not persist invoices to disk (read-only filesystem):", err);
+  }
 }
 
 export async function readPayments(): Promise<Payment[]> {
@@ -36,6 +42,10 @@ export async function readPayments(): Promise<Payment[]> {
 }
 
 export async function writePayments(payments: Payment[]): Promise<void> {
-  await ensureDir();
-  await fs.writeFile(PAYMENTS_FILE, JSON.stringify(payments, null, 2), "utf-8");
+  try {
+    await ensureDir();
+    await fs.writeFile(PAYMENTS_FILE, JSON.stringify(payments, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("Could not persist payments to disk (read-only filesystem):", err);
+  }
 }
