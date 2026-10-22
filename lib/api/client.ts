@@ -8,7 +8,9 @@
 
 import type { ApiResponse } from "@/lib/types";
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000/api/v1";
+export const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  (typeof window !== "undefined" ? "/api" : "http://localhost:4000/api/v1");
 export const USE_MOCK_API = process.env.NEXT_PUBLIC_USE_MOCK_API !== "false";
 
 export class ApiError extends Error {
