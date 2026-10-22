@@ -6,9 +6,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Kaylan Preschool",
   description:
     "Learn about Kaylan Preschool in Electronic City, Bangalore — our Montessori & Kreedo philosophy, loving educators, child-first environment, and safe green campus.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Us | Kaylan Preschool",
+    description:
+      "Learn about Kaylan Preschool in Electronic City, Bangalore — our Montessori & Kreedo philosophy, loving educators, child-first environment, and safe green campus.",
+    url: "/about",
+  },
 };
 
 const STATS = [

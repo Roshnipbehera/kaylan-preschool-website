@@ -6,8 +6,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Blog | Kaylan Preschool",
+  title: "Parenting & Early Education Blog | Kaylan Preschool",
   description: "Parenting tips, curriculum deep-dives, and early childhood development insights from the Kaylan Preschool team.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Parenting & Early Education Blog | Kaylan Preschool",
+    description: "Parenting tips, curriculum deep-dives, and early childhood development insights from the Kaylan Preschool team.",
+    url: "/blog",
+  },
 };
 
 export const dynamic = "force-dynamic";

@@ -23,9 +23,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${post.title} | Kaylan Preschool Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
-      title: post.title,
+      title: `${post.title} | Kaylan Preschool Blog`,
       description: post.excerpt,
+      url: `/blog/${post.slug}`,
       type: "article",
       images: post.coverImageUrl ? [{ url: post.coverImageUrl }] : undefined,
     },

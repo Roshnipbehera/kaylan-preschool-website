@@ -6,9 +6,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Campus Facilities & Safety",
+  title: "Campus Facilities & Safety | Kaylan Preschool",
   description:
     "Take a tour of our child-safe green preschool campus in Electronic City Phase 1, Bangalore. CCTV security, Montessori labs, outdoor turf, and day-care nap suites.",
+  alternates: {
+    canonical: "/facilities",
+  },
+  openGraph: {
+    title: "Campus Facilities & Safety | Kaylan Preschool",
+    description:
+      "Take a tour of our child-safe green preschool campus in Electronic City Phase 1, Bangalore. CCTV security, Montessori labs, outdoor turf, and day-care nap suites.",
+    url: "/facilities",
+  },
 };
 
 const FACILITIES = [

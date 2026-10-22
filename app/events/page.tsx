@@ -6,8 +6,16 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Events | Kaylan Preschool",
+  title: "Events & Celebrations | Kaylan Preschool",
   description: "Upcoming events, celebrations, and open houses at Kaylan Preschool — with a live countdown and easy RSVP.",
+  alternates: {
+    canonical: "/events",
+  },
+  openGraph: {
+    title: "Events & Celebrations | Kaylan Preschool",
+    description: "Upcoming events, celebrations, and open houses at Kaylan Preschool — with a live countdown and easy RSVP.",
+    url: "/events",
+  },
 };
 
 export const dynamic = "force-dynamic";

@@ -90,11 +90,11 @@ export default function DayTimeline() {
     <section id="facilities" className="relative py-24 bg-gradient-to-b from-[#FFFDF7] via-[#FFF9EE] to-white">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="inline-block bg-sunshine/30 text-[#6a5400] font-heading font-bold text-xs uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
-          Daily Rhythm
+          Full-Day & Daycare Rhythm
         </span>
         <h2 className="font-display text-4xl sm:text-5xl font-bold mb-3 text-[#3a2e4d]">A Day at Kaylan ⏰</h2>
         <p className="text-[#5b4b6b] max-w-xl mx-auto mb-16 text-base sm:text-lg">
-          A thoughtful, predictable rhythm designed to balance child-led discovery, physical outdoor play, peaceful rest, and joyful learning.
+          Our full-day and extended daycare rhythm designed to balance child-led discovery, physical outdoor play, nutritious lunch, peaceful rest, and joyful learning. (Core preschool sessions conclude between 12:00 PM – 1:30 PM).
         </p>
       </div>
 

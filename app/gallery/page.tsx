@@ -7,15 +7,25 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Gallery | Kaylan Preschool & Daycare",
+  title: "Photo Gallery | Kaylan Preschool",
   description:
     "Authentic photos and moments of classroom life, Montessori sensorial exploration, arts & craft, and festival celebrations at Kaylan Preschool Bangalore.",
+  alternates: {
+    canonical: "/gallery",
+  },
+  openGraph: {
+    title: "Photo Gallery | Kaylan Preschool",
+    description:
+      "Authentic photos and moments of classroom life, Montessori sensorial exploration, arts & craft, and festival celebrations at Kaylan Preschool Bangalore.",
+    url: "/gallery",
+  },
 };
 
 export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
   const albums = await listAlbums();
+  const totalPhotos = albums.reduce((acc, a) => acc + (a.items?.length || 0), 0);
 
   return (
     <>
@@ -26,7 +36,7 @@ export default async function GalleryPage() {
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
               <span className="inline-flex items-center gap-1.5 bg-candy/10 text-candy border border-candy/20 px-4 py-1.5 rounded-full text-xs font-heading font-bold shadow-sm">
                 <Sparkles size={14} />
-                <span>Electronic City Campus · 50+ Photos</span>
+                <span>Electronic City Campus · {totalPhotos} Photos</span>
               </span>
 
               <a

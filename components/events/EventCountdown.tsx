@@ -50,8 +50,10 @@ function Digit({ value, label }: { value: number; label: string }) {
 }
 
 export function EventCountdown({ events }: { events: SchoolEvent[] }) {
+  const [mounted, setMounted] = useState(false);
+  const now = Date.now();
   const nextEvent = events
-    .filter((e) => new Date(e.date).getTime() > Date.now())
+    .filter((e) => new Date(e.date).getTime() > now)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
 
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() =>
@@ -59,8 +61,10 @@ export function EventCountdown({ events }: { events: SchoolEvent[] }) {
   );
 
   useEffect(() => {
+    setMounted(true);
     if (!nextEvent) return;
     const target = new Date(nextEvent.date);
+    setTimeLeft(getTimeLeft(target));
     const interval = setInterval(() => setTimeLeft(getTimeLeft(target)), 1000);
     return () => clearInterval(interval);
   }, [nextEvent]);

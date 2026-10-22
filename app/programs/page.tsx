@@ -7,9 +7,18 @@ import Footer from "@/components/Footer";
 import AgeFeeCalculator from "@/components/AgeFeeCalculator";
 
 export const metadata: Metadata = {
-  title: "Academic Programs & Daycare",
+  title: "Academic Programs & Daycare | Kaylan Preschool",
   description:
     "Explore Playgroup, Nursery, Junior KG, Senior KG, and Extended Daycare programs at Kaylan Preschool Electronic City, Bangalore. Small batches, Montessori & Kreedo curriculum.",
+  alternates: {
+    canonical: "/programs",
+  },
+  openGraph: {
+    title: "Academic Programs & Daycare | Kaylan Preschool",
+    description:
+      "Explore Playgroup, Nursery, Junior KG, Senior KG, and Extended Daycare programs at Kaylan Preschool Electronic City, Bangalore. Small batches, Montessori & Kreedo curriculum.",
+    url: "/programs",
+  },
 };
 
 const PROGRAMS = [
@@ -200,7 +209,9 @@ export default function ProgramsPage() {
                     <p className="text-[#5b4b6b] text-sm leading-relaxed mb-4">{prog.description}</p>
                     <div className="p-4 rounded-2xl bg-white/70 backdrop-blur-sm border border-white">
                       <p className="text-xs font-heading font-bold text-[#3a2e4d] mb-1">Teacher-Child Ratio</p>
-                      <p className="text-xs text-[#5b4b6b]">1:8 (1:6 for Playgroup) with dedicated support attendants.</p>
+                      <p className="text-xs text-[#5b4b6b]">
+                        {prog.id === "playgroup" ? "1:6" : "1:8"} with dedicated support attendants.
+                      </p>
                     </div>
                   </div>
 

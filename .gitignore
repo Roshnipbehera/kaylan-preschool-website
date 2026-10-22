@@ -9,3 +9,5 @@ backend/.env
 .DS_Store
 tsconfig.tsbuildinfo
 scratch/
+playwright-report/
+test-results/

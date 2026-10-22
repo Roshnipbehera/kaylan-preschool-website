@@ -76,8 +76,15 @@ export default function Footer() {
           <p className="text-sm">{data.tagline}</p>
           <div className="flex flex-wrap items-center gap-3 mt-4">
             {settings.facebookUrl && (
-              <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:opacity-80 transition-opacity">
-                <Facebook className="w-5 h-5" />
+              <a
+                href={settings.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="inline-flex items-center gap-1.5 text-xs font-heading font-bold bg-white/70 hover:bg-white text-[#1877F2] px-3 py-1 rounded-full shadow-sm transition-all"
+              >
+                <Facebook className="w-4 h-4" />
+                <span>Facebook</span>
               </a>
             )}
             {settings.instagramUrl && (
@@ -93,8 +100,15 @@ export default function Footer() {
               </a>
             )}
             {settings.twitterUrl && (
-              <a href={settings.twitterUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:opacity-80 transition-opacity">
-                <Youtube className="w-5 h-5" />
+              <a
+                href={settings.twitterUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="inline-flex items-center gap-1.5 text-xs font-heading font-bold bg-white/70 hover:bg-white text-[#CD201F] px-3 py-1 rounded-full shadow-sm transition-all"
+              >
+                <Youtube className="w-4 h-4" />
+                <span>YouTube</span>
               </a>
             )}
           </div>

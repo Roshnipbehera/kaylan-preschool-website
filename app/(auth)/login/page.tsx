@@ -4,8 +4,16 @@ import { AuthLayout } from "@/components/layout/AuthLayout";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Portal Login | Kaylan Preschool",
   description: "Sign in to the Kaylan Preschool parent, teacher, or admin portal.",
+  alternates: {
+    canonical: "/login",
+  },
+  openGraph: {
+    title: "Portal Login | Kaylan Preschool",
+    description: "Sign in to the Kaylan Preschool parent, teacher, or admin portal.",
+    url: "/login",
+  },
 };
 
 export default function LoginPage() {

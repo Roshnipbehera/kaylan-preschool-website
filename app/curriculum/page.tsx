@@ -6,9 +6,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Curriculum & Methodology",
+  title: "Curriculum & Methodology | Kaylan Preschool",
   description:
     "Learn about our Montessori-inspired & Kreedo integrated curriculum at Kaylan Preschool Bangalore. 6 discovery domains, sensory tactile apparatus, and stress-free milestone growth.",
+  alternates: {
+    canonical: "/curriculum",
+  },
+  openGraph: {
+    title: "Curriculum & Methodology | Kaylan Preschool",
+    description:
+      "Learn about our Montessori-inspired & Kreedo integrated curriculum at Kaylan Preschool Bangalore. 6 discovery domains, sensory tactile apparatus, and stress-free milestone growth.",
+    url: "/curriculum",
+  },
 };
 
 const DOMAINS = [

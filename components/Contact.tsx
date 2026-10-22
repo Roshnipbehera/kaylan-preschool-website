@@ -178,7 +178,7 @@ export default function Contact() {
           {/* Right Column: Interactive Parent Enquiry Form */}
           <div className="space-y-6">
 
-            <form className="bg-white rounded-3xl p-6 shadow-lg space-y-3" onSubmit={handleSubmit(onSubmit)} data-testid="contact-enquiry-form">
+            <form id="visit-form" className="bg-white rounded-3xl p-6 shadow-lg space-y-3" onSubmit={handleSubmit(onSubmit)} data-testid="contact-enquiry-form">
               <div>
                 <input
                   className="w-full rounded-full border-2 border-[#FFE3A8] px-5 py-3 text-sm"

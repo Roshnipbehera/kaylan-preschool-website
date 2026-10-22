@@ -8,6 +8,14 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Apply for Admission | Kaylan Preschool",
   description: "Start your child's journey with Kaylan Preschool -- complete our simple 5-step admission application.",
+  alternates: {
+    canonical: "/admissions/apply",
+  },
+  openGraph: {
+    title: "Apply for Admission | Kaylan Preschool",
+    description: "Start your child's journey with Kaylan Preschool -- complete our simple 5-step admission application.",
+    url: "/admissions/apply",
+  },
 };
 
 export default function AdmissionApplyPage() {

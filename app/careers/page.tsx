@@ -5,9 +5,18 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Careers & Teaching Opportunities",
+  title: "Careers & Join Our Team | Kaylan Preschool",
   description:
     "Join the teaching family at Kaylan Preschool in Electronic City, Bangalore. Openings for Montessori guides, nursery educators, and daycare caretakers.",
+  alternates: {
+    canonical: "/careers",
+  },
+  openGraph: {
+    title: "Careers & Join Our Team | Kaylan Preschool",
+    description:
+      "Join the teaching family at Kaylan Preschool in Electronic City, Bangalore. Openings for Montessori guides, nursery educators, and daycare caretakers.",
+    url: "/careers",
+  },
 };
 
 const OPEN_ROLES = [

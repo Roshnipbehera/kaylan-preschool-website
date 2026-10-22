@@ -6,6 +6,9 @@ import { Instagram, ExternalLink, FolderHeart, Sparkles } from "lucide-react";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
 import type { GalleryContent } from "@/lib/types/cms";
+import defaultAlbums from "@/data/gallery/albums.json";
+
+const totalPhotoCount = defaultAlbums.reduce((acc, a) => acc + (a.items?.length || 0), 0);
 
 const SEED: GalleryContent = {
   heading: "Gallery of Moments 📸",
@@ -138,7 +141,7 @@ export default function Gallery() {
               className="inline-flex items-center gap-2.5 bg-candy hover:bg-candy/90 text-white font-heading font-bold px-7 py-3.5 rounded-full shadow-lg hover:shadow-candy/30 transition-all text-sm"
             >
               <FolderHeart className="w-4 h-4" />
-              <span>Explore All 50+ Campus Photos</span>
+              <span>Explore All {totalPhotoCount} Campus Photos</span>
             </Link>
           </motion.div>
 

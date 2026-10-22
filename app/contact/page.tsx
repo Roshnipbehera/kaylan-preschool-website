@@ -5,9 +5,18 @@ import Footer from "@/components/Footer";
 import { ContactClientForm } from "@/components/contact/ContactClientForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us & Campus Location",
+  title: "Contact Us & Campus Location | Kaylan Preschool",
   description:
-    "Contact Kaylan Preschool in Electronic City, Bangalore. Phone: +91 96636 30221, Email: kpsdc01@gmail.com. Get Google Maps driving directions and visit our campus.",
+    "Contact Kaylan Preschool in Electronic City, Bangalore. Phone: +91 96636 30221, Email: info@kaylanpreschool.com. Get Google Maps driving directions and visit our campus.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Us & Campus Location | Kaylan Preschool",
+    description:
+      "Contact Kaylan Preschool in Electronic City, Bangalore. Phone: +91 96636 30221, Email: info@kaylanpreschool.com. Get Google Maps driving directions and visit our campus.",
+    url: "/contact",
+  },
 };
 
 const MAP_EMBED_URL =
@@ -67,7 +76,7 @@ export default function ContactPage() {
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Direct Phone & WhatsApp</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1">
                       <a href="tel:+919663630221" className="hover:text-candy font-semibold">
-                        +91 96636 30221 / 96636 30221
+                        +91 96636 30221
                       </a>
                     </p>
                   </div>

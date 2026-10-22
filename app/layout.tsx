@@ -45,11 +45,9 @@ export const metadata: Metadata = {
     "best preschool Electronic City",
     "playgroup Nursery Kindergarten Bangalore",
   ],
-  alternates: { canonical: "/" },
   openGraph: {
     title: "Kaylan Preschool | Where Little Dreams Begin",
     description: "A magical storybook world of play-based early learning in Bangalore.",
-    url: SITE_URL,
     siteName: "Kaylan Preschool",
     type: "website",
     locale: "en_IN",

@@ -173,7 +173,7 @@ export default function AgeFeeCalculator() {
             Child Age & Eligibility <span className="text-candy">Estimator</span> 🎯
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#5b4b6b] font-body leading-relaxed">
-            Wondering whether your child qualifies for Playgroup, Nursery, LKG, or UKG? Select their birth month &amp; year below to see instant Karnataka NEP eligibility and fee estimates.
+            Wondering whether your child qualifies for Playgroup, Nursery, Junior KG, or Senior KG? Select their birth month &amp; year below to see instant Karnataka NEP eligibility and fee estimates.
           </p>
         </div>
 
