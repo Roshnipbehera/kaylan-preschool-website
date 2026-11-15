@@ -9,7 +9,6 @@ import Philosophy from "@/components/Philosophy";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Admissions from "@/components/Admissions";
-import AgeFeeCalculator from "@/components/AgeFeeCalculator";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -41,7 +40,6 @@ export default function Home() {
       <Philosophy />
       <Gallery />
       <Testimonials />
-      <AgeFeeCalculator />
       <Admissions />
       <FAQ />
       <Contact />

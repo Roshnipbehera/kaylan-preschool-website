@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Clock, CheckCircle2, Sparkles, BookOpen, Sun, Music, Heart, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AgeFeeCalculator from "@/components/AgeFeeCalculator";
 
 export const metadata: Metadata = {
   title: "Academic Programs & Daycare | Kaylan Preschool",
@@ -230,9 +229,6 @@ export default function ProgramsPage() {
             ))}
           </div>
         </section>
-
-        {/* Interactive NEP 2020 Age & Fee Calculator */}
-        <AgeFeeCalculator />
 
         {/* Daily Schedule Routine */}
         <section className="py-20 bg-[#F7FAFC]">
