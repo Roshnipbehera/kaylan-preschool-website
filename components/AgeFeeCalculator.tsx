@@ -85,12 +85,6 @@ const GRADES: Record<string, GradeEligibility> = {
   },
 };
 
-const DAYCARE_OPTIONS = [
-  { id: "none", label: "Preschool Only (8:30 AM – 1:30 PM)", feeQuarterly: 0, feeAnnual: 0, hours: "Standard Preschool Hours" },
-  { id: "half", label: "Extended Afternoon Care (Till 3:30 PM)", feeQuarterly: 9500, feeAnnual: 34000, hours: "Till 3:30 PM · Rest pod, playtime & gentle supervision" },
-  { id: "after-school", label: "After-School Enrichment (Till 6:30 PM)", feeQuarterly: 12500, feeAnnual: 45000, hours: "1:30 PM – 6:30 PM · Homework help, sports & hobby clubs" },
-];
-
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -108,7 +102,6 @@ export default function AgeFeeCalculator() {
   // Default to child born in 2022 (~3.8 yrs at June 2026 = Junior KG)
   const [birthYear, setBirthYear] = useState<number>(2022);
   const [birthMonth, setBirthMonth] = useState<number>(3); // April
-  const [daycareOption, setDaycareOption] = useState<string>("none");
   const [billingCycle, setBillingCycle] = useState<"quarterly" | "annual">("quarterly");
 
   // Calculate age as of June 1, 2026
@@ -137,7 +130,7 @@ export default function AgeFeeCalculator() {
       gradeKey = "senior-kg";
     } else {
       gradeKey = "senior-kg";
-      statusMsg = "Child is over 6 years! Eligible for primary school Grade 1 entrance + our After-School Program (up to 10 years).";
+      statusMsg = "Child is over 6 years! Eligible for primary school Grade 1 entrance.";
     }
 
     return {
@@ -150,11 +143,8 @@ export default function AgeFeeCalculator() {
   }, [birthYear, birthMonth]);
 
   const selectedGrade = GRADES[eligibleGradeKey] || GRADES.nursery;
-  const selectedDaycare = DAYCARE_OPTIONS.find((d) => d.id === daycareOption) || DAYCARE_OPTIONS[0];
-
   const estimatedTuition = billingCycle === "quarterly" ? selectedGrade.baseQuarterlyFee : selectedGrade.baseAnnualFee;
-  const estimatedDaycare = billingCycle === "quarterly" ? selectedDaycare.feeQuarterly : selectedDaycare.feeAnnual;
-  const totalEstimated = estimatedTuition + estimatedDaycare;
+  const totalEstimated = estimatedTuition;
 
   const waEnquiryText = `Hello Kaylan Preschool! I used your NEP 2020 Age Calculator. My child is ${ageYears} yrs ${ageMonths} mos (born ${MONTHS[birthMonth]} ${birthYear}). Recommended class: ${selectedGrade.name}. I would like to schedule an admissions tour.`;
   const waHref = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(waEnquiryText)}`;
@@ -231,38 +221,6 @@ export default function AgeFeeCalculator() {
                   </option>
                 ))}
               </select>
-            </div>
-
-            {/* Daycare Extension Option */}
-            <div>
-              <label className="block text-xs font-heading font-semibold uppercase tracking-wider text-[#5b4b6b] mb-2">
-                Optional Daycare Add-on
-              </label>
-              <div className="space-y-2">
-                {DAYCARE_OPTIONS.map((d) => (
-                  <label
-                    key={d.id}
-                    className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                      daycareOption === d.id
-                        ? "border-candy bg-candy/5 ring-1 ring-candy"
-                        : "border-gray-200 hover:border-gray-300 bg-white"
-                    }`}
-                  >
-                    <input
-                      type="radio"
-                      name="daycare"
-                      value={d.id}
-                      checked={daycareOption === d.id}
-                      onChange={() => setDaycareOption(d.id)}
-                      className="mt-0.5 text-candy focus:ring-candy"
-                    />
-                    <div className="text-xs">
-                      <p className="font-heading font-bold text-[#3a2e4d]">{d.label}</p>
-                      <p className="text-[#5b4b6b] mt-0.5">{d.hours}</p>
-                    </div>
-                  </label>
-                ))}
-              </div>
             </div>
 
             {/* Billing Cycle Toggle */}
@@ -366,14 +324,6 @@ export default function AgeFeeCalculator() {
                     ₹{estimatedTuition.toLocaleString("en-IN")}
                   </span>
                 </div>
-                {estimatedDaycare > 0 && (
-                  <div className="flex items-center justify-between text-xs text-[#5b4b6b] mb-1">
-                    <span>Daycare ({selectedDaycare.label}):</span>
-                    <span className="font-heading font-bold text-[#3a2e4d]">
-                      +₹{estimatedDaycare.toLocaleString("en-IN")}
-                    </span>
-                  </div>
-                )}
                 <div className="flex items-center justify-between pt-2 mt-2 border-t border-sunshine/20">
                   <div>
                     <span className="text-xs font-heading font-bold text-[#3a2e4d] uppercase tracking-wide">
