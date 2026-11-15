@@ -76,9 +76,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!decoded || (decoded.exp && decoded.exp < Date.now())) {
-    const loginUrl = new URL("/login", req.url);
-    loginUrl.searchParams.set("redirectTo", pathname);
-    return NextResponse.redirect(loginUrl);
+    return NextResponse.redirect(new URL("/", req.url));
   }
 
   const requiredRole = Object.entries(ROLE_ROUTES).find(([prefix]) => pathname.startsWith(prefix))?.[1];

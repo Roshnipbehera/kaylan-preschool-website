@@ -21,24 +21,16 @@ test.describe("QA Verification Suite", () => {
     }
   });
 
-  test("2. /admissions/apply renders application form and /login renders fields", async ({ page }) => {
+  test("2. /admissions/apply renders application form and /login redirects to homepage", async ({ page }) => {
     // Check /admissions/apply
     await page.goto("/admissions/apply", { waitUntil: "domcontentloaded" });
     const childNameInput = page.locator('input[name="child.fullName"]');
     await expect(childNameInput).toBeVisible({ timeout: 10_000 });
     await expect(page.getByText("Loading application form...")).not.toBeVisible();
 
-    // Check /login
+    // Check /login redirects to homepage
     await page.goto("/login", { waitUntil: "domcontentloaded" });
-    const emailInput = page.locator('input[name="email"]');
-    const passwordInput = page.locator('input[name="password"]');
-    await expect(emailInput).toBeVisible({ timeout: 10_000 });
-    await expect(passwordInput).toBeVisible({ timeout: 10_000 });
-
-    // Role switcher tabs
-    await expect(page.getByRole("tab", { name: "Parent" })).toBeVisible();
-    await expect(page.getByRole("tab", { name: "Teacher" })).toBeVisible();
-    await expect(page.getByRole("tab", { name: "Admin" })).toBeVisible();
+    await expect(page).toHaveURL("/");
   });
 
   test("3. Each page has a unique canonical URL matching its own path", async ({ page, baseURL }) => {
@@ -54,7 +46,6 @@ test.describe("QA Verification Suite", () => {
       { path: "/events" },
       { path: "/careers" },
       { path: "/blog" },
-      { path: "/login" },
       { path: "/blog/building-early-confidence-through-play" },
     ];
 

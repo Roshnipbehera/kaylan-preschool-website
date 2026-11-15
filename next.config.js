@@ -42,6 +42,21 @@ const nextConfig = {
         destination: "/admissions/apply",
         permanent: true,
       },
+      {
+        source: "/login",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/forgot-password",
+        destination: "/",
+        permanent: false,
+      },
+      {
+        source: "/verify-email",
+        destination: "/",
+        permanent: false,
+      },
     ];
   },
   async headers() {
