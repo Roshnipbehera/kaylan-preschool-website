@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
 import Programs from "@/components/Programs";
 import Adventures from "@/components/Adventures";
-import Teachers from "@/components/Teachers";
 import DayTimeline from "@/components/DayTimeline";
 import Philosophy from "@/components/Philosophy";
 import Gallery from "@/components/Gallery";
@@ -38,7 +37,6 @@ export default function Home() {
       <Welcome />
       <Programs />
       <Adventures />
-      <Teachers />
       <DayTimeline />
       <Philosophy />
       <Gallery />
