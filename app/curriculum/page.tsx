@@ -230,8 +230,7 @@ export default function CurriculumPage() {
                   social interactions, language emergence, and problem-solving triumphs.
                 </p>
                 <p className="text-xs text-[#5b4b6b]">
-                  Parents can log in to our secure Parent Portal anytime to view attendance, teacher notes, fee receipts,
-                  and milestone photographs.
+                  Parents receive regular developmental updates, teacher observations, and milestone photographs celebrating their child’s daily learning journey.
                 </p>
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden shadow-md border-2 border-white">

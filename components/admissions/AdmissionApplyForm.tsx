@@ -137,16 +137,20 @@ export function AdmissionApplyForm() {
         <p className="text-[#5b4b6b] mb-1">
           Reference ID: <span className="font-mono font-semibold">{submittedId}</span>
         </p>
-        <p className="text-[#5b4b6b] mb-6">
-          {user
-            ? "You can track your application status from your parent dashboard."
-            : "Log in as a parent to track your application status and download a receipt."}
+        <p className="text-[#5b4b6b] mb-6 max-w-md mx-auto leading-relaxed">
+          Thank you! Our admissions coordinator will contact you shortly via WhatsApp or phone to confirm your application and schedule a campus walkthrough.
         </p>
-        {user ? (
-          <Button onClick={() => (window.location.href = "/parent/admissions")}>View My Applications</Button>
-        ) : (
-          <Button onClick={() => (window.location.href = "/login")}>Log In to Track Application</Button>
-        )}
+        <div className="flex flex-wrap justify-center gap-3">
+          <Button onClick={() => (window.location.href = "/")}>Return to Home 🏡</Button>
+          <a
+            href="https://wa.me/919663630221?text=Hello%20Kaylan%20Preschool!%20I%20have%20submitted%20an%20admission%20application."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full font-heading font-bold text-sm bg-leaf text-white shadow hover:bg-leaf/90 transition-all"
+          >
+            Chat with Admissions on WhatsApp 💬
+          </a>
+        </div>
       </Card>
     );
   }

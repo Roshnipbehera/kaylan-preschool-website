@@ -123,12 +123,6 @@ export default function Navbar() {
 
         {/* Desktop CTA Action Group */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <Link
-            href="/login"
-            className="text-xs sm:text-sm font-heading font-semibold text-[#5b4b6b] hover:text-candy transition-colors px-2 py-1.5"
-          >
-            Login
-          </Link>
           <motion.button
             type="button"
             onClick={() => setTourOpen(true)}
@@ -205,13 +199,6 @@ export default function Navbar() {
               >
                 🏫 Book a Campus Tour
               </button>
-              <Link
-                href="/login"
-                onClick={() => setMobileOpen(false)}
-                className="w-full text-center py-2.5 text-sm font-heading font-semibold text-[#5b4b6b] hover:text-candy bg-gray-50 rounded-full transition-colors"
-              >
-                Parent / Teacher Login
-              </Link>
             </div>
           </motion.div>
         )}
