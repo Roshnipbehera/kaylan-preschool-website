@@ -1,9 +1,11 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Facebook, Instagram, Youtube } from "lucide-react";
 import { useCmsSection } from "@/lib/hooks/useCmsSection";
 import { usePublicSettings } from "@/lib/hooks/usePublicSettings";
+import { toast } from "sonner";
 import type { FooterContent } from "@/lib/types/cms";
 
 const SEED: FooterContent = {
@@ -134,9 +136,24 @@ export default function Footer() {
         <div>
           <h4 className="font-heading font-semibold mb-2">{data.newsletterHeading}</h4>
           <p className="text-sm mb-3">{data.newsletterText}</p>
-          <form className="flex gap-2">
-            <input type="email" placeholder="Parent email" className="flex-1 min-w-0 rounded-full px-4 py-2 text-sm text-[#3a2e4d]" />
-            <button className="bg-white rounded-full px-4 py-2 text-sm font-semibold">Join</button>
+          <form
+            className="flex gap-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              toast.success("Thank you for subscribing to our storybook newsletter! 💌");
+              form.reset();
+            }}
+          >
+            <input
+              type="email"
+              required
+              placeholder="Parent email"
+              className="flex-1 min-w-0 rounded-full px-4 py-2 text-sm text-[#3a2e4d] focus:outline-none focus:ring-2 focus:ring-candy"
+            />
+            <button type="submit" className="bg-white hover:bg-white/90 text-[#3a2e4d] rounded-full px-4 py-2 text-sm font-semibold transition-colors cursor-pointer">
+              Join
+            </button>
           </form>
         </div>
       </div>

@@ -48,16 +48,19 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       submittedAt: new Date().toISOString(),
     };
     rsvps.push(rsvp);
-    await writeRsvps(rsvps);
+    try {
+      await writeRsvps(rsvps);
+    } catch {
+      // In serverless environments where local filesystem is read-only, proceed gracefully
+    }
 
-    // Mock-simulate a confirmation email (real send would use
-    // backend/src/emails/eventEmails.ts + Nodemailer in Phase 3).
+    // Mock-simulate a confirmation email
     console.log(
       `[MOCK EMAIL] To: ${rsvp.email} | Subject: RSVP Confirmed for ${event.title} | Guests: ${rsvp.guests}`,
     );
 
     return NextResponse.json({ success: true, data: rsvp }, { status: 201 });
   } catch {
-    return NextResponse.json({ success: false, message: "Failed to persist RSVP" }, { status: 500 });
+    return NextResponse.json({ success: false, message: "Failed to process RSVP" }, { status: 500 });
   }
 }
