@@ -2,7 +2,7 @@
 // (plain objects) so both server components and client components can render
 // them via <script type="application/ld+json" dangerouslySetInnerHTML={...} />.
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaylan-preschool-website.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://kaylanpreschool.in";
 
 export function preschoolStructuredData() {
   return {
