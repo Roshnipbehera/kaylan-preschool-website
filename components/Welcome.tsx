@@ -108,10 +108,10 @@ export default function Welcome() {
                 badge: "Safety",
               },
               {
-                title: "Daycare for Working Parents",
-                desc: "Reliable, warm extended daycare till 6:30 PM with nutritious meal assistance, nap suites, and engaging post-school play.",
+                title: "Extended Care for Parents",
+                desc: "Reliable, warm extended care till 6:30 PM with wholesome snack assistance, quiet rest zones, and engaging post-school play.",
                 icon: "🎒",
-                badge: "Daycare",
+                badge: "Extended Care",
               },
               {
                 title: "Structured Learning",

@@ -305,7 +305,7 @@ export default function Hero() {
               <span className="text-xl">🛡️</span>
               <div>
                 <p className="text-xs font-heading font-bold text-[#3a2e4d]">Safe Green Campus</p>
-                <p className="text-[10px] text-[#5b4b6b]">CCTV Monitored · Daycare &amp; After-School (1–10y)</p>
+                <p className="text-[10px] text-[#5b4b6b]">CCTV Monitored · Extended Care &amp; After-School</p>
               </div>
             </motion.div>
           </div>

@@ -40,7 +40,7 @@ const DEFAULTS = {
   maintenanceMode: false,
   logoUrl: "/brand/kaylan-logo.png",
   address: "30, Near Neo Hospital, Prakruthi Residential Layout, Bettadasanapura, Vittasandra, Bengaluru, Karnataka 560100",
-  schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
+  schoolTimings: "Mon - Fri: 8:30 AM - 1:30 PM (Office till 5:00 PM)",
   admissionsOpen: true,
   facebookUrl: "https://facebook.com/kaylanpreschool",
   instagramUrl: "https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw==",

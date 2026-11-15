@@ -27,8 +27,8 @@ const SEED: FaqContent = {
       a: "Yes. Our campus is fully monitored 24/7 by high-definition CCTV cameras covering all indoor classrooms, corridors, dining halls, and outdoor play areas. Safety protocols include strict visitor logs and security verification at entry gates.",
     },
     {
-      q: "Do you offer full-day daycare and after-school programs?",
-      a: "Yes! Our daycare and after-school facilities operate from 8:30 AM to 6:30 PM for children aged 1 to 10 years. It includes quiet nap pods in sanitized individual cots, school homework assistance, guided hobby workshops, and outdoor lawn sports (parents send child's home-packed food and snacks according to their dietary preference).",
+      q: "Do you offer extended care and after-school programs?",
+      a: "Yes! Extended care and after-school facilities operate until 6:30 PM for children. It includes school homework assistance, guided hobby workshops, reading nooks, and supervised outdoor lawn play (parents send child's home-packed food and snacks according to their dietary preference).",
     },
     {
       q: "How do you handle hygiene, sanitization, and health emergencies?",

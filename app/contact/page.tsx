@@ -106,7 +106,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="font-heading font-bold text-[#3a2e4d]">Campus Visiting Hours</h4>
                     <p className="text-xs text-[#5b4b6b] mt-1 leading-relaxed">
-                      Monday – Friday: <strong>8:30 AM – 3:30 PM</strong> (Daycare till 6:30 PM)
+                      Monday – Friday: <strong>8:30 AM – 1:30 PM</strong> (Office &amp; Tours till 5:00 PM)
                       <br />
                       Saturday: <strong>9:00 AM – 1:00 PM</strong> (Walkthroughs by appointment)
                       <br />

@@ -139,8 +139,7 @@ const DAILY_SCHEDULE = [
   { time: "10:30 AM – 11:00 AM", event: "Snack Break & Social Grace", desc: "Mindful eating of home-packed snack, table manners, washing hands, and pleasant chatter." },
   { time: "11:00 AM – 11:45 AM", event: "Outdoor Adventure & Gross Motor", desc: "Turf playground, wooden obstacle balance beams, tricycle track, and sandpit fun." },
   { time: "11:45 AM – 12:30 PM", event: "Art, Music & Creative Studio", desc: "Finger-painting, clay modeling, percussion rhythm instruments, and dramatic play." },
-  { time: "12:30 PM – 01:00 PM", event: "Storybook Nook & Reflection", desc: "Puppet theatre, interactive read-alouds, vocabulary game, and dismissal for morning shifts." },
-  { time: "01:00 PM – 06:30 PM", event: "Daycare Rest, Play & Evening Clubs", desc: "Afternoon nap time in sanitized pods, home-sent refreshment break, outdoor recreation, and creative hobby clubs." },
+  { time: "12:30 PM – 01:30 PM", event: "Lunch Box, Storybook Circle & Departure", desc: "Family-style lunch, puppet theatre, vocabulary reflection, and warm dismissal (classes conclude between 12:00 PM and 1:30 PM)." },
 ];
 
 export default function ProgramsPage() {

@@ -86,10 +86,9 @@ const GRADES: Record<string, GradeEligibility> = {
 };
 
 const DAYCARE_OPTIONS = [
-  { id: "none", label: "No Daycare (Preschool Only)", feeQuarterly: 0, feeAnnual: 0, hours: "Preschool Hours Only" },
-  { id: "half", label: "Half-Day Daycare (Ages 1–10 Yrs · Till 3:30 PM)", feeQuarterly: 9500, feeAnnual: 34000, hours: "Till 3:30 PM · Rest pod, playtime & gentle supervision" },
-  { id: "full", label: "Full-Day Extended Daycare (Ages 1–10 Yrs · Till 6:30 PM)", feeQuarterly: 16500, feeAnnual: 60000, hours: "Till 6:30 PM · Rest pod, recreation & evening supervision" },
-  { id: "after-school", label: "After-School Program (Ages 4–10 Yrs · Till 6:30 PM)", feeQuarterly: 12500, feeAnnual: 45000, hours: "1:30 PM – 6:30 PM · Homework help, sports & hobby clubs" },
+  { id: "none", label: "Preschool Only (8:30 AM – 1:30 PM)", feeQuarterly: 0, feeAnnual: 0, hours: "Standard Preschool Hours" },
+  { id: "half", label: "Extended Afternoon Care (Till 3:30 PM)", feeQuarterly: 9500, feeAnnual: 34000, hours: "Till 3:30 PM · Rest pod, playtime & gentle supervision" },
+  { id: "after-school", label: "After-School Enrichment (Till 6:30 PM)", feeQuarterly: 12500, feeAnnual: 45000, hours: "1:30 PM – 6:30 PM · Homework help, sports & hobby clubs" },
 ];
 
 const MONTHS = [
@@ -127,7 +126,7 @@ export default function AgeFeeCalculator() {
 
     if (totalDecimal < 2.0) {
       gradeKey = "playgroup";
-      statusMsg = "Toddler is under 2 years on June 1, 2026. Toddler Daycare (from 1 year) and advance reservations are available!";
+      statusMsg = "Toddler is under 2 years on June 1, 2026. Advance reservations for Playgroup are available!";
     } else if (totalDecimal >= 2.0 && totalDecimal < 3.0) {
       gradeKey = "playgroup";
     } else if (totalDecimal >= 3.0 && totalDecimal < 4.0) {

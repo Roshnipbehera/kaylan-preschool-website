@@ -13,7 +13,7 @@ const SEED: PublicSettings = {
   contactPhone: "+91 96636 30221",
   address: "#30 Prakruthi Residential Layout, Bettadasanpura, Electronic City Ph 1, Bangalore – 560100 (Near Neo Hospital, Doddathoguru)",
   logoUrl: "/brand/kaylan-logo.png",
-  schoolTimings: "Mon - Fri: 8:30 AM - 3:30 PM (Daycare till 6:30 PM)",
+  schoolTimings: "Mon - Fri: 8:30 AM - 1:30 PM (Office till 5:00 PM)",
   admissionsOpen: true,
   facebookUrl: "https://facebook.com/kaylanpreschool",
   instagramUrl: "https://www.instagram.com/kaylanpreschoolanddaycare?stkn=MXR5ZXJmc2c4Z202dw==",

@@ -52,15 +52,15 @@ const DAY: DayScheduleItem[] = [
     tagColor: "bg-[#FFFBEB] text-[#B45309]",
   },
   {
-    time: "12:00 PM",
-    label: "Phonics, Music & Storytelling",
+    time: "11:45 AM",
+    label: "Phonics, Music & Creative Studio",
     emoji: "📖",
     desc: "Interactive storybook sessions with puppets, Orff rhythm instruments, and Jolly Phonics sounds.",
     tag: "Language & Rhythm",
     tagColor: "bg-[#FDF2F8] text-[#BE185D]",
   },
   {
-    time: "12:45 PM",
+    time: "12:30 PM",
     label: "Lunch Box Time & Mindful Table Grace",
     emoji: "🍱",
     desc: "Children enjoy their home-packed lunch together family-style, practicing table manners, clean hands, and gentle social conversation.",
@@ -68,19 +68,11 @@ const DAY: DayScheduleItem[] = [
     tagColor: "bg-[#F0FDF4] text-[#166534]",
   },
   {
-    time: "1:30 PM",
-    label: "Rest & Sweet Dreams (Nap Time)",
-    emoji: "😴",
-    desc: "Sanitized individual cots, soft lullabies, and dim ambient lighting under dedicated teacher supervision.",
-    tag: "Restorative Rest",
-    tagColor: "bg-[#EEF2FF] text-[#3730A3]",
-  },
-  {
-    time: "3:00 PM",
-    label: "Wrap-up & Cheerful Departure",
+    time: "1:00 PM – 1:30 PM",
+    label: "Storybook Circle & Staggered Departure",
     emoji: "🏡",
-    desc: "Review of daily joys, gathering school bags, and secure parent/guardian handover with day logs.",
-    tag: "Family Reconnection",
+    desc: "Review of daily joys, favorite picture books, and secure parent pickup (Playgroup/Nursery dismiss 12:00–12:30 PM; Junior/Senior KG dismiss 1:00–1:30 PM).",
+    tag: "Farewell & Reconnection",
     tagColor: "bg-[#FFF7ED] text-[#C2410C]",
   },
 ];
@@ -90,11 +82,11 @@ export default function DayTimeline() {
     <section id="facilities" className="relative py-24 bg-gradient-to-b from-[#FFFDF7] via-[#FFF9EE] to-white">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <span className="inline-block bg-sunshine/30 text-[#6a5400] font-heading font-bold text-xs uppercase tracking-wider px-4 py-1.5 rounded-full mb-3">
-          Full-Day & Daycare Rhythm
+          Daily Preschool Rhythm
         </span>
         <h2 className="font-display text-4xl sm:text-5xl font-bold mb-3 text-[#3a2e4d]">A Day at Kaylan ⏰</h2>
         <p className="text-[#5b4b6b] max-w-xl mx-auto mb-16 text-base sm:text-lg">
-          Our full-day and extended daycare rhythm designed to balance child-led discovery, physical outdoor play, nutritious lunch, peaceful rest, and joyful learning. (Core preschool sessions conclude between 12:00 PM – 1:30 PM).
+          A thoughtful, predictable preschool rhythm designed to balance child-led discovery, physical outdoor play, healthy habits, and joyful early learning. (Classes run 8:30 AM to 1:30 PM).
         </p>
       </div>
 
@@ -138,7 +130,7 @@ export default function DayTimeline() {
           ))}
         </div>
 
-        {/* Daycare & Extended Care Highlight Box */}
+        {/* Campus Experience Highlight Box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -146,18 +138,18 @@ export default function DayTimeline() {
           className="mt-16 bg-gradient-to-r from-[#FFF5F7] via-[#FFF9EE] to-[#F0FFF4] rounded-3xl p-8 shadow-xl border-2 border-sunshine/40 text-center relative overflow-hidden"
         >
           <div className="inline-block bg-white px-4 py-1.5 rounded-full text-xs font-heading font-bold text-candy mb-3 shadow-sm">
-            ✨ Extended After-School Care Available
+            🏫 Experience Our Campus
           </div>
           <h3 className="font-display text-2xl font-bold text-[#3a2e4d] mb-2">
-            Working Parents? Extended Daycare till 6:30 PM 🧸
+            Come Experience A Day in Action 🌟
           </h3>
           <p className="text-sm text-[#5b4b6b] max-w-2xl mx-auto mb-6 leading-relaxed">
-            Our nurturing daycare wing offers individual sanitized nap suites, homework assistance, guided crafts, quiet reading nooks, and fun indoor games under loving adult care.
+            Book a personalized walk-through to see our Montessori environments, green play lawns, and happy little learners discovering the world at their own natural pace.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-xs font-heading font-bold text-[#3a2e4d]">
             <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🛡️ Verified Female Staff</span>
             <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">📹 24/7 CCTV Safe Campus</span>
-            <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🧸 Sanitized Nap Pods</span>
+            <span className="bg-white/80 px-3.5 py-1.5 rounded-full shadow-sm">🌱 1:6 / 1:8 Low Child-Teacher Ratios</span>
           </div>
         </motion.div>
       </div>

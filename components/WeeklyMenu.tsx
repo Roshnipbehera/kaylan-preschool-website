@@ -183,7 +183,7 @@ export default function WeeklyMenu() {
         <div className="text-center max-w-2xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-leaf/20 text-[#245412] text-xs font-heading font-semibold mb-3 border border-leaf/30">
             <Utensils size={14} className="text-leaf" />
-            <span>Preschool &amp; Daycare Nutrition</span>
+            <span>Preschool Nutrition &amp; Healthy Habits</span>
           </div>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#3a2e4d] tracking-tight">
             Wholesome, Organic <span className="text-candy">Weekly Menu</span> 🥦
@@ -282,7 +282,7 @@ export default function WeeklyMenu() {
                 </span>
               </div>
               <h3 className="text-xs font-heading font-semibold uppercase tracking-wider text-[#5b4b6b]">
-                Daycare Energy Snack
+                After-School Energy Snack
               </h3>
               <p className="font-display text-xl font-bold text-[#3a2e4d] mt-1">
                 {currentMenu.eveningSnack.item}
