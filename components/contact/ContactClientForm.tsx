@@ -53,16 +53,36 @@ export function ContactClientForm() {
         values.message ? `Notes: ${values.message}` : null,
       ].filter(Boolean).join(" | ");
 
-      await createContactInquiry({
+      // Fire-and-forget background sync if backend is active, never block user
+      createContactInquiry({
         parentName: values.parentName,
         phone: values.phone,
         message: fullMessage || "Enquiry from website contact page",
-      });
+      }).catch(() => {});
+
+      const phoneDigits = "919663630221";
+      const messageLines = [
+        "Hello Kaylan Preschool! I would like to make an admission enquiry.",
+        "",
+        `👤 Parent Name: ${values.parentName}`,
+        `📱 Mobile: ${values.phone}`,
+        values.email ? `📧 Email: ${values.email}` : null,
+        values.childAge ? `🎂 Child Age: ${values.childAge}` : null,
+        values.program ? `🎒 Program: ${values.program}` : null,
+        values.message ? `💬 Notes: ${values.message}` : null,
+        "",
+        "Please confirm admission availability and campus tour schedule.",
+      ].filter(Boolean);
+
+      const waUrl = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(messageLines.join("\n"))}`;
+
       setSubmitted(true);
-      toast.success("Thank you! Our Admissions Counsellor will call you within 24 hours.");
+      toast.success("Opening WhatsApp to send your enquiry directly to admissions...");
       reset();
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to submit enquiry. Please try again or WhatsApp us directly.");
+
+      if (typeof window !== "undefined") {
+        window.location.href = waUrl;
+      }
     } finally {
       setLoading(false);
     }
@@ -182,9 +202,13 @@ export function ContactClientForm() {
           />
         </div>
 
-        <Button type="submit" isLoading={loading} className="w-full mt-2">
-          <Send size={16} className="mr-2" />
-          Submit Enquiry
+        <Button
+          type="submit"
+          isLoading={loading}
+          className="w-full mt-2 bg-[#25D366] hover:bg-[#20ba59] text-white font-heading font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2"
+        >
+          <Send size={16} />
+          <span>{loading ? "Opening WhatsApp..." : "Send Enquiry on WhatsApp 💬"}</span>
         </Button>
       </div>
     </form>

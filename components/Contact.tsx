@@ -34,11 +34,30 @@ export default function Contact() {
   const onSubmit = async (values: CreateContactInquiryFormValues) => {
     setSubmitting(true);
     try {
-      await createContactInquiry(values);
-      toast.success("Enquiry sent! We'll get back to you soon.");
+      // Fire-and-forget background sync if backend is active, never block user
+      createContactInquiry(values).catch(() => {});
+
+      const rawPhone = data?.contactPhone || "+91 96636 30221";
+      const phoneDigits = rawPhone.replace(/[^\d]/g, "") || "919663630221";
+
+      const messageText = [
+        "Hello Kaylan Preschool! I would like to make an admission enquiry.",
+        "",
+        `👤 Parent Name: ${values.parentName}`,
+        `📱 Mobile: ${values.phone}`,
+        `💬 Note: ${values.message}`,
+        "",
+        "Kindly share details regarding admission, fees, and campus walkthrough.",
+      ].join("\n");
+
+      const waUrl = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(messageText)}`;
+
+      toast.success("Opening WhatsApp to send your enquiry directly to admissions...");
       reset();
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Failed to send enquiry");
+
+      if (typeof window !== "undefined") {
+        window.location.href = waUrl;
+      }
     } finally {
       setSubmitting(false);
     }
@@ -213,11 +232,12 @@ export default function Contact() {
               <motion.button
                 type="submit"
                 disabled={submitting}
-                whileHover={{ scale: submitting ? 1 : 1.03 }}
-                whileTap={{ scale: submitting ? 1 : 0.96 }}
-                className="w-full bg-candy text-white font-heading font-bold py-3 rounded-full disabled:opacity-60 disabled:cursor-not-allowed"
+                whileHover={{ scale: submitting ? 1 : 1.02 }}
+                whileTap={{ scale: submitting ? 1 : 0.98 }}
+                className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white font-heading font-bold py-3.5 rounded-full shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {submitting ? "Sending..." : "Send Enquiry 💌"}
+                <MessageCircle size={18} className="fill-white" />
+                <span>{submitting ? "Opening WhatsApp..." : "Send Enquiry on WhatsApp 💬"}</span>
               </motion.button>
             </form>
 
