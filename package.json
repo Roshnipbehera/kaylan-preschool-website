@@ -1,6 +1,8 @@
 {
   "name": "kaylan-preschool",
   "version": "1.0.0",
+  "description": "Official website and admissions platform for Kaylan Preschool (Electronic City, Bangalore)",
+  "homepage": "https://kaylanpreschool.in",
   "private": true,
   "scripts": {
     "dev": "next dev",

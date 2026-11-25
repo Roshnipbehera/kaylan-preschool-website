@@ -1,6 +1,12 @@
 # Kaylan Preschool — Platform
 
-A full-stack school platform for Kaylan Preschool (Bangalore): a highly interactive, animated public marketing site plus a complete authenticated app (Parent, Teacher, and Admin dashboards) covering admissions, attendance, homework, daily activity logs, announcements, real-time messaging, fee management, a CMS-driven marketing site, blog, gallery, events, notifications, analytics, and audit logging.
+[![Live Website](https://img.shields.io/badge/Live%20Website-kaylanpreschool.in-2ea44f?style=for-the-badge&logo=google-chrome&logoColor=white)](https://kaylanpreschool.in)
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel)](https://kaylanpreschool.in)
+
+> 🌐 **Official Live Website:** [https://kaylanpreschool.in](https://kaylanpreschool.in)  
+> 🔗 **Alternative / Vercel Mirror:** [https://kaylan-preschool-website.vercel.app](https://kaylan-preschool-website.vercel.app)
+
+A modern early-childhood education platform and public website for **Kaylan Preschool** (Electronic City, Bangalore). Blends Montessori-inspired learning with the Kreedo curriculum in a magical storybook world of play, discovery, creativity, and love. Features interactive admissions tour bookings, WhatsApp enquiries, dynamic photo galleries, curriculum highlights, and verified Google Maps integration.
 
 This README has been rewritten as the final production-hardening close-out — it describes the system as it actually exists today, not an aspirational target. See `docs/` for the full documentation set.
 
